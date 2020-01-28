@@ -1,0 +1,118 @@
+@import "../../assets/scss/custom-variables";
+@import "../../assets/scss/mdb.scss";
+
+.signUp-section{
+  padding-bottom: 6rem;
+}
+.signUp-img{
+  background-color: $bg-light;
+  text-align: center;
+  padding: 3rem 0 2rem 0;
+  .img-container{
+    // width: 400px;
+    // height: 330px;
+    max-width: 400px;
+    max-height: 330px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    Opacity: 60%;
+    margin-bottom: 2rem;
+  }
+  img{
+    // width: 380px;
+  }
+  h3{
+    font-size: 1.3rem;
+    font-family: $font-family-bold;
+    color: $msg-error-color;
+  }
+  @include media-breakpoint-down(sm) {
+  display: none;
+  }
+}
+.btn-fb{
+background: $btn-light-color;
+box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+border-radius: 8px;
+// font-size: 1rem;
+color: $text-gray;
+text-transform: capitalize;
+width: 127px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+//INPUTS and BUTTONS=====================================
+.form-label{
+  // font-size: 1.2rem;
+  font-family: $font-family-bold;
+
+}
+.form-control {
+  display: block;
+  width: 100%;
+  // height: calc(1.5em + .75rem + 2px);
+  // padding: .375rem 0;
+  // padding: 1.2rem 0;
+  height: auto;
+  padding: .375rem 0;
+  // font-size: 1.5rem;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #0000;
+  border-bottom: 1px solid $bg-dark;
+  border-radius: 0;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #0000;
+  border-bottom: 1px solid $bg-dark;
+  outline: 0;
+  box-shadow: none;
+}
+.btn.disabled, .btn:disabled{
+  background-color: $bg-dark !important;
+  color: $primary-dark;
+
+}
+//GENERAL==
+.text-muted{
+  text-align: center;
+  font-size: 0.8rem;
+}
+.form-footer{
+  text-align: center;
+}
+a.link-red{
+  color: $msg-error-color;
+font-family: $font-family-bold;
+}
+a.link-red:hover{
+text-decoration: underline;
+}
+.link-text{
+  font-size: 1.3rem;
+  color: #191820;
+  text-align: center;
+}
+.or{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0 3rem 0;
+}
+.or-divider{
+  width: 40%;
+  border-bottom: 1px solid $bg-dark;
+}
+.or-text{
+text-align: center;
+color: $text-gray;
+margin-bottom: 0;
+}

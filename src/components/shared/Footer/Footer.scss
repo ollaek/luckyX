@@ -1,0 +1,59 @@
+@import "../../../assets/scss/custom-variables";
+
+.footer {
+  p{
+    margin-bottom: 0;
+  }
+}
+.footer-row1 {
+  background-color: $bg-gray-light;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+.footer-row2 {
+    background-color: $bg-dark;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  
+  }
+.footer-heading{
+  font-family: $font-family-bold;
+  font-size: 2.143rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0;
+}
+.footer-links{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  li{
+    padding: 0.5rem 0;
+  }
+}
+.footer-text{
+  font-size: 	1.25rem;
+  font-family: $font-family-base;
+  color: $text-gray;
+}
+.btn.footer-btn{
+  display: flex;
+  align-items: center;
+  color: $text-gray;
+  text-transform: capitalize;
+  white-space: nowrap;
+  p{
+   font-size: 1.125rem ;
+  }
+}
+.apple-icon{
+  background-color: var(--colors-grays-dark);
+  margin-right: 0.5rem;
+  font-size: 3rem;
+  color: $text-gray;
+}
+.font-light{
+  font-family: $font-family-base;
+}
+.icon-font-size{
+  font-size: 1.5rem;
+}

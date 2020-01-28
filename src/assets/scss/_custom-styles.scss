@@ -1,0 +1,233 @@
+// Your custom styles
+html{
+    font-size: 14px;
+    @include media-breakpoint-down(sm) { 
+        font-size: 12px;
+     }
+}
+body{
+    font-size: 1rem;
+    font-family: $font-family-base;
+}
+p{
+    font-size: 1rem;
+}
+//HEADER===============================================================
+.header {
+  background-color: $primary-color;
+}
+.navbar {
+  box-shadow: none;
+}
+.hero_section {
+  background-image: url(../img/Girl-hero-section-image.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 4rem;
+  min-height: 500px;
+}
+.heading-text {
+//   max-width: 320px;
+  color: $msg-error-color;
+  font-family: $font-family-bold;
+  max-width: 560px;
+  font-size:5rem;
+  margin-bottom: 2rem;
+  @include media-breakpoint-down(sm) { 
+    font-size: 4rem;
+ }
+}
+.profile-icon{
+    margin-right:.2rem;
+    width: 15px;
+}
+.navbar-light .navbar-nav .nav-link{
+    color:$primary-dark;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    color:$msg-error-color;
+    border-bottom: 1px solid $msg-error-color;
+}
+//GENERAL===============================================================
+.btn {
+  border-radius: 8px;
+  box-shadow: none;
+  font-family: $font-family-bold;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+.sec-padding {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.nav-padding {
+    padding-top: 3rem;
+    padding-bottom:1.5rem;
+  }
+.btn-primary{
+    background-color: $primary-color;}
+.btn-primary , .btn-primary:hover{
+    color: $primary-dark; 
+}
+.btn-primary:not([disabled]):not(.disabled):active, .btn-primary:not([disabled]):not(.disabled).active, .show > .btn-primary.dropdown-toggle{
+    color: $primary-dark; 
+}
+.btn.btn-block{
+    margin: 0;
+}   
+.bg-light{
+    background-color: $bg-gray-light !important;
+}
+.bg-dark{
+    background-color: $bg-dark !important;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+//BUTTONS============================================
+.btn:hover, .btn:focus, .btn:active {
+    outline: 0;
+    box-shadow: none;
+}
+.btn-primary{
+/* Colors / Primary / Light */
+background: #FAE159;
+border-radius: 8px;
+color: #191820;
+}
+.btn-primary:hover{
+    background: #F5CF01;
+}
+// .btn-primary:not([disabled]):not(.disabled):active, .btn-primary:not([disabled]):not(.disabled).active, .show > .btn-primary.dropdown-toggle{
+//     color:$text-gray ;
+// }
+.btn-white:not([disabled]):not(.disabled):active, .btn-white:not([disabled]):not(.disabled).active, .show > .btn-white.dropdown-toggle{
+    color:$text-gray ;
+    background: $bg-dark;
+box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+}
+.btn-white:hover {
+    background: $bg-dark !important;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08) !important;
+    color:$text-gray ;
+    
+}
+
+//CashbackStores======================================
+.cashbackStores-section{
+    background: $white;
+}
+.sub-title-light{
+    font-size: 2rem;
+    font-family: $font-family-base;
+}
+.sub-title-div{
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+.title{
+    font-family: $font-family-bold;
+    font-size: 2rem;
+    padding: 1rem 0;
+    text-align: center;
+}
+.sub-title{
+    font-size: 2.5rem;
+    // text-align: center;
+    font-family: $font-family-bold;
+    position: relative;
+    padding: 1rem 0;
+    margin-bottom: 4rem;
+    display: inline-block;
+}
+.sub-title::after{
+    content: "";
+    position: absolute;
+    // width: 6%;
+    // width: 20%;
+    width: 80px;
+        height: 0.1rem;
+    border-radius: 2rem;
+    background: #000;
+    bottom: 0;
+    left: 0;
+}
+.cashback-card{
+    margin-bottom: 2rem;
+}
+.cashback-card-img{
+    width: 100%;
+    height: 111px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $bg-light;
+    margin-bottom: 1.5rem;
+    img{
+        width: 196px;
+        height: auto;
+    }
+}
+
+.seeAllStors-text{
+    text-align: center;
+    padding: 1.5rem 0;
+    font-family: $font-family-bold;
+    a{
+        color: $primary-dark;
+    }
+    a:hover {
+        opacity: 0.8;
+    }
+}
+//CASHBACK CATEGORY===============================================
+.cashbackCategories-section{
+background-color: $bg-light;
+}
+//CARDS===========================================
+.card-title{
+    color:$primary-dark;
+    font-family: $font-family-bold;
+    font-size: 	1.375rem;
+    margin-bottom: 1.5rem;
+}
+.cashback-text{
+    font-family: $font-family-bold;
+    color:$msg-error-color;
+    font-size: 	1.375rem;
+    // margin-bottom: 1.5rem;
+    margin-bottom: 0;
+}
+.card-text{
+    margin-bottom: 1.5rem;
+}
+.text-gray{
+    color: $text-gray;
+    font-size: 	1.375rem;
+    font-family: $font-family-base;
+    margin-bottom: 0;
+}
+
+.card-white{
+    text-align: center;
+    background: white;
+    box-shadow: none;
+    margin-bottom: 2rem;
+}
+.card-img-circle{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+//adsToStores-section=================================================
+.adsToStores-section{
+    background-color: $primary-color;
+    background-image: url(../img/in-store_img.png);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+}

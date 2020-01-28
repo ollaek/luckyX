@@ -1,0 +1,13 @@
+@import "../../assets/scss/mdb.scss";
+.adsToStores-section{
+    @include media-breakpoint-down(sm) { 
+        padding: 3rem 0;
+     }
+    .heading-text{
+        font-size: 4rem;
+        max-width: 100%;
+    }
+    .seeAllStors-text{
+        text-align: left;
+    }
+}

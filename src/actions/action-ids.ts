@@ -1,0 +1,9 @@
+const actionIds = {
+    APP_GET_TOP_STORES : '[APP] GET TOP STORES',
+    APP_GET_TOP_CATEGORIES : '[APP] GET TOP CATEGORIES',
+    AUTH_EXTERNAL_SIGNIN : '[AUTH] EXTERNAL SIGN IN',
+    AUTH_SIGNIN : '[AUTH] SIGN IN',
+    AUTH_SIGNUP : '[AUTH] SIGN UP'
+};
+
+export default actionIds;

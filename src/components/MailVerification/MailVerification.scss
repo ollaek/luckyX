@@ -1,0 +1,19 @@
+@import "../../assets/scss/custom-variables";
+
+.mailVerification {
+  padding: 5rem 2rem 10rem 2rem;
+  text-align: center;
+  color: $primary-dark;
+}
+.mailVerification-img {
+  margin-bottom: 3rem;
+}
+.mailVerification-title {
+  font-size: 2rem;
+  font-family: $font-family-bold;
+  margin-bottom: 3rem;
+}
+.mailVerification-text {
+  font-family: $font-family-base;
+  margin-bottom: 3rem;
+}
