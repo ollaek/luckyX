@@ -15,9 +15,9 @@ const AdsToStores = () => {
                         at stores you love
                         </h2>
                         <div className="seeAllStors-text">
-                            <a href="#!">
+                            <a href="#!" className="hvr-icon-forward justify-content-start">
                                 SEE ALL THE STORES
-                                <img src={require("../../assets/img/Right-arrow.png")}
+                                <img className="hvr-icon" src={require("../../assets/img/svg/Right-arrow.svg")}
                                     alt="Right-arrow"
                                 />
                             </a>

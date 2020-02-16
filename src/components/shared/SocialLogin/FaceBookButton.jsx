@@ -1,29 +1,34 @@
 import React from "react";
 
-// import FacebookLogin from "react-facebook-login";
+import { useUserState } from "./Hook";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
-import { Button } from "react-bootstrap";
-const FaceBookButton = () => {
+const FaceBookButton = ({history, onShowChange}) => {
+  const { externalSignIn } = useUserState();
+  console.log(onShowChange);
+  let user;
   const responseFacebook = async response => {
     if (response) {
-      console.log(response);
-      //var res = await FacebookSignInService(response);
-      //const { access_token: token, userName, profilePicture } = res.data;
-      //setLoggedInState({ token, userName, profilePicture });
-      //changeToggleModal();
+      user = {
+        FullName: response.name,
+        Email: response.email,
+        SocialId: response.id
+      };
+      externalSignIn(user);
+      
+      if (onShowChange) onShowChange(false);
+      history.push("/");
     }
   };
 
   return (
     <FacebookLogin
-      appId="711793279184562"
+      appId="1151722291642438"
       fields="name,email"
       callback={responseFacebook}
       render={renderProps => (
-        <Button
+        <button
           className="btn-icon mt-2 mb-2 btn btn-white btn-fb"
-         
           onClick={renderProps.onClick}
         >
           <span className="btn-inner--icon mr-2">
@@ -45,7 +50,7 @@ const FaceBookButton = () => {
             </svg>
           </span>
           <span className="btn-inner--text">facebook</span>
-        </Button>
+        </button>
       )}
     />
   );

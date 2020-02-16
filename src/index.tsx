@@ -2,41 +2,43 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
-import { BrowserRouter as Router } from "react-router-dom";
+import { ToastProvider } from "react-toast-notifications";
 
-import { appReducer, authReducer } from './reducers';
-import { TAppState, TUserState } from './types';
+import { appReducer, authReducer, onlineCashbacksReducer } from "./reducers";
+import { TAppState, TUserState, TOnlineCashbacksState } from "./types";
 import Routing from "./components/Routing";
 
 //JS
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 //CSS FILES
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 // import "mdbreact/dist/css/mdb.css";
 
 //CSS CUSTOM FILES
 import "./assets/scss/mdb.scss";
-import './index.css';
+import "./index.css";
 
 export type TGlobalState = {
   appModule: TAppState;
   userModule: TUserState;
+  onlineCashbacksModule: TOnlineCashbacksState;
 };
 
 const rootReducer = combineReducers({
   appModule: appReducer,
-  authModul: authReducer,
+  authModule: authReducer,
+  onlineCashbacksModule: onlineCashbacksReducer
 });
 
 const store = createStore(rootReducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <ToastProvider>
       <Routing />
-    </Router>
+    </ToastProvider>
   </Provider>,
   document.getElementById("root")
 );

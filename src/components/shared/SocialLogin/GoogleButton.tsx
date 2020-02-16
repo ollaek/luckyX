@@ -1,15 +1,28 @@
 import React from "react";
 
+import { useUserState } from "./Hook";
 import GoogleLogin from "react-google-login";
 
-const GoogleButton = () => {
-  const responseGoogle = async (response: any) => {
-    console.log(response);
-    return response;
+const GoogleButton = (history:any,onShowChange:any) => {
+  const { externalSignIn } = useUserState();
+  let user;
+  const responseGoogle = (response: any) => {
+    if (response) {
+      console.log(response);
+      user = {
+        FullName: response.profileObj.name,
+        Email: response.profileObj.email,
+        SocialId: response.googleId
+      };
+      externalSignIn(user);
+      
+      if(onShowChange) onShowChange(false);
+      history.push("/");
+    }
   };
   return (
     <GoogleLogin
-      clientId="598-575-2333"
+      clientId="124617470988-q7e72sam881qvuk1pbkt21s08i5m10ql.apps.googleusercontent.com"
       buttonText="Login"
       onSuccess={responseGoogle}
       onFailure={responseGoogle}

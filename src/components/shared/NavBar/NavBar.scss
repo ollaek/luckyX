@@ -1,0 +1,254 @@
+@import "../../../assets/scss/mdb.scss";
+
+nav.navbar {
+  box-shadow: none;
+}
+.profile-icon {
+  margin-right: 0.4rem;
+  width: 15px;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: $primary-dark;
+  border-bottom: 1px solid transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: $msg-error-color !important;
+  border-bottom: 1px solid $msg-error-color;
+}
+.navbar-light .navbar-nav .nav-link:active,
+.navbar-light .navbar-nav .nav-link.active {
+  color: $msg-error-color !important;
+  border-bottom: 1px solid $msg-error-color;
+}
+.nav-link.profile:hover img,
+.nav-link.profile:focus img {
+  filter: invert(75%) sepia(64%) saturate(6193%) hue-rotate(320deg)
+    brightness(97%) contrast(111%);
+}
+.nav-padding {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  @include media-breakpoint-down(sm) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+.navbar-light .navbar-brand {
+  background-image: url(../../../assets/img/svg/Lucky_Dt.svg) !important;
+  background-repeat: no-repeat;
+  min-width: 120px;
+  min-height: 36px;
+  padding: 0;
+  @include media-breakpoint-down(sm) {
+    background-image: url(../../../assets/img/Icon.svg) !important;
+  }
+}
+.navbar.navbar-light .navbar-toggler-icon {
+  background-image: url(../../../assets/img/12.svg) !important;
+}
+
+//Off-Canves-Menu==MOBILE===============================================================
+
+/* Position and sizing of burger button */
+.nav-mob {
+  display: none;
+  position: relative;
+  @include media-breakpoint-down(sm) {
+    display: block;
+  }
+}
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  right: 20px;
+  top: 27px;
+  background-image: url(../../../assets/img/12.svg) !important;
+  background-repeat: no-repeat;
+  span {
+    display: none;
+  }
+}
+
+// /* Color/shape of burger icon bars */
+// .bm-burger-bars {
+//   background: #373a47;
+// }
+
+// /* Color/shape of burger icon bars on hover*/
+// .bm-burger-bars-hover {
+//   background: #a90000;
+// }
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  right: 20px !important;
+  top: 30px !important;
+  min-height: 40px;
+  min-width: 40px;
+  background-repeat: no-repeat;
+  background-image: url(../../../assets/img/svg/Cross.svg);
+  span {
+    display: none;
+  }
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  z-index: 10000000;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #fff;
+  padding: 4.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  // color: #b8b7ad;
+  padding: 0.8em;
+
+  .nav-link {
+    padding: 0.5rem 0;
+
+    color: $primary-dark;
+  }
+  .nav-link.active {
+    color: $msg-error-color;
+    // border-bottom: 1.5px solid $msg-error-color;
+    font-family: $font-family-bold;
+    display: inline-block;
+    width: auto !important;
+    padding: 0.5rem 0;
+    position: relative;
+  }
+}
+.link-active {
+  display: flex !important;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+// .link-active::before {
+//   content: " ";
+//   background-image: none;
+//   display: inline-block;
+//   width: 40px;
+//   height: 13px;
+//   background-repeat: no-repeat;
+// }
+// .link-active.active::before
+.bm-item-list .nav-link::before {
+  content: " ";
+  background-image: none;
+  display: inline-block;
+  width: 40px;
+  height: 13px;
+  background-repeat: no-repeat;
+}
+.bm-item-list .nav-link.active::before {
+
+  background-image: url(../../../assets/img/svg/Right-arrow-mob.svg);
+}
+.bm-item-list .nav-link.active::after {
+  content: " ";
+  height: 1px;
+  position: absolute;
+  display: inline-block;
+  border-bottom: 1.5px solid #ff585f;
+  left: 40px;
+  bottom: 0;
+  min-width: 40px;
+}
+/* Individual item */
+.bm-item {
+  // display: inline-block;
+  display: flex !important;
+  align-items: center;
+  padding: 0.7rem 0;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+//CUSTOM STYLES=======
+.user-log {
+  position: absolute;
+  top: 27px;
+  right: 70px;
+  min-width: 25px;
+  height: 25px;
+  z-index: 100;
+  background-image: url(/static/media/Union.cb348414.svg) !important;
+  background-repeat: no-repeat;
+}
+.user-log .user-logIn {
+  //   background-image: url(../../../assets/img/svg/Facebook.svg) !important;
+  // width: 100px;
+}
+
+.profile-mob {
+  min-width: 40px;
+  height: 25px;
+}
+.custom-control-inline {
+  margin-right: 2rem;
+}
+.custom-control-label::before,
+.custom-control-label::after {
+  position: absolute;
+  top: 0.1rem;
+  left: -1.9rem;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid $primary-dark;
+}
+.custom-control-label::after {
+  border: 0 solid $primary-dark;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: rgb(167, 154, 154);
+  border-color: $msg-error-color;
+  background-color: $msg-error-color;
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+  background-image: url(../../../assets/img/svg/Radio-btn.svg);
+}
+.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+  color: #fff;
+  background-color: $msg-error-color;
+  border-color: $msg-error-color;
+}
+.profile {
+  display: flex;
+  align-items: center;
+}
+.navbar .dropdown-menu a {
+  padding: 6px 10px !important;
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $primary-color;
+}

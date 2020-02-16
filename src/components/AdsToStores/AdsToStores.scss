@@ -1,6 +1,6 @@
 @import "../../assets/scss/mdb.scss";
 .adsToStores-section{
-    @include media-breakpoint-down(sm) { 
+    @include media-breakpoint-down(md) { 
         padding: 3rem 0;
      }
     .heading-text{
@@ -9,5 +9,6 @@
     }
     .seeAllStors-text{
         text-align: left;
+       
     }
 }

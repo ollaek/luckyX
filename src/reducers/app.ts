@@ -1,20 +1,21 @@
-import { AnyAction, isType } from "typescript-fsa";
+import { AnyAction, isType } from 'typescript-fsa';
 
-import { getTopStoresAction, getTopCategoriesAction } from "../actions";
-import { TAppState,TopStoresModel ,TopCategoriesModel } from "../types";
+import { getTopCategoriesAction, getTopStoresAction } from '../actions';
+import {
+  ResponseModel,
+  TAppState,
+  TopCategoriesModel,
+  TopStoresModel,
+} from '../types';
 
 const initialState: TAppState = {
     isLoading: false,
     topStores: new Array<TopStoresModel>(),
-    topCategories : new Array<TopCategoriesModel>()
+    topCategories: new Array<TopCategoriesModel>()
 };
 
-
 const appReducer = (state: TAppState = initialState, action: AnyAction): TAppState => {
-    
-    
-
-    if (isType(action, getTopStoresAction.started)){
+    if (isType(action, getTopStoresAction.started)) {
         return {
             ...state,
             isLoading: true
@@ -22,15 +23,17 @@ const appReducer = (state: TAppState = initialState, action: AnyAction): TAppSta
     }
 
     if (isType(action, getTopStoresAction.done)) {
+        const response = action.payload.result as unknown as ResponseModel;
+        const responseData = response.Data as Array<TopStoresModel>;
         return {
             ...state,
-            topStores: action.payload.result as unknown as Array<TopStoresModel>,
-            isLoading: false       
+            topStores: responseData,
+            isLoading: false
         };
     }
 
     if (isType(action, getTopStoresAction.failed)) {
-        
+
         // Do error handling work if needed
         return {
             ...state,
@@ -38,7 +41,7 @@ const appReducer = (state: TAppState = initialState, action: AnyAction): TAppSta
         };
     }
 
-    if (isType(action, getTopCategoriesAction.started)){
+    if (isType(action, getTopCategoriesAction.started)) {
         return {
             ...state,
             isLoading: true
@@ -46,10 +49,12 @@ const appReducer = (state: TAppState = initialState, action: AnyAction): TAppSta
     }
 
     if (isType(action, getTopCategoriesAction.done)) {
+        const response = action.payload.result as unknown as ResponseModel;
+        const responseData = response.Data as Array<TopCategoriesModel>;
         return {
             ...state,
-            topCategories: action.payload.result as unknown as Array<TopCategoriesModel>,
-            isLoading: false       
+            topCategories: responseData,
+            isLoading: false
         };
     }
 

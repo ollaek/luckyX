@@ -1,233 +1,381 @@
 // Your custom styles
-html{
-    font-size: 14px;
-    @include media-breakpoint-down(sm) { 
-        font-size: 12px;
-     }
+@import "../../../node_modules/hover.css/scss/hover.scss";
+
+html {
+  font-size: 14px;
+  @include media-breakpoint-down(sm) {
+    font-size: 12px;
+  }
 }
-body{
-    font-size: 1rem;
-    font-family: $font-family-base;
+body {
+  font-size: 1rem;
+  font-family: $font-family-base;
 }
-p{
-    font-size: 1rem;
+p {
+  font-size: 1rem;
 }
 //HEADER===============================================================
-.header {
-  background-color: $primary-color;
-}
-.navbar {
-  box-shadow: none;
-}
-.hero_section {
-  background-image: url(../img/Girl-hero-section-image.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 4rem;
-  min-height: 500px;
-}
-.heading-text {
-//   max-width: 320px;
-  color: $msg-error-color;
-  font-family: $font-family-bold;
-  max-width: 560px;
-  font-size:5rem;
-  margin-bottom: 2rem;
-  @include media-breakpoint-down(sm) { 
-    font-size: 4rem;
- }
-}
-.profile-icon{
-    margin-right:.2rem;
-    width: 15px;
-}
-.navbar-light .navbar-nav .nav-link{
-    color:$primary-dark;
-}
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
-    color:$msg-error-color;
-    border-bottom: 1px solid $msg-error-color;
-}
 //GENERAL===============================================================
 .btn {
   border-radius: 8px;
   box-shadow: none;
   font-family: $font-family-bold;
   font-size: 1rem;
-  text-transform: capitalize;
+  text-transform: initial;
+  padding: 0.84rem 1.14rem;
 }
 .sec-padding {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-.nav-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  @include media-breakpoint-down(sm) {
+    // padding-left: 2rem;
+    // padding-right: 2rem;
+    padding-left: 0;
+    padding-right: 0;
     padding-top: 3rem;
-    padding-bottom:1.5rem;
+    padding-bottom: 2rem;
   }
-.btn-primary{
-    background-color: $primary-color;}
-.btn-primary , .btn-primary:hover{
-    color: $primary-dark; 
 }
-.btn-primary:not([disabled]):not(.disabled):active, .btn-primary:not([disabled]):not(.disabled).active, .show > .btn-primary.dropdown-toggle{
-    color: $primary-dark; 
+// .nav-padding {
+//   padding-top: 3rem;
+//   padding-bottom: 1.5rem;
+// }
+
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 24 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  align-items: center;
 }
-.btn.btn-block{
-    margin: 0;
-}   
-.bg-light{
-    background-color: $bg-gray-light !important;
+
+.loader-layout {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #000;
+  opacity: 0.5
 }
-.bg-dark{
-    background-color: $bg-dark !important;
+
+.bg-light {
+  background-color: $bg-gray-light !important;
 }
-.flex-center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
+.bg-dark {
+  background-color: $bg-dark !important;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+.height-auto {
+  height: auto !important;
+}
+.height-100 {
+  height: 100% !important;
+}
+.text-light {
+  font-family: $font-family-base !important;
+}
+.text-bold {
+  font-family: $font-family-bold !important;
+}
+.alert {
+  color: white;
+  font-family: $font-family-base;
+  padding: 1rem 1.25rem;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+.alert-success {
+  background-color: $success-color;
+  border-color: $success-color;
+}
+:focus {
+  outline: transparent auto 0;
+  outline-color: transparent;
+  outline-style: auto;
+  outline-width: 0;
+}
+.text-red {
+  color: $msg-error-color !important;
+}
+.pl-4rem {
+  padding-left: 4rem !important;
+}
+hr{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-top: 1px solid $bg-dark;
+}
+a.link-red{
+  color: $msg-error-color;
+font-family: $font-family-bold;
+}
+a.link-red:hover{
+text-decoration: underline;
+}
+a.link-grey{
+  color: $primary-dark;
+font-family: $font-family-base;
+}
+a.link-grey:hover{
+  text-decoration: underline;
+}
+.link-text{
+  // font-size: 1.3rem;
+  color: #191820;
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 //BUTTONS============================================
-.btn:hover, .btn:focus, .btn:active {
-    outline: 0;
-    box-shadow: none;
+.btn{
+  border-radius: 8px;
+  color: $primary-dark !important;
 }
-.btn-primary{
-/* Colors / Primary / Light */
-background: #FAE159;
-border-radius: 8px;
-color: #191820;
+.btn-primary {
+  background-color: $primary-color;
+  color: $primary-dark;
 }
-.btn-primary:hover{
-    background: #F5CF01;
+.btn-outline-primary{
+  color: $primary-dark !important;
+  border: 1px solid $primary-color!important;
 }
-// .btn-primary:not([disabled]):not(.disabled):active, .btn-primary:not([disabled]):not(.disabled).active, .show > .btn-primary.dropdown-toggle{
-//     color:$text-gray ;
-// }
-.btn-white:not([disabled]):not(.disabled):active, .btn-white:not([disabled]):not(.disabled).active, .show > .btn-white.dropdown-toggle{
-    color:$text-gray ;
-    background: $bg-dark;
-box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+.btn-primary:hover  , .btn-outline-primary:hover{
+  color: $primary-dark !important;
+  background-color:$primary-hover !important;
+}
+.btn-primary:not([disabled]):not(.disabled):active,
+.btn-primary:not([disabled]):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  background-color: $primary-hover !important;
+  box-shadow: none;
+  color: $primary-dark;
+}
+.btn-primary:not([disabled]):not(.disabled):active:focus,
+.btn-primary:not([disabled]):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+  color: $primary-dark;
+}
+.btn-outline-primary:not([disabled]):not(.disabled):active,
+.btn-outline-primary:not([disabled]):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  background-color: $primary-hover !important;
+  box-shadow: none;
+  color: $primary-dark;
+}
+.btn-outline-primary:not([disabled]):not(.disabled):active:focus,
+.btn-outline-primary:not([disabled]):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: none;
+  color: $primary-dark;
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary:active:focus, .btn-outline-primary.active{
+  color: $primary-dark;
+
+}
+.btn.btn-block {
+  margin: 0;
+}
+.btn:hover,
+.btn:focus,
+.btn:active {
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn-white:not([disabled]):not(.disabled):active,
+.btn-white:not([disabled]):not(.disabled).active,
+.show > .btn-white.dropdown-toggle {
+  color: $text-gray;
+  background: $bg-dark;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
 }
 .btn-white:hover {
-    background: $bg-dark !important;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08) !important;
-    color:$text-gray ;
-    
+  background: $bg-dark !important;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08) !important;
+  color: $text-gray;
+  
 }
-
+.form-control {
+  padding: 0.7rem 0.75rem;
+  height: auto !important;
+}
+img {
+  max-width: 100% !important;
+}
 //CashbackStores======================================
-.cashbackStores-section{
-    background: $white;
+.cashbackStores-section {
+  background: $white;
 }
-.sub-title-light{
-    font-size: 2rem;
-    font-family: $font-family-base;
+.sub-title-light {
+  font-size: 1.6rem;
+  font-family: $font-family-base;
 }
-.sub-title-div{
-    display: block;
-    margin: auto;
+.sub-title-div {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+.title {
+  font-family: $font-family-bold;
+  font-size: 2rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+.sub-title {
+  font-size: 2.3rem;
+  // text-align: center;
+  font-family: $font-family-bold;
+  position: relative;
+  padding: 1rem 0;
+  margin-bottom: 4rem;
+  display: inline-block;
+}
+.sub-title::after {
+  content: "";
+  position: absolute;
+  // width: 6%;
+  // width: 20%;
+  width: 80px;
+  height: 0.15rem;
+  border-radius: 2rem;
+  background: #000;
+  bottom: 0;
+  left: 0;
+}
+.page-title{
+  font-family: $font-family-base;
+  font-size: 2rem;
+  color: $primary-dark;
+}
+.cashback-card {
+  // margin-bottom: 2rem;
+  // margin-bottom: 5rem;
+  padding: 0 2rem 4rem 2rem;
+  @include media-breakpoint-down(sm) {
     text-align: center;
+  }
 }
-.title{
-    font-family: $font-family-bold;
-    font-size: 2rem;
-    padding: 1rem 0;
-    text-align: center;
-}
-.sub-title{
-    font-size: 2.5rem;
-    // text-align: center;
-    font-family: $font-family-bold;
-    position: relative;
-    padding: 1rem 0;
-    margin-bottom: 4rem;
-    display: inline-block;
-}
-.sub-title::after{
-    content: "";
-    position: absolute;
-    // width: 6%;
-    // width: 20%;
-    width: 80px;
-        height: 0.1rem;
-    border-radius: 2rem;
-    background: #000;
-    bottom: 0;
-    left: 0;
-}
-.cashback-card{
-    margin-bottom: 2rem;
-}
-.cashback-card-img{
-    width: 100%;
-    height: 111px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $bg-light;
-    margin-bottom: 1.5rem;
-    img{
-        width: 196px;
-        height: auto;
-    }
+.cashback-card-img {
+  width:auto ;
+  max-height: 100px;
+  height: 100px;
+  overflow: hidden;
+
+  // width: 100%;
+  // height: 111px;
+  padding: 2rem 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $bg-light;
+  margin-bottom: 1.5rem;
+  img {
+    // width: 196px;
+
+    // width: auto;
+    // height: 100%;
+
+    //Another soulution
+    // width: 100%;
+    // height: auto;
+  }
 }
 
-.seeAllStors-text{
+.seeAllStors-text {
+  text-align: center;
+  // padding: 1.5rem 0;
+  padding-top: 2rem;
+  font-family: $font-family-bold;
+  a {
     text-align: center;
-    padding: 1.5rem 0;
-    font-family: $font-family-bold;
-    a{
-        color: $primary-dark;
+    color: $primary-dark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      margin: 0 1rem;
     }
-    a:hover {
-        opacity: 0.8;
-    }
+  }
+  a:hover {
+    opacity: 0.8;
+  }
 }
 //CASHBACK CATEGORY===============================================
-.cashbackCategories-section{
-background-color: $bg-light;
+.cashbackCategories-section {
+  background-color: $bg-light;
 }
 //CARDS===========================================
-.card-title{
-    color:$primary-dark;
-    font-family: $font-family-bold;
-    font-size: 	1.375rem;
-    margin-bottom: 1.5rem;
+.card-title {
+  color: $primary-dark;
+  font-family: $font-family-bold;
+  font-size: 1.375rem;
+  margin-bottom: 1.5rem;
 }
-.cashback-text{
-    font-family: $font-family-bold;
-    color:$msg-error-color;
-    font-size: 	1.375rem;
-    // margin-bottom: 1.5rem;
-    margin-bottom: 0;
+.cashback-text {
+  font-family: $font-family-bold;
+  color: $msg-error-color;
+  font-size: 1.375rem;
+  // margin-bottom: 1.5rem;
+  margin-bottom: 0;
 }
-.card-text{
-    margin-bottom: 1.5rem;
+.card-text {
+  margin-bottom: 1.5rem;
 }
-.text-gray{
-    color: $text-gray;
-    font-size: 	1.375rem;
-    font-family: $font-family-base;
-    margin-bottom: 0;
+.text-gray {
+  color: $text-gray;
+  font-size: 1.375rem;
+  font-family: $font-family-base;
+  margin-bottom: 0;
 }
 
-.card-white{
-    text-align: center;
-    background: white;
-    box-shadow: none;
-    margin-bottom: 2rem;
-}
-.card-img-circle{
-    width: 150px;
-    height: 150px;
-    margin: auto;
-    margin-bottom: 2rem;
-}
 //adsToStores-section=================================================
-.adsToStores-section{
-    background-color: $primary-color;
-    background-image: url(../img/in-store_img.png);
-    background-position: right bottom;
-    background-repeat: no-repeat;
+.adsToStores-section {
+  background-color: $primary-color;
+  background-image: url(../img/in-store_img.png);
+  background-position: right bottom;
+  background-repeat: no-repeat;
 }
+///////////////////////////VALIDATION=======================
+.form-control {
+  padding: 0.7rem 0;
+}
+.error.error-message{
+  color: $msg-error-color;
+  // font-size:0.8rem;
+}
+.form-control:invalid{
+  border-bottom: 1px solid red;
+}
+//BREADCRUMBS=================================================================
+.breadcrumb {
+  background-color: #0000;
+}
+.breadcrumb-item > a {
+  color: $primary-dark;
+}
+.breadcrumb-item > a:hover {
+  color: $primary-dark;
+  text-decoration: underline;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  color: $primary-dark;
+  content: ">";
+}
+.breadcrumb-item.active {
+  color: $primary-dark;
+}
+//END = BREADCRUMBS=================================================================

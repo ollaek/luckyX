@@ -30,7 +30,7 @@ const NavBarElement = (navProps: NavBarElementProps) => {
   } else {
     item = (
       <LinkContainer to={navProps.Link}>
-        <Nav.Link>{navProps.title}</Nav.Link>
+        <Nav.Link >{navProps.title}</Nav.Link>
       </LinkContainer>
     );
   }

@@ -1,4 +1,4 @@
-@import "../../../assets/scss/custom-variables";
+@import "../../../assets/scss/mdb.scss";
 
 .footer {
   p{
@@ -14,7 +14,9 @@
     background-color: $bg-dark;
     padding-top: 2rem;
     padding-bottom: 2rem;
-  
+  p{
+    color: $text-gray;
+  }
   }
 .footer-heading{
   font-family: $font-family-bold;
@@ -29,6 +31,16 @@
   li{
     padding: 0.5rem 0;
   }
+  li a{
+    color: $primary-dark;display: flex;
+    align-items: center;
+  }
+  li a:hover{
+    opacity: 0.8;
+  }
+  li a img{
+    margin-right: .8rem!important;
+  }
 }
 .footer-text{
   font-size: 	1.25rem;
@@ -37,12 +49,22 @@
 }
 .btn.footer-btn{
   display: flex;
+  // width: 95%;
+  width: auto;
+  padding: 0.7rem 2rem;
   align-items: center;
-  color: $text-gray;
+  color: $text-gray !important;
   text-transform: capitalize;
   white-space: nowrap;
   p{
    font-size: 1.125rem ;
+  }
+  img{
+    margin-right: .8rem!important;
+  }
+  @include media-breakpoint-down(sm){
+    justify-content: center;
+    margin: 0 auto 1rem auto;
   }
 }
 .apple-icon{
@@ -57,3 +79,36 @@
 .icon-font-size{
   font-size: 1.5rem;
 }
+.footer{
+  position: relative;
+}
+.scroll-img{
+  width: 40px;
+  position: absolute;
+  top: 30px;
+  right: 10rem;
+  @include media-breakpoint-down(sm){
+    right: 0;
+    }
+    @include media-breakpoint-down(md){
+      right: 2rem;
+      }
+}
+.text-center-sm{
+  @include media-breakpoint-down(sm){
+  text-align: center;
+  }
+}
+// .scrollToTop{
+//     position: absolute !important;
+//     bottom: 364;
+//     right: 234;
+//     cursor: pointer;
+//     transition: opacity 0.2s linear 0s, visibility;
+//     opacity: 1;
+//     visibility: visible;
+//     @include media-breakpoint-down(sm){
+//      bottom: 670px;
+// right: 24px;
+//       }
+// }

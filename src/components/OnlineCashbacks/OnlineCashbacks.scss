@@ -1,0 +1,107 @@
+@import "../../assets/scss/mdb.scss";
+
+.cashbackStores {
+  padding: 3rem 0;
+}
+.filteration-text {
+  margin-bottom: 1.5rem;
+  font-family: $font-family-bold;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: $bg-light;
+}
+table.table-sm th,
+table.table-sm td {
+  border: 0;
+  padding: 0.6rem 1rem;
+}
+table.table-sm th:last-child,
+table.table-sm td:last-child {
+  color: $msg-error-color;
+  text-align: right;
+}
+.cashbackDetails-card {
+  padding: 4rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $bg-light;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    padding: 2rem 3rem;
+    text-align: center;
+    img{
+      margin-bottom: 1rem;
+    }
+  }
+  .card-text {
+    text-align: center;
+    .text-gray{
+      text-decoration-line: line-through;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}
+.card-basis {
+  flex-basis: 40%;
+}
+//Solution for big Image
+// .cardImg{
+//   width:auto ;
+//   max-height: 100px;
+//   overflow: hidden;
+// }
+.redirection-card {
+  background: $bg-light;
+  border-radius: 8px;
+  padding: 4rem 5rem 3rem 5rem;
+  text-align: center;
+  @include media-breakpoint-down(md){
+    padding: 4rem 3rem 3rem 3rem;
+  }
+}
+// .cardImg {
+//   max-width: 200px;
+//   height: auto;
+//   overflow: hidden;
+//   margin: auto;
+// }
+.cardImg {
+  max-width: 200px;
+  max-height: 100px;
+  overflow: hidden;
+  // margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-animate {
+  animation: spin 1.3s infinite linear;
+  // -webkit-animation: spin2 1.3s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
+}
+.details-text{
+  color: $text-gray;
+}

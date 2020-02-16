@@ -1,18 +1,20 @@
 import React from "react";
 import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import FaceBookButton from "../shared/SocialLogin/FaceBookButton";
 import NavBar from "../shared/NavBar/NavBar";
 import Footer from "../shared/Footer/Footer";
+import { useUserState } from "../shared/SocialLogin/Hook";
 
 import { Form } from "react-bootstrap";
 
 import GoogleButton from "../shared/SocialLogin/GoogleButton";
 import "././SignUp.scss";
 
-const SignUp = () => {
+const SignUp = ({ history }) => {
+  const { signUp } = useUserState();
   const signupValidationSchema = Yup.object().shape({
     name: Yup.string()
       .max(40, "Please enter no more than 40 characters")
@@ -20,6 +22,15 @@ const SignUp = () => {
     email: Yup.string()
       .email("Please enter a valid email")
       .required("Please enter an email"),
+    password: Yup.string()
+      .required("Please enter a password")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        "Please enter password that consist of at least 8 characters, number, special character, capital and small letters"
+      ),
+    passwordConfirm: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Password confirm is required")
   });
 
   return (
@@ -43,8 +54,8 @@ const SignUp = () => {
             <div className="col-md-4 offset-md-1">
               <h2 className="title">Register with</h2>
               <div className="flex-center">
-                <GoogleButton />
-                <FaceBookButton />
+                <GoogleButton history={history} onShowChange={null}/>
+                <FaceBookButton history={history} onShowChange={null}/>
               </div>
               <div className="or">
                 <div className="or-divider"></div>
@@ -59,22 +70,23 @@ const SignUp = () => {
                   passwordConfirm: ""
                 }}
                 onSubmit={values => {
-                  // handle submit
-                  console.log(values);
+                  let user = {
+                    FullName: values.name,
+                    Email: values.email,
+                    Password: values.password,
+                    ConfirmPassword: values.passwordConfirm
+                  };
+                  signUp(user);
+                  history.push(`/MailVerification/${values.email}`);
                 }}
                 validationSchema={signupValidationSchema}
               >
                 {props => {
                   const {
                     values,
-                    touched,
-                    errors,
-                    dirty,
-                    isSubmitting,
                     handleChange,
                     handleBlur,
-                    handleSubmit,
-                    handleReset
+                    handleSubmit
                   } = props;
                   return (
                     <Form onSubmit={handleSubmit} role="form" noValidate>
@@ -96,7 +108,7 @@ const SignUp = () => {
                       </Form.Group>
                       <Form.Group controlId="formEmail">
                         <Form.Label>E-mail</Form.Label>
-                        <Form.Control 
+                        <Form.Control
                           name="email"
                           type="email"
                           placeholder="E.g. john@mail.com"
@@ -142,30 +154,34 @@ const SignUp = () => {
                           )}
                         </ErrorMessage>
                       </Form.Group>
-                      <div className="my-4">
-                        {/* <button
-                          disabled={!values.email || !values.name || !values.password || !values.passwordConfirm}
+                      <div className="py-3">
+                        <button
+                          disabled={
+                            !values.email ||
+                            !values.name ||
+                            !values.password ||
+                            !values.passwordConfirm
+                          }
                           className="btn btn-block btn-primary"
                           type="submit"
                         >
                           Register
-                        </button> */}
-                      <Link  to="/MailVerification">
+                        </button>
+                        {/* <Link  to="/MailVerification">
                       Register
-                      </Link>
+                      </Link> */}
                       </div>
                     </Form>
                   );
                 }}
               </Formik>
-
               <div className="form-footer">
                 <p className="link-text">
                   Do you have an account?{" "}
-                  <a href="#" className="link-red">
+                  <Link to="/SignIn" className="link-red">
                     {" "}
                     Log In
-                  </a>
+                  </Link>
                 </p>
                 <p className="text-muted">
                   By joining I agree to Lucky Terms & Conditions and Privacy

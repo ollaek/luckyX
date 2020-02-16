@@ -13,7 +13,20 @@ export type SocialUserModel = {
   SocialId: string;
 };
 
+export type UserSignUpModel = {
+  Email: string,
+  FullName: string,
+  Password: string,
+  ConfirmPassword: string
+}
+
+export type UserSignInModel = {
+  Email: string,
+  Password: string
+}
+
 export type TUserState = {
   User: UserModel;
   isFetching: boolean;
+  Error: string;
 };

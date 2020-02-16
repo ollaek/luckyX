@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
-import { useAppState } from "./hooks";
-import Header from "../Header/Header";
-import TopCashbackStores from "../TopCashbacksStores/TopCashbacksStores";
-import TopCashbackCategories from "../TopCashbacksCategories/TopCashbacksCategories";
-import AdsToStores from "../AdsToStores/AdsToStores";
-import Footer from "../shared/Footer/Footer";
-import Loader from "../shared/Loader/Loader"
+import { LanguageId as langId, TopStoresCount } from '../../helpers';
+import AdsToStores from '../AdsToStores/AdsToStores';
+import Header from '../Header/Header';
+import Footer from '../shared/Footer/Footer';
+import Loader from '../shared/Loader/Loader';
+import SignInModal from '../SignIn/SignInModal';
+import TopCashbackCategories
+  from '../TopCashbacksCategories/TopCashbacksCategories';
+import TopCashbackStores from '../TopCashbacksStores/TopCashbacksStores';
+import { useAppState } from './hooks';
 
-
-const App = () => {
+const App = ({ history }) => {
   const {
     isLoading,
     topStores,
@@ -17,28 +22,44 @@ const App = () => {
     getTopStores,
     getTopCategories
   } = useAppState();
-  
 
+  const [show, setShow] = useState(false);
+  const token = localStorage.getItem("Token");
+  
   useEffect(
     () => {
-      getTopStores();
+      if (!token) {
+        setTimeout(() => {
+          setShow(true);
+        }, 1000);
+      }
+
+      getTopStores({
+        LanguageId: langId,
+        Featured: true,
+        FeaturedMerchantsNumber: TopStoresCount,
+        pageSize: 8,
+        pageIndex: 0
+      });
       getTopCategories();
     },
     // eslint-disable-next-line
     []
   );
-
   return (
     <div>
       <Header />
-    
+      <SignInModal history={history} show={show} onShowChange={() => setShow} />
       <div>
-        
-        {isLoading ? <Loader /> : <TopCashbackStores stores={topStores} /> }
-        {isLoading ? <Loader /> : <TopCashbackCategories categories={topCategories}/>}
+        {isLoading ? <Loader /> : <TopCashbackStores stores={topStores} />}
+        {isLoading ? (
+          <Loader />
+        ) : (
+            <TopCashbackCategories categories={topCategories} />
+          )}
         <AdsToStores />
       </div>
-   
+
       <Footer />
     </div>
   );

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { TGlobalState } from "../..";
 import { getTopStoresAsync, getTopCategoriesAsync } from "../../actions";
-import { TAppState } from "../../types";
+import { TAppState, TopStoresRequestModel } from "../../types";
 
 const useAppState = () => {
     const state = useSelector<TGlobalState, TAppState>(({ appModule }) => appModule);
@@ -10,7 +10,7 @@ const useAppState = () => {
     console.log(state);
     return {
         ...state,
-        getTopStores: () => getTopStoresAsync(dispatch),
+        getTopStores: (req:TopStoresRequestModel) => getTopStoresAsync(dispatch,req),
         getTopCategories: () => getTopCategoriesAsync(dispatch)
     };
 };

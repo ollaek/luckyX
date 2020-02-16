@@ -1,4 +1,3 @@
-@import "../../assets/scss/custom-variables";
 @import "../../assets/scss/mdb.scss";
 
 .signUp-section{
@@ -85,22 +84,12 @@ align-items: center;
 .text-muted{
   text-align: center;
   font-size: 0.8rem;
+  padding: 1rem 0;
 }
 .form-footer{
   text-align: center;
 }
-a.link-red{
-  color: $msg-error-color;
-font-family: $font-family-bold;
-}
-a.link-red:hover{
-text-decoration: underline;
-}
-.link-text{
-  font-size: 1.3rem;
-  color: #191820;
-  text-align: center;
-}
+
 .or{
   display: flex;
   justify-content: space-between;
