@@ -4,30 +4,31 @@ import React, { useEffect, useState } from "react";
 
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
+import { InfiniteScroll } from "react-simple-infinite-scroll";
 
 import { useOnlineCashbacksState } from "./Hook";
+import { TopStoresModel } from "../../types";
 
 const CashbacksStores = (categoryId: any) => {
   const userID = localStorage.getItem("Id");
-
+  const [items, setItems] = useState(new Array<TopStoresModel>());
   const {
     stores,
+    isLoading,
     getStores,
     getStoresByCategoryid
   } = useOnlineCashbacksState();
-  const [page] = useState(0);
+  const [page, setPage] = useState(0);
+
   useEffect(
     () => {
       if (categoryId.categoryId) {
-        getStoresByCategoryid(categoryId.categoryId);
+        if (stores.length > 0) {
+          getStoresByCategoryid(categoryId.categoryId);
+          setItems([...items, ...stores]);
+        }
       } else {
-        getStores({
-          LanguageId: 0,
-          Featured: false,
-          FeaturedMerchantsNumber: 0,
-          pageSize: 8,
-          pageIndex: page
-        });
+        LoadMore();
       }
     },
     // eslint-disable-next-line
@@ -40,6 +41,19 @@ const CashbacksStores = (categoryId: any) => {
     } else if (id === 2) {
       return "EGP";
     }
+  };
+
+  const LoadMore = () => {
+    getStores({
+      LanguageId: 0,
+      Featured: false,
+      FeaturedMerchantsNumber: 0,
+      pageSize: 8,
+      pageIndex: page
+    });
+    setItems([...items, ...stores]);
+    setPage(page + 1);
+    console.log(items);
   };
 
   return (
@@ -61,7 +75,60 @@ const CashbacksStores = (categoryId: any) => {
           </div>
         </div>
         <div className="row">
-          {stores.map(store => {
+          <InfiniteScroll
+            throttle={100}
+            threshold={300}
+            isLoading={isLoading}
+            hasMore={true}
+            onLoadMore={LoadMore}
+          >
+            {items.map(store => {
+              return (
+                <div
+                  className="col-6 col-lg-4 cashback-card"
+                  key={store.MerchantId}
+                >
+                  <Link to={`/CashbackStoreDetails/${store.MerchantId}`}>
+                    <div className="cashback-card-img">
+                      <img
+                        src={store.MerchantLogoDb[0]}
+                        alt={store.MerchantNameDb[0]}
+                      />
+                    </div>
+                  </Link>
+                  <p className="card-text">
+                    <p className="text-gray">Get up to</p>
+                    <p className="cashback-text">
+                      {store.CashbackValue}
+                      {CashBackIndecator(store.CashbackIndicatorId)} Cashback
+                    </p>
+                  </p>
+                  {userID ? (
+                    <Link
+                      to={`/RedirectionBanner/${store.AffiliateMerchantId}`}
+                      onClick={() => {
+                        localStorage.setItem(
+                          "StoreLogo",
+                          store.MerchantLogoDb[0]
+                        );
+                      }}
+                      className="btn btn-primary btn-block"
+                    >
+                      Shop Now
+                    </Link>
+                  ) : (
+                    <Link to="/SignIn" className="btn btn-primary btn-block">
+                      Shop Now
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
+          </InfiniteScroll>
+          {isLoading && <div>Loading ...</div>}
+          {/* {stores.map(store => {
+            localStorage.setItem("StoreLogo", store.MerchantLogoDb[0]);
+
             return (
               <div
                 className="col-6 col-lg-4 cashback-card"
@@ -84,7 +151,7 @@ const CashbacksStores = (categoryId: any) => {
                 </p>
                 {userID ? (
                   <Link
-                    to={`/RedirectionBanner/${store.AffiliateMerchantId}/${store.MerchantLogoDb[0]}`}
+                    to={`/RedirectionBanner/${store.AffiliateMerchantId}`}
                     className="btn btn-primary btn-block"
                   >
                     Shop Now
@@ -93,10 +160,10 @@ const CashbacksStores = (categoryId: any) => {
                   <Link to="/SignIn" className="btn btn-primary btn-block">
                     Shop Now
                   </Link>
-                )}  
+                )}
               </div>
             );
-          })}
+          })} */}
           {/* <div className="col-6 col-lg-4 cashback-card">
             <Link to="/CashbackStoreDetails">
               <div className="cashback-card-img">

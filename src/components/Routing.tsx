@@ -56,7 +56,7 @@ const Routing = () => (
           path="/CashbackStoreDetails/:id"
           component={CashbackStoreDetails}
         />
-        <Route path="/RedirectionBanner/:storeId/:storeLogo" component={RedirectionBanner} />
+        <Route path="/RedirectionBanner/:storeId" component={RedirectionBanner} />
         <Redirect to="/" />
       </Switch>
     </Suspense>

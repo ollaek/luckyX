@@ -9,6 +9,8 @@ type CashbackStoreProp = {
 
 const CashbacksStore = ({ store }: CashbackStoreProp) => {
   const userID = localStorage.getItem("Id");
+  localStorage.setItem("StoreLogo", store.MerchantLogoDb[0]);
+
   const CashBackIndecator = (id: number) => {
     if (id === 1) {
       return "%";
@@ -16,10 +18,10 @@ const CashbacksStore = ({ store }: CashbackStoreProp) => {
       return "EGP";
     }
   };
-  
+
   return (
     <div className="col-6  col-lg-3 cashback-card">
-      <div className="cashback-card-img" >
+      <div className="cashback-card-img">
         <img src={store.MerchantLogoDb[0]} alt={store.MerchantNameDb[0]} />
         {/* <img src={require("../../assets/img/goDaddy.png")} alt="" /> */}
       </div>
@@ -32,17 +34,18 @@ const CashbacksStore = ({ store }: CashbackStoreProp) => {
         </p>
       </p>
       {userID ? (
-                  <Link
-                    to={`/RedirectionBanner/${store.AffiliateMerchantId}/${store.MerchantLogoDb[0]}`}
-                    className="btn btn-primary btn-block"
-                  >
-                    Shop Now
-                  </Link>
-                ) : (
-                  <Link to="/SignIn" className="btn btn-primary btn-block">
-                    Shop Now
-                  </Link>
-                )}
+        <Link
+          to={`/RedirectionBanner/${store.AffiliateMerchantId}`}
+          onClick={() => { localStorage.setItem("StoreLogo",store.MerchantLogoDb[0]) }}
+          className="btn btn-primary btn-block"
+        >
+          Shop Now
+        </Link>
+      ) : (
+        <Link to="/SignIn" className="btn btn-primary btn-block">
+          Shop Now
+        </Link>
+      )}
     </div>
   );
 };

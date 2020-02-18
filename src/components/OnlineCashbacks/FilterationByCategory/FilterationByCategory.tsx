@@ -36,7 +36,7 @@ const FilterationByCategory = ({categories, selectedCategoryId}:CategoriesProp) 
                     onChange={() => setSelectedCategory(category.AffiliateCategoryId)}
                     checked={(selectedCategory === category.AffiliateCategoryId) ? true : false }
                   />
-                  <hr className="hr-sm"></hr>
+                  <hr key={category.AffiliateCategoryName} className="hr-sm"></hr>
                 </>
               );
             })}

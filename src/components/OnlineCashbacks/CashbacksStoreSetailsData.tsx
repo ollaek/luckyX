@@ -12,6 +12,7 @@ type StoreProps = {
 const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
   const userID = localStorage.getItem("Id");
 
+  localStorage.setItem("StoreLogo", store.MerchantLogoDb[0]);
 
   const CashBackIndecator = (id: number) => {
     if (id === 1) {
@@ -62,7 +63,7 @@ const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
                   </p>
                   {userID ? (
                   <Link
-                    to={`/RedirectionBanner/${store.AffiliateMerchantId}/${store.MerchantLogoDb[0]}`}
+                    to={`/RedirectionBanner/${store.AffiliateMerchantId}`}
                     className="btn btn-primary btn-block"
                   >
                     Shop Now
