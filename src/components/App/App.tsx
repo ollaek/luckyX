@@ -22,6 +22,7 @@ const App = ({ history }) => {
     getTopStores,
     getTopCategories
   } = useAppState();
+  const stores = topStores.AffiliateMerchantsList;
 
   const [show, setShow] = useState(false);
   const token = localStorage.getItem("Token");
@@ -51,7 +52,7 @@ const App = ({ history }) => {
       <Header />
       <SignInModal history={history} show={show} onShowChange={() => setShow} />
       <div>
-        {isLoading ? <Loader /> : <TopCashbackStores stores={topStores} />}
+        {isLoading ? <Loader /> : <TopCashbackStores stores={stores} />}
         {isLoading ? (
           <Loader />
         ) : (

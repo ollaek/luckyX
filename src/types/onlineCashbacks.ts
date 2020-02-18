@@ -1,4 +1,4 @@
-import { TopStoresModel } from "./";
+import { StoresModelWithTotalCount } from "./";
 
 export type StoreDetailsModel = {
     MerchantId: number,
@@ -31,6 +31,6 @@ export type CategoriesModel = {
 export type TOnlineCashbacksState = {
     isLoading: boolean,
     storeDetails?: StoreDetailsModel,
-    stores: TopStoresModel[],
+    stores: StoresModelWithTotalCount,
     catrgories: CategoriesModel[]
 };

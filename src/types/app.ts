@@ -23,10 +23,14 @@ export type TopCategoriesModel = {
     CashbackIndicatorId: number
 };
 
+export type StoresModelWithTotalCount = {
+    AffiliateMerchantsList: TopStoresModel[],
+    TotalCount: number
+}
 
 export type TAppState = {
     isLoading: boolean,
-    topStores: TopStoresModel[],
+    topStores: StoresModelWithTotalCount,
     topCategories: TopCategoriesModel[]
 };
 

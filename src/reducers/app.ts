@@ -5,12 +5,12 @@ import {
   ResponseModel,
   TAppState,
   TopCategoriesModel,
-  TopStoresModel,
+  StoresModelWithTotalCount
 } from '../types';
 
 const initialState: TAppState = {
     isLoading: false,
-    topStores: new Array<TopStoresModel>(),
+    topStores: {} as StoresModelWithTotalCount,
     topCategories: new Array<TopCategoriesModel>()
 };
 
@@ -24,7 +24,8 @@ const appReducer = (state: TAppState = initialState, action: AnyAction): TAppSta
 
     if (isType(action, getTopStoresAction.done)) {
         const response = action.payload.result as unknown as ResponseModel;
-        const responseData = response.Data as Array<TopStoresModel>;
+        const responseData = response.Data as StoresModelWithTotalCount;
+        console.log(responseData);
         return {
             ...state,
             topStores: responseData,

@@ -18,14 +18,15 @@ const CashbacksStores = (categoryId: any) => {
     getStores,
     getStoresByCategoryid
   } = useOnlineCashbacksState();
+
   const [page, setPage] = useState(0);
 
   useEffect(
     () => {
       if (categoryId.categoryId) {
-        if (stores.length > 0) {
+        if (stores.AffiliateMerchantsList.length > 0) {
           getStoresByCategoryid(categoryId.categoryId);
-          setItems([...items, ...stores]);
+          setItems([...items, ...stores.AffiliateMerchantsList]);
         }
       } else {
         LoadMore();
@@ -51,7 +52,8 @@ const CashbacksStores = (categoryId: any) => {
       pageSize: 8,
       pageIndex: page
     });
-    setItems([...items, ...stores]);
+    debugger;
+    setItems([...items, ...stores.AffiliateMerchantsList]);
     setPage(page + 1);
     console.log(items);
   };

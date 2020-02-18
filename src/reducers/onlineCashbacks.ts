@@ -5,14 +5,14 @@ import {
   ResponseModel,
   StoreDetailsModel,
   CategoriesModel,
-  TopStoresModel,
+  StoresModelWithTotalCount,
   TOnlineCashbacksState,
 } from '../types';
 
 const initialState: TOnlineCashbacksState = {
     isLoading: false,
     storeDetails: undefined,
-    stores: new Array<TopStoresModel>(),
+    stores: {} as StoresModelWithTotalCount,
     catrgories: new Array<CategoriesModel>()
 };
 
@@ -53,7 +53,7 @@ const onlineCashbacksReducer = (state: TOnlineCashbacksState = initialState, act
 
     if (isType(action, getTopStoresAction.done)) {
         const response = action.payload.result as unknown as ResponseModel;
-        const responseData = response.Data as Array<TopStoresModel>;
+        const responseData = response.Data as StoresModelWithTotalCount;
         return {
             ...state,
             stores: responseData,
@@ -79,7 +79,7 @@ const onlineCashbacksReducer = (state: TOnlineCashbacksState = initialState, act
 
     if (isType(action, getStoresByCategoryIdAction.done)) {
         const response = action.payload.result as unknown as ResponseModel;
-        const responseData = response.Data as Array<TopStoresModel>;
+        const responseData = response.Data as StoresModelWithTotalCount;
         return {
             ...state,
             stores: responseData,
