@@ -12,7 +12,7 @@ import {
 const initialState: TOnlineCashbacksState = {
     isLoading: false,
     storeDetails: undefined,
-    stores: {} as StoresModelWithTotalCount,
+    stores: undefined,
     catrgories: new Array<CategoriesModel>()
 };
 

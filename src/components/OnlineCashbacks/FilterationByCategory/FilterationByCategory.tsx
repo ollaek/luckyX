@@ -1,21 +1,31 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import "./FilterationByCategory.scss";
-import { Link } from "react-router-dom";
 import { CategoriesModel } from "../../../types";
-import { useOnlineCashbacksState } from "../Hook";
+import { slide as Menu } from "react-burger-menu";
 
 type CategoriesProp = {
   categories: CategoriesModel[];
   selectedCategoryId: any;
+  setCategoryId: any;
+  setShouldReset: any;
 };
 
-const FilterationByCategory = ({categories, selectedCategoryId}:CategoriesProp) => {
-  const [selectedCategory, setSelectedCategory] = useState(selectedCategoryId ? selectedCategoryId : null);
-  const { getStoresByCategoryid } = useOnlineCashbacksState();
+const FilterationByCategory = ({
+  categories,
+  selectedCategoryId,
+  setCategoryId,
+  setShouldReset
+}: CategoriesProp) => {
+  const [selectedCategory, setSelectedCategory] = useState(
+    selectedCategoryId ? selectedCategoryId : null
+  );
   const ApplyFilter = () => {
-    if(selectedCategory) getStoresByCategoryid(selectedCategory);
-  }
+    if (selectedCategory) {
+      setCategoryId(selectedCategory);
+      setShouldReset(true);
+    }
+  };
 
   return (
     <>
@@ -33,10 +43,19 @@ const FilterationByCategory = ({categories, selectedCategoryId}:CategoriesProp) 
                     name="globe"
                     key={category.AffiliateCategoryId}
                     id={category.AffiliateCategoryId.toString()}
-                    onChange={() => setSelectedCategory(category.AffiliateCategoryId)}
-                    checked={(selectedCategory === category.AffiliateCategoryId) ? true : false }
+                    onChange={() =>
+                      setSelectedCategory(category.AffiliateCategoryId)
+                    }
+                    checked={
+                      selectedCategory === category.AffiliateCategoryId
+                        ? true
+                        : false
+                    }
                   />
-                  <hr key={category.AffiliateCategoryName} className="hr-sm"></hr>
+                  <hr
+                    key={category.AffiliateCategoryName}
+                    className="hr-sm"
+                  ></hr>
                 </>
               );
             })}
@@ -67,21 +86,72 @@ const FilterationByCategory = ({categories, selectedCategoryId}:CategoriesProp) 
           </div>
         </Form>
         <div className="row filteration-buttons">
-          <button className="btn btn-outline-primary col" onClick={() => setSelectedCategory(null)}>Clear</button>
-          <button className="btn btn-primary col" onClick={() => ApplyFilter()}>Apply</button>
+          <button
+            className="btn btn-outline-primary col"
+            onClick={() => setSelectedCategory(null)}
+          >
+            Clear
+          </button>
+          <button className="btn btn-primary col" onClick={() => ApplyFilter()}>
+            Apply
+          </button>
         </div>
       </div>
-
       <div className="filteration-mob">
         <div className="filteration-mob-heading">
           <h3>Online cashback stores</h3>
-          <Link to="/">
-            <img
-              src={require("../../../assets/img/svg/filter.svg")}
-              className="img-fluid"
-              alt="Filter"
-            />
-          </Link>
+          <div className={"nav-mob"}>
+            <Menu right>
+              <div className="filteration-header">
+                <h3 className="title">Filters</h3>
+              </div>
+              <h4 className="filteration-text">Filter by category</h4>
+              <Form>
+                <div className="mb-3 w-100">
+                  {categories.map(category => {
+                    return (
+                      <>
+                        <Form.Check
+                          custom
+                          label={category.AffiliateCategoryName}
+                          type="radio"
+                          name="globe"
+                          key={category.AffiliateCategoryId}
+                          id={category.AffiliateCategoryId.toString()}
+                          onChange={() =>
+                            setSelectedCategory(category.AffiliateCategoryId)
+                          }
+                          checked={
+                            selectedCategory === category.AffiliateCategoryId
+                              ? true
+                              : false
+                          }
+                        />
+                        <hr
+                          key={category.AffiliateCategoryName}
+                          className="hr-sm"
+                        ></hr>
+                      </>
+                    );
+                  })}
+                </div>
+              </Form>
+              <div className="row filteration-buttons">
+                <button
+                  className="btn btn-outline-primary col"
+                  onClick={() => setSelectedCategory(null)}
+                >
+                  Clear
+                </button>
+                <button
+                  className="btn btn-primary col"
+                  onClick={() => ApplyFilter()}
+                >
+                  Apply
+                </button>
+              </div>
+            </Menu>
+          </div>
         </div>
       </div>
     </>

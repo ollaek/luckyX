@@ -28,9 +28,15 @@ export type CategoriesModel = {
     AffiliateCategoryName: string
 }
 
+export type StoresByCategoryIdRequestModel = {
+    categoryId:number,
+    pageSize: number,
+    pageIndex: number
+};
+
 export type TOnlineCashbacksState = {
     isLoading: boolean,
     storeDetails?: StoreDetailsModel,
-    stores: StoresModelWithTotalCount,
+    stores?: StoresModelWithTotalCount,
     catrgories: CategoriesModel[]
 };

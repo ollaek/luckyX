@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import Header from "../Header/Header";
 import CashbacksStores from "./CashbackStores";
@@ -9,18 +9,85 @@ import Footer from "../shared/Footer/Footer";
 import "./OnlineCashbacks.scss";
 import { useOnlineCashbacksState } from "./Hook";
 import Loader from "../shared/Loader/Loader";
+import { TopStoresModel } from "../../types";
 
 const OnlineCashbacks = props => {
-  const categoryId = props.match.params.id;
-  const { isLoading, catrgories, getCategories } = useOnlineCashbacksState();
-
+  const {
+    isLoading,
+    catrgories,
+    getCategories,
+    stores,
+    getStores,
+    getStoresByCategoryid
+  } = useOnlineCashbacksState();
+  const [filteredId, setFilteredId] = useState(props.match.params.id);
+  const [items, setItems] = useState(new Array<TopStoresModel>());
+  const [shouldReset, setShouldReset] = useState(false);
+  const [page, setPage] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
   useEffect(
     () => {
       getCategories();
+      if (filteredId) {
+        getStoresByCategoryid({
+          categoryId: filteredId,
+          pageSize: 8,
+          pageIndex: page
+        });
+        setPage(page + 1);
+        return;
+      }
+
+      getStores({
+        LanguageId: 0,
+        Featured: false,
+        FeaturedMerchantsNumber: 0,
+        pageSize: 8,
+        pageIndex: page
+      });
+      setPage(page + 1);
     },
-    //
-    []
+    // eslint-disable-next-line
+    [filteredId]
   );
+
+  useEffect(
+    () => {
+      if (shouldReset) {
+        setItems(new Array<TopStoresModel>());
+        setShouldReset(false);
+      }
+      if (stores && stores.AffiliateMerchantsList.length > 0) {
+        setItems([...items, ...stores.AffiliateMerchantsList]);
+        setTotalCount(stores.TotalCount);
+      }
+    },
+    // eslint-disable-next-line
+    [stores]
+  );
+
+  const LoadMore = () => {
+    debugger;
+    if (filteredId) {
+      getStoresByCategoryid({
+        categoryId: filteredId,
+        pageSize: 8,
+        pageIndex: page
+      });
+      setPage(page + 1);
+      return;
+    }
+
+    getStores({
+      LanguageId: 0,
+      Featured: false,
+      FeaturedMerchantsNumber: 0,
+      pageSize: 8,
+      pageIndex: page
+    });
+
+    setPage(page + 1);
+  };
 
   return (
     <div>
@@ -33,12 +100,22 @@ const OnlineCashbacks = props => {
               {catrgories && (
                 <FilterationByCategory
                   categories={catrgories}
-                  selectedCategoryId={categoryId}
+                  selectedCategoryId={filteredId}
+                  setCategoryId={(id: any) => setFilteredId(id)}
+                  setShouldReset={(val :any) => setShouldReset(val)}
                 />
               )}
             </div>
             <div className="col-md-9">
-              <CashbacksStores categoryId={categoryId ? categoryId : null} />
+              {stores && (
+                <CashbacksStores
+                  stores={stores}
+                  isLoading={isLoading}
+                  items={items}
+                  totalCount={totalCount}
+                  LoadMore={() => LoadMore}
+                />
+              )}
             </div>
           </div>
         </section>

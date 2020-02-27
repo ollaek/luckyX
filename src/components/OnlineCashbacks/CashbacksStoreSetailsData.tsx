@@ -28,7 +28,7 @@ const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
         <div className="cashbackStores">
           <div className="row">
             <div className="col-md-12">
-              <h3 className="page-title px-3">Online Cashbacks stores</h3>
+              <h3 className="page-title">Online Cashbacks stores</h3>
             </div>
           </div>
           <div className="row">

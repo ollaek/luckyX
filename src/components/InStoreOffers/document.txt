@@ -1,0 +1,7 @@
+InStoreOffer ===> Offer Card
+InStoreOfferList ===> List of Offer Card
+StoreOfferDetails ===> tabs/slider/details text
+Root files:
+InStoreOfferDetails ==> Import StoreOfferDetails component
+InStoreOffers ==> All Component
+

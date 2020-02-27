@@ -13,6 +13,7 @@ type TopCashbackCategoriesProp = {
 
 const TopCashbacksCategories = ({ categories }: TopCashbackCategoriesProp) => {
   return (
+    <>
     <section className="cashbackCategories-section sec-padding ">
       <div className="container ">
         <div className="sub-title-div">
@@ -38,6 +39,7 @@ const TopCashbacksCategories = ({ categories }: TopCashbackCategoriesProp) => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 export default TopCashbacksCategories;

@@ -90,7 +90,6 @@ const NavBar = () => {
               </div>
             </Form>
           </div>
-
           <div className="">
             <a className="nav-link text-red" href="/">
               {" "}

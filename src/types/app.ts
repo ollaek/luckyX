@@ -30,7 +30,7 @@ export type StoresModelWithTotalCount = {
 
 export type TAppState = {
     isLoading: boolean,
-    topStores: StoresModelWithTotalCount,
+    topStores?: StoresModelWithTotalCount,
     topCategories: TopCategoriesModel[]
 };
 

@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { ToastProvider } from "react-toast-notifications";
 
-import { appReducer, authReducer, onlineCashbacksReducer } from "./reducers";
-import { TAppState, TUserState, TOnlineCashbacksState } from "./types";
+import { appReducer, authReducer, onlineCashbacksReducer, inStoreOffersReducer } from "./reducers";
+import { TAppState, TUserState, TOnlineCashbacksState, TInStoreOffersState } from "./types";
 import Routing from "./components/Routing";
 
 //JS
@@ -24,15 +25,20 @@ export type TGlobalState = {
   appModule: TAppState;
   userModule: TUserState;
   onlineCashbacksModule: TOnlineCashbacksState;
+  inStoreOffersModule: TInStoreOffersState;
 };
 
 const rootReducer = combineReducers({
   appModule: appReducer,
   authModule: authReducer,
-  onlineCashbacksModule: onlineCashbacksReducer
+  onlineCashbacksModule: onlineCashbacksReducer,
+  inStoreOffersModule: inStoreOffersReducer
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools(
+  applyMiddleware(),
+  // other store enhancers if any
+));
 
 ReactDOM.render(
   <Provider store={store}>

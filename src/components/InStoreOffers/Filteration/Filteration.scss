@@ -1,7 +1,10 @@
 @import "../../../assets/scss/mdb.scss";
+.inStoreFilteration{
+    background: $btn-light-color;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+}
 .filteration {
-  background-color: $bg-light;
-  // padding: 3rem 2rem;
+//   padding: 3rem 2rem;
   padding: 3rem 1rem;
   min-height: 500px;
   @include media-breakpoint-down(sm) { 
@@ -28,10 +31,14 @@ display: none;
 .custom-control-input {
   left: -2px;
 }
+
 .custom-control-label::before,
 .custom-control-label::after {
   top: 0rem;
-  left: -1.9rem;
+//   left: -1.9rem;
+    left: -1.3rem;
+    width: 16px;
+    height: 16px;
 }
 .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
   background-color: $primary-dark;
@@ -46,13 +53,49 @@ display: none;
   box-shadow: 0 0 0 0.2rem #91919566;
 }
 .filteration-buttons {
-  padding: 5rem 0;
+    padding: 5rem 1rem;
 }
-
-
+.panel-heading.card-header{
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+.panel-heading{
+  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;}
+    // .panel-heading.card-header::after{
+    //   content: "";
+    //   background-image: url(../../../assets/img/cookdoor.png);
+    //    height: 100px;
+    // }
+// .panel-heading.accordion-toggle:after {
+//  background-image: url(../../../assets/img/cookdoor.png);
+//  height: 100px;
+// }
+// .panel-heading .accordion-toggle.collapsed:after {
+//   content: "\e080";   
+// }
+.panel-heading ~ div.collapse.show {
+color: red;
+}
+// div.collapse.show ~ .panel-heading  {
+//   color: red;
+// }
 //Filteration-Mobile================
 .filteration-mob{
   padding-top: 1rem;
+  .bm-item.filteration-body{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch !important;
+  }
+  .filteration-text{
+    margin-bottom: 2rem;
+  }
 }
 .filteration-mob-heading{
   background-color: $bg-light;
@@ -101,4 +144,10 @@ background-image: url(../../../assets/img/svg/filteration-close.svg);
 .hr-sm {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.page-title{
+  @include media-breakpoint-down(sm) {
+display: none;
+}
 }

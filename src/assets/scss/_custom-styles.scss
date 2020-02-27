@@ -10,6 +10,7 @@ html {
 body {
   font-size: 1rem;
   font-family: $font-family-base;
+  color: $primary-dark;
 }
 p {
   font-size: 1rem;
@@ -138,7 +139,7 @@ a.link-grey:hover{
 }
 //BUTTONS============================================
 .btn{
-  border-radius: 8px;
+  border-radius: 24px;
   color: $primary-dark !important;
 }
 .btn-primary {
@@ -147,7 +148,7 @@ a.link-grey:hover{
 }
 .btn-outline-primary{
   color: $primary-dark !important;
-  border: 1px solid $primary-color!important;
+  border: 1.1px solid $primary-color!important;
 }
 .btn-primary:hover  , .btn-outline-primary:hover{
   color: $primary-dark !important;
@@ -156,31 +157,34 @@ a.link-grey:hover{
 .btn-primary:not([disabled]):not(.disabled):active,
 .btn-primary:not([disabled]):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
-  background-color: $primary-hover !important;
+  background-color: $primary-pressed !important;
   box-shadow: none;
-  color: $primary-dark;
+  color: $primary-dark !important;
 }
 .btn-primary:not([disabled]):not(.disabled):active:focus,
 .btn-primary:not([disabled]):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: none;
-  color: $primary-dark;
+  color: $primary-dark !important;
 }
 .btn-outline-primary:not([disabled]):not(.disabled):active,
 .btn-outline-primary:not([disabled]):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
-  background-color: $primary-hover !important;
+  background-color: $primary-pressed !important;
   box-shadow: none;
-  color: $primary-dark;
+  color: $primary-dark !important;
+  border-color:  $primary-pressed !important;
+
 }
 .btn-outline-primary:not([disabled]):not(.disabled):active:focus,
 .btn-outline-primary:not([disabled]):not(.disabled).active:focus,
 .show > .btn-outline-primary.dropdown-toggle:focus {
   box-shadow: none;
-  color: $primary-dark;
+  color: $primary-dark !important;
+  border-color:  $primary-pressed !important;
 }
 .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary:active:focus, .btn-outline-primary.active{
-  color: $primary-dark;
+  color: $primary-dark !important;
 
 }
 .btn.btn-block {
@@ -212,6 +216,23 @@ a.link-grey:hover{
 }
 img {
   max-width: 100% !important;
+}
+.btn-rounded {
+  border-radius: 10em;
+}
+.btn-fb{
+  background: $btn-light-color;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  color: $text-gray;
+  text-transform: capitalize;
+  width: 127px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+.footer-btn{
+  border-radius: 8px;
 }
 //CashbackStores======================================
 .cashbackStores-section {
@@ -330,8 +351,9 @@ img {
   // margin-bottom: 1.5rem;
   margin-bottom: 0;
 }
-.card-text {
-  margin-bottom: 1.5rem;
+.card .card-body .card-text ,.card .card-text  {
+  // margin-bottom: 1.5rem;
+  color: $text-gray;
 }
 .text-gray {
   color: $text-gray;
@@ -361,6 +383,7 @@ img {
 //BREADCRUMBS=================================================================
 .breadcrumb {
   background-color: #0000;
+  padding: .75rem 0;
 }
 .breadcrumb-item > a {
   color: $primary-dark;

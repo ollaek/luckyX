@@ -10,6 +10,7 @@ type TopCashbackStoresProp = {
 
 const TopCashbacksStores = ({ stores }: TopCashbackStoresProp) => {
   return (
+    <>
     <section className="cashbackStores-section sec-padding ">
       <div className="container ">
         <div className="sub-title-div">
@@ -32,6 +33,7 @@ const TopCashbacksStores = ({ stores }: TopCashbackStoresProp) => {
         </div>
       </div>
     </section>
+ </>
   );
 };
 
