@@ -30,7 +30,7 @@ const TopCashbacksCategories = ({ categories }: TopCashbackCategoriesProp) => {
         </div>
         <div className="seeAllStors-text">
 
-          <Link to="/" className="hvr-icon-forward">
+          <Link to="/OnlineCashbacks" className="hvr-icon-forward">
             SEE ALL THE STORES
                                 <img className="hvr-icon" src={require("../../assets/img/svg/Right-arrow.svg")}
               alt="Right-arrow"

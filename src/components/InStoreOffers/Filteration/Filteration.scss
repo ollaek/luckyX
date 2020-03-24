@@ -29,7 +29,8 @@ display: none;
   padding: 0 0.5rem;
 }
 .custom-control-input {
-  left: -2px;
+ // left: -2px;
+ left: 4px;
 }
 
 .custom-control-label::before,
@@ -144,10 +145,4 @@ background-image: url(../../../assets/img/svg/filteration-close.svg);
 .hr-sm {
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-
-.page-title{
-  @include media-breakpoint-down(sm) {
-display: none;
-}
 }

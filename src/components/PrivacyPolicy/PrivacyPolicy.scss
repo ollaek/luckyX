@@ -1,0 +1,20 @@
+@import "../../assets/scss/custom-variables";
+
+.privacyPolicy{
+    .privacyPolicy-header{
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        background-color: $bg-light;
+    }
+    .privacyPolicy-body{
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        .privacyPolicy-body-item{
+            .item-num{
+                font-family:$font-family-bold;
+                margin-bottom: 0;
+                color: $bg-dark;
+            }
+        }
+    }
+}

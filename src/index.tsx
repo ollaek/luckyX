@@ -5,8 +5,8 @@ import { combineReducers, createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { ToastProvider } from "react-toast-notifications";
 
-import { appReducer, authReducer, onlineCashbacksReducer, inStoreOffersReducer } from "./reducers";
-import { TAppState, TUserState, TOnlineCashbacksState, TInStoreOffersState } from "./types";
+import { appReducer, authReducer, onlineCashbacksReducer, inStoreOffersReducer,accountReducer } from "./reducers";
+import { TAppState, TUserState, TOnlineCashbacksState, TInStoreOffersState,TAccountState } from "./types";
 import Routing from "./components/Routing";
 
 //JS
@@ -26,13 +26,15 @@ export type TGlobalState = {
   userModule: TUserState;
   onlineCashbacksModule: TOnlineCashbacksState;
   inStoreOffersModule: TInStoreOffersState;
+  accountModule: TAccountState;
 };
 
 const rootReducer = combineReducers({
   appModule: appReducer,
   authModule: authReducer,
   onlineCashbacksModule: onlineCashbacksReducer,
-  inStoreOffersModule: inStoreOffersReducer
+  inStoreOffersModule: inStoreOffersReducer,
+  accountModule: accountReducer
 });
 
 const store = createStore(rootReducer, composeWithDevTools(

@@ -2,5 +2,6 @@ export type ResponseModel = {
     Status: number,
     Data:{},
     Errors:string[],
-    ErrorCode: string
+    ErrorCode: string,
+    callback: Function
 }

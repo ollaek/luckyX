@@ -1,0 +1,63 @@
+@import "../../assets/scss/custom-variables";
+.profile-heading{
+    background-color:$bg-light;
+    padding:1.5rem 0;
+    text-align: center;
+    h2{
+        margin-bottom: 0;
+    }
+}
+.profile-section{
+    .form-control{
+        padding-right: calc(1.5em + .75rem);
+        background-image:url(../../assets/img/svg/Edit.svg);
+        background-repeat: no-repeat;
+        background-position: right calc(.375em + .1875rem) center;
+        background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+      }
+      .form-control.is-invalid, .was-validated .form-control:invalid {
+        border: 0;
+        border-bottom:1px solid $msg-error-color;
+        padding-right: calc(1.5em + .75rem);
+        background-image:url(../../assets//img/svg/Edit.svg);
+        background-repeat: no-repeat;
+        background-position: right calc(.375em + .1875rem) center;
+        background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+      }
+      .form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
+        border-color: $msg-error-color;
+        box-shadow: none;
+      }
+      .form-control.is-valid, .was-validated .form-control:valid{
+        // content: "Verified";
+        // position: absolute;
+        // top: 0;
+        // right: 0;
+        border: 0;
+        border-bottom:1px solid $success-color;
+        padding-right: calc(1.5em + .75rem);
+        background-image:url(../../assets//img/svg/Edit.svg);
+        background-repeat: no-repeat;
+        background-position: right calc(.375em + .1875rem) center;
+        background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+      }
+      .form-control.is-valid:focus, .was-validated .form-control:valid:focus {
+        border-color: $success-color;
+        box-shadow: none;
+      }
+}
+.verifiy-input{
+ position: relative;
+}
+.verifiy-text{
+  position: absolute;
+  right: 35px;
+  top: 10px;
+  color:  $success-color;
+}
+.unverifiy-text{
+  position: absolute;
+  right: 35px;
+  top: 10px;
+  color:  $msg-error-color;
+}

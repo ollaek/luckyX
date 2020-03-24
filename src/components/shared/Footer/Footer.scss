@@ -14,8 +14,11 @@
     background-color: $bg-dark;
     padding-top: 2rem;
     padding-bottom: 2rem;
-  p{
-    color: $text-gray;
+  p ,a{
+    color: $text-gray !important;
+  }
+  a:hover{
+    text-decoration: underline;
   }
   }
 .footer-heading{

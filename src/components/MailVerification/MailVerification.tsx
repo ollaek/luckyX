@@ -6,7 +6,6 @@ import NavBar from "../shared/NavBar/NavBar";
 import "../MailVerification/MailVerification.scss";
 
 const MailVerification = props => {
-  console.log(props);
   const email = props.match.params.email;
   return (
     <>

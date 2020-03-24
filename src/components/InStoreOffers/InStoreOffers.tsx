@@ -3,46 +3,72 @@ import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Footer from "../shared/Footer/Footer";
 import Filteration from "./Filteration/Filteration";
-import StoreOffers from "./StoreOffers";
-import { useOnlineCashbacksState } from "./Hook";
+import InStoreOfferList from "./InStoreOfferList";
+import { useInStoreOffersState } from "./Hook";
 
 import { Breadcrumb } from "react-bootstrap";
 import "../InStoreOffers/Filteration/Filteration.scss";
 
 const InStoreOffers = () => {
   const [page, setPage] = useState(0);
+  const [selectedArea, setSelectedArea] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [shouldFilter, setShouldFilter] = useState(false);
+
   const {
-    Areas,
-    getAreas,
+    isLoading,
+    Cities,
+    Categories,
+    getFilterationData,
     getOffers,
     getMoreOffers,
     Offers,
-    TotalCount
-  } = useOnlineCashbacksState();
+    TotalCount,
+    getFilteredOffers,
+    getMoreFilteredOffers
+  } = useInStoreOffersState();
   useEffect(
     () => {
-      debugger;
+      setPage(0);
+      if (shouldFilter) {
+        getFilteredOffers({
+          RegionIds: [selectedArea],
+          CategoryIds: [selectedCategory],
+          pageSize: 9,
+          pageIndex: page
+        });
+        setPage(page + 1);
+        return;
+      }
       getOffers({ pageSize: 9, pageIndex: page });
-      getAreas();
+      getFilterationData();
       setPage(page + 1);
     },
     // eslint-disable-next-line
-    []
+    [shouldFilter]
   );
 
   useEffect(
-    () => {
-      debugger;
-    },
+    () => {},
     // eslint-disable-next-line
     [Offers]
   );
 
   const LoadMore = () => {
-    alert('hi2');
+    if (shouldFilter) {
+      getMoreFilteredOffers({
+        RegionIds: [selectedArea],
+        CategoryIds: [selectedCategory],
+        pageSize: 9,
+        pageIndex: page
+      });
+      setPage(page + 1);
+      return;
+    }
     getMoreOffers({ pageSize: 9, pageIndex: page });
     setPage(page + 1);
   };
+
   return (
     <div>
       <Header />
@@ -50,7 +76,20 @@ const InStoreOffers = () => {
         <section className="container">
           <div className="row">
             <div className="col-12 col-lg-3">
-              {Areas && <Filteration Areas={Areas} />}
+              {Cities && Categories && (
+                <Filteration
+                  Cities={Cities}
+                  Categories={Categories}
+                  setSelectedArea={area => setSelectedArea(area)}
+                  setSelectedCategory={category =>
+                    setSelectedCategory(category)
+                  }
+                  setShouldFilter={val => setShouldFilter(val)}
+                  selectedArea={selectedArea}
+                  selectedCategory={selectedCategory}
+                  setPage={(page) => setPage(page)}
+                />
+              )}
             </div>
             <div className="col-12 col-lg-9">
               <div className="row">
@@ -68,10 +107,15 @@ const InStoreOffers = () => {
                   </Breadcrumb>
                 </div>
               </div>
-              
-                {Offers && (
-                  <StoreOffers Offers={Offers} TotalCount={TotalCount} LoadMore={() => LoadMore}/>
-                )}
+
+              {Offers && (
+                <InStoreOfferList
+                  Offers={Offers}
+                  TotalCount={TotalCount}
+                  LoadMore={() => LoadMore}
+                  isLoading={isLoading}
+                />
+              )}
             </div>
           </div>
         </section>

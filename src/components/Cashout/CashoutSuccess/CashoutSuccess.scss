@@ -1,0 +1,25 @@
+@import "../../../assets/scss/custom-variables";
+.cashout-success {
+  text-align: center;
+  .cashout-success-img {
+    margin-bottom: 2rem;
+  }
+  .cashout-success-text{
+    padding: 2rem 0;
+    p{
+      margin-bottom: 1.5rem;
+    }
+  }
+  .bank-details{
+    background-color: $bg-light;
+    padding: 2rem 3rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: left;
+    ul{
+      list-style-type: none;
+      margin-bottom: 0;
+      padding: 0;
+    }
+  }
+}

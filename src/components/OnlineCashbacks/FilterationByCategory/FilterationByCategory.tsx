@@ -8,22 +8,22 @@ type CategoriesProp = {
   categories: CategoriesModel[];
   selectedCategoryId: any;
   setCategoryId: any;
-  setShouldReset: any;
+  setPage:any;
 };
 
 const FilterationByCategory = ({
   categories,
   selectedCategoryId,
   setCategoryId,
-  setShouldReset
+  setPage
 }: CategoriesProp) => {
   const [selectedCategory, setSelectedCategory] = useState(
     selectedCategoryId ? selectedCategoryId : null
   );
   const ApplyFilter = () => {
     if (selectedCategory) {
+      setPage(0);
       setCategoryId(selectedCategory);
-      setShouldReset(true);
     }
   };
 
@@ -88,7 +88,11 @@ const FilterationByCategory = ({
         <div className="row filteration-buttons">
           <button
             className="btn btn-outline-primary col"
-            onClick={() => setSelectedCategory(null)}
+            onClick={() => {
+              setPage(0);
+              setSelectedCategory(null);
+              setCategoryId(null);
+            }}
           >
             Clear
           </button>

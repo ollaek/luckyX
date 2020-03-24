@@ -15,7 +15,6 @@ import "../SignUp/SignUp.scss";
 
 const SignIn = ({ history }) => {
   const { signIn } = useUserState();
-
   const signinValidationSchema = Yup.object().shape({
     password: Yup.string()
       .required("Please enter a password")

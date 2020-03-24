@@ -5,7 +5,6 @@ import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props
 
 const FaceBookButton = ({history, onShowChange}) => {
   const { externalSignIn } = useUserState();
-  console.log(onShowChange);
   let user;
   const responseFacebook = async response => {
     if (response) {

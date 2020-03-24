@@ -7,7 +7,6 @@ import { TAppState, TopStoresRequestModel } from "../../types";
 const useAppState = () => {
     const state = useSelector<TGlobalState, TAppState>(({ appModule }) => appModule);
     const dispatch = useDispatch();
-    console.log(state);
     return {
         ...state,
         getTopStores: (req:TopStoresRequestModel) => getTopStoresAsync(dispatch,req),

@@ -1,18 +1,20 @@
 import { AnyAction, isType } from 'typescript-fsa';
 
-import { getStoreDetailsAction, getStoresByCategoryIdAction, getAllCategoryAction, getTopStoresAction } from '../actions';
+import { getStoreDetailsAction, getStoresByCategoryIdAction, getAllCategoryAction, getTopStoresAction, getMoreStoresAction, getMoreStoresByCategoryIdAction } from '../actions';
 import {
   ResponseModel,
   StoreDetailsModel,
   CategoriesModel,
   StoresModelWithTotalCount,
   TOnlineCashbacksState,
+  TopStoresModel
 } from '../types';
 
 const initialState: TOnlineCashbacksState = {
     isLoading: false,
     storeDetails: undefined,
-    stores: undefined,
+    stores: new Array<TopStoresModel>(),
+    totalCount: 0,
     catrgories: new Array<CategoriesModel>()
 };
 
@@ -56,7 +58,8 @@ const onlineCashbacksReducer = (state: TOnlineCashbacksState = initialState, act
         const responseData = response.Data as StoresModelWithTotalCount;
         return {
             ...state,
-            stores: responseData,
+            stores: responseData.AffiliateMerchantsList,
+            totalCount: responseData.TotalCount,
             isLoading: false
         };
     }
@@ -82,7 +85,8 @@ const onlineCashbacksReducer = (state: TOnlineCashbacksState = initialState, act
         const responseData = response.Data as StoresModelWithTotalCount;
         return {
             ...state,
-            stores: responseData,
+            stores: responseData.AffiliateMerchantsList,
+            totalCount: responseData.TotalCount,
             isLoading: false
         };
     }
@@ -114,6 +118,61 @@ const onlineCashbacksReducer = (state: TOnlineCashbacksState = initialState, act
     }
 
     if (isType(action, getStoresByCategoryIdAction.failed)) {
+
+        // Do error handling work if needed
+        return {
+            ...state,
+            isLoading: false
+        };
+    }
+
+    if (isType(action, getMoreStoresAction.started)) {
+        return {
+            ...state,
+            isLoading: true
+        }
+    }
+
+    if (isType(action, getMoreStoresAction.done)) {
+        const response = action.payload.result as unknown as ResponseModel;
+        const responseData = response.Data as StoresModelWithTotalCount;
+        
+        return {
+            ...state,
+            stores: [...state.stores, ...responseData.AffiliateMerchantsList],
+            totalCount: responseData.TotalCount,
+            isLoading: false
+        };
+    }
+
+    if (isType(action, getMoreStoresAction.failed)) {
+
+        // Do error handling work if needed
+        return {
+            ...state,
+            isLoading: false
+        };
+    }
+
+    if (isType(action, getMoreStoresByCategoryIdAction.started)) {
+        return {
+            ...state,
+            isLoading: true
+        }
+    }
+
+    if (isType(action, getMoreStoresByCategoryIdAction.done)) {
+        const response = action.payload.result as unknown as ResponseModel;
+        const responseData = response.Data as StoresModelWithTotalCount;
+        return {
+            ...state,
+            stores: [...state.stores, ...responseData.AffiliateMerchantsList],
+            totalCount: responseData.TotalCount,
+            isLoading: false
+        };
+    }
+
+    if (isType(action, getMoreStoresByCategoryIdAction.failed)) {
 
         // Do error handling work if needed
         return {

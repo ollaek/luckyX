@@ -1,9 +1,30 @@
 import React from "react";
+import Header from "../Header/Header";
+import StoreOfferDetails from "./StoreOfferDetails/StoreOfferDetails";
+import Footer from "../shared/Footer/Footer";
 
-const InStoreDetails = () => {
-    return <div>
-        In-Store Details
-        </div>
+const InStoreDetails = (props:any) => {
+  const offerId = props.match.params.id;
+  return (
+    <div>
+      <Header />
+      <div className="sec-padding">
+        <section className="container">
+          <div className="row">
+            <div className="col-12 col-lg-12">
+              <h3 className="page-title">In-store offers</h3>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12 col-lg-12">
+              <StoreOfferDetails offerId={offerId}/>
+            </div>
+          </div>
+        </section>
+      </div>
+  <Footer />
+   </div>
+  );
 };
 
 export default InStoreDetails;

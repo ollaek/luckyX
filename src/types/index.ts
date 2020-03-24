@@ -3,3 +3,4 @@ export * from './auth';
 export * from './responseHandler';
 export * from './onlineCashbacks';
 export * from './inStoreOffers';
+export * from './account';

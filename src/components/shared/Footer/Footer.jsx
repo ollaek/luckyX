@@ -1,6 +1,7 @@
 import React from "react";
 import ScrollToTop from "react-scroll-up";
 import "./Footer.scss";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -30,40 +31,40 @@ const Footer = () => {
               </h3>
               <p className="footer-text">
                 Online and in-store offers on food, fashion, electronics
-               & more in 3,000+ stores
+                & more in 3,000+ stores
               </p>
             </div>
             <div className="col-md-5 col-12 mb-5 mb-md-0">
               <ul className="footer-links">
                 <li>
-                  <a className="hvr-icon-forward" href="#!">
+                  <Link className="hvr-icon-forward" to="../../ContactUs/ContactUs">
                     <img
                       className="hvr-icon"
                       src={require("../../../assets/img/svg/footer-arrow.svg")}
                       alt="right-arrow"
                     />{" "}
-                    Online Cashbacks
-                  </a>
+                  About Us
+                  </Link>
                 </li>
                 <li>
-                  <a className="hvr-icon-forward" href="#!">
+                  <Link className="hvr-icon-forward" to="../../ContactUs">
                     <img
                       className="hvr-icon"
                       src={require("../../../assets/img/svg/footer-arrow.svg")}
                       alt="right-arrow"
                     />{" "}
-                    In-store Offers
-                  </a>
+                    Contact Us
+                    </Link>
                 </li>
                 <li>
-                  <a className="hvr-icon-forward" href="#!">
+                  <Link className="hvr-icon-forward" to="../../FAQs">
                     <img
                       className="hvr-icon"
                       src={require("../../../assets/img/svg/footer-arrow.svg")}
                       alt="right-arrow"
                     />{" "}
-                    Profile
-                  </a>
+                  FAQs
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -127,7 +128,10 @@ const Footer = () => {
               <p>© 2020 Lucky App All rights reserved.</p>
             </div>
             <div className="col-12 col-lg-5">
-              <p>Terms of Service | Privacy Policy | FAQs</p>
+            
+                <Link className="link-grey" to="/PrivacyPolicy">
+              Privacy Policy
+              </Link>
             </div>
           </div>
         </div>

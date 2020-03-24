@@ -1,0 +1,9 @@
+CASHOUT Component ==> (1) Steps view
+Step1 ,Step2 ,==>Error Modals
+Step3:(
+    1-BankTransfer Component.
+    2-Aman Component.
+)
+Step4: Terms&Conditions.
+                 OR    
+                ==> (2) Success view

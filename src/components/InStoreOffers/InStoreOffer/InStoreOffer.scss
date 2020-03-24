@@ -37,14 +37,9 @@
     margin: 0;
   }
 }
-.dicount-row{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
 
-.btn[class*="btn-outline-"] {
+
+.btn[class*="btn-outline-"]{
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
 }

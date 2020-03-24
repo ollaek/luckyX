@@ -48,7 +48,7 @@ const ForgotPassword = ({history}) => {
                     return (
                       <Form role="form" onSubmit={handleSubmit} noValidate>
                         <Form.Group className="row" controlId="formEmail">
-                          <Col className="col-lg-8 col-md-7 col-12 mb-3 mb-md-0 pr-md-0">
+                          <Col className="col-lg-7 col-md-7 col-12 mb-3 mb-md-0 pr-md-0">
                             <Form.Control
                               name="email"
                               type="email"
@@ -63,7 +63,7 @@ const ForgotPassword = ({history}) => {
                               )}
                             </ErrorMessage>
                           </Col>
-                          <Col className="col-lg-4 col-md-5 col-12">
+                          <Col className="col-lg-5 col-md-5 col-12">
                               <button
                                 className="btn btn-block btn-primary"
                                 type="submit"

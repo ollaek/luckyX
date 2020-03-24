@@ -8,7 +8,6 @@ const GoogleButton = (history:any,onShowChange:any) => {
   let user;
   const responseGoogle = (response: any) => {
     if (response) {
-      console.log(response);
       user = {
         FullName: response.profileObj.name,
         Email: response.profileObj.email,

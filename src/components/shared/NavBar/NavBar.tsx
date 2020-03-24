@@ -136,7 +136,7 @@ const NavBar = () => {
                 <NavBarElement title="Wallet" hasIcon={false} Link="/Wallet" />
               </div>
               <div className="px-3">
-                <LinkContainer to="/SignIn">
+                <LinkContainer to="/Profile">
                   <Nav.Link className="profile">
                     {" "}
                     <img

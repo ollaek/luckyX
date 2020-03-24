@@ -12,6 +12,14 @@ const App = lazy(() => import("./App/App"));
 const OnlineCashbacks = lazy(() => import("./OnlineCashbacks/OnlineCashbacks"));
 const SignIn = lazy(() => import("./SignIn/SignIn"));
 const SignUp = lazy(() => import("./SignUp/SignUp"));
+const Profile = lazy(() => import("./Profile/Profile"));
+const EditPassword = lazy(() => import("./Profile/EditPassword"));
+const ContactUs = lazy(() => import("./ContactUs/ContactUs"));  
+const PrivacyPolicy = lazy(() => import("./PrivacyPolicy/PrivacyPolicy"));   
+const FAQs = lazy(() => import("./FAQs/FAQs"));   
+
+const Cashout = lazy(() => import("./Cashout/Cashout"));
+const CashoutErrorModal= lazy(() => import("./Cashout/CashoutErrorModal/CashoutErrorModal"));
 const MailVerification = lazy(() =>
   import("./MailVerification/MailVerification")
 );
@@ -42,6 +50,15 @@ const Routing = () => (
         <Route path="/MailVerification/:email" component={MailVerification} />
         <Route path="/MailVerified/:id" component={MailVerified} />
         <Route path="/ForgotPassword" component={ForgotPassword} />
+        <Route path="/Wallet" component={Cashout} />
+        <Route path="/Profile" component={Profile} />
+        <Route path="/EditPassword" component={EditPassword} />
+        <Route path="/ContactUs" component={ContactUs} />
+        <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
+        <Route path="/FAQs" component={FAQs} />
+
+        <Route path="/CashoutErrorModal" component={CashoutErrorModal} />
+
         <Route
           path="/ResetPasswordVerification/:email"
           component={ResetPasswordVerification}

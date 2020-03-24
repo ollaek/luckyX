@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 
 import { TGlobalState } from "../..";
-import { getStoreDetailsAsync, getTopStoresAsync, getAllCategoryAsync, getStoresByCategoryIdAsync} from "../../actions";
+import { getStoreDetailsAsync, getTopStoresAsync, getAllCategoryAsync, getStoresByCategoryIdAsync, getMoreStoresAsync, getMoreStoresByCategoryIdAsync} from "../../actions";
 import { TOnlineCashbacksState, TopStoresRequestModel, StoresByCategoryIdRequestModel } from "../../types";
 
 const useOnlineCashbacksState = () => {
@@ -11,7 +11,9 @@ const useOnlineCashbacksState = () => {
         ...state,
         getStoreDetails: (id:any) => getStoreDetailsAsync(dispatch,id),
         getStores: (req:TopStoresRequestModel) => getTopStoresAsync(dispatch,req),
-        getStoresByCategoryid: (req:StoresByCategoryIdRequestModel) => getStoresByCategoryIdAsync(dispatch,req),
+        getMoreStores: (req:TopStoresRequestModel) => getMoreStoresAsync(dispatch, req),
+        getStoresByCategoryId: (req:StoresByCategoryIdRequestModel) => getStoresByCategoryIdAsync(dispatch,req),
+        getMoreStoresByCategoryId: (req: StoresByCategoryIdRequestModel) => getMoreStoresByCategoryIdAsync(dispatch,req),
         getCategories: () => getAllCategoryAsync(dispatch)
     };
 };

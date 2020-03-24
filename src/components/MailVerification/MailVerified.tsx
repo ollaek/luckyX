@@ -10,7 +10,6 @@ import "../MailVerification/MailVerification.scss";
 const MailVerified = props => {
   const { verifyEmail } = useUserState();
   const userId = props.match.params.id;
-  console.log(userId);
   useEffect(() => {
     if (userId) {
       verifyEmail(userId);

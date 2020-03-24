@@ -1,6 +1,7 @@
 import actionCreatorFactory from 'typescript-fsa';
 
 import { onlineCashbacksApi } from '../api/onlineCashbacks';
+import { appApi } from "../api/app";
 import { asyncAction } from '../helpers';
 import actionIds from './action-ids';
 
@@ -10,7 +11,11 @@ const getStoreDetailsAction = actionCreator.async<any, string[], any>(actionIds.
 
 const getStoresByCategoryIdAction = actionCreator.async<any, string[], any>(actionIds.ONLINE_CASHBACKS_GET_STORES_BY_CATEGORY_ID);
 
+const getMoreStoresByCategoryIdAction = actionCreator.async<any, string[], any>(actionIds.ONLINE_CASHBACKS_GET_MORE_STORES_BY_CATEGORY_ID);
+
 const getAllCategoryAction = actionCreator.async<any, string[], any>(actionIds.ONLINE_CASHBACKS_GET_ALL_CATEGORIES);
+
+const getMoreStoresAction = actionCreator.async<any, string[], any>(actionIds.ONLINE_CASHBACKS_GET_MORE_STORES);
 
 
 const getStoreDetailsAsync = asyncAction(
@@ -28,11 +33,25 @@ const getAllCategoryAsync = asyncAction(
     onlineCashbacksApi.getAllCategories
 );
 
+const getMoreStoresAsync = asyncAction(
+    getMoreStoresAction,
+    appApi.getStores
+);
+
+const getMoreStoresByCategoryIdAsync = asyncAction(
+    getMoreStoresByCategoryIdAction,
+    onlineCashbacksApi.getStoresByCategoryId
+)
+
 export {
     getStoreDetailsAction,
     getStoreDetailsAsync,
     getStoresByCategoryIdAction,
     getStoresByCategoryIdAsync,
     getAllCategoryAction,
-    getAllCategoryAsync
+    getAllCategoryAsync,
+    getMoreStoresAction,
+    getMoreStoresAsync,
+    getMoreStoresByCategoryIdAction,
+    getMoreStoresByCategoryIdAsync
 }

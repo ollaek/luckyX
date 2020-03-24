@@ -1,0 +1,51 @@
+@import "../../../../assets/scss/custom-variables";
+.tabs {
+  padding: 2rem 0;
+  .nav-tabs {
+    border-bottom: 0;
+  }
+  .nav-tabs .nav-link {
+    border: 0;
+    border-radius: 0;
+    width: 50%;
+    color: $primary-dark;
+    border-bottom: 1.5px solid $bg-dark;
+    text-align: center;
+  }
+  .nav-tabs .nav-item {
+    margin-bottom: 0;
+  }
+  .nav-tabs .nav-item.show .nav-link,
+  .nav-tabs .nav-link.active {
+    color: $msg-error-color;
+    background-color: #fff;
+    border-bottom: 1.5px solid $msg-error-color;
+    font-family: $font-family-bold;
+  }
+  .tab-content > .tab-pane {
+    padding: 1rem 0;
+  }
+  .no-data {
+    background-color: $bg-light;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .branches {
+  }
+  .panel-heading.card-header {
+    margin: 0;
+    background: none;
+    border: 0;
+  }
+  .panel-heading.card-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid $bg-dark;
+  }
+  .card-body {
+    padding: 1rem 0;
+  }
+}

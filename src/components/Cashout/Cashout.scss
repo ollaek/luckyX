@@ -1,0 +1,74 @@
+@import "../../assets/scss/custom-variables";
+@import "../../assets/scss/mdb.scss";
+.step1,
+.step2,
+.step3 {
+  form {
+    padding: 2rem 0;
+  }
+}
+.step2 {
+  .pincode-input-container {
+    display: flex;
+    .pincode-input-text {
+      // width: auto !important;
+      margin: 0px 0.5rem !important;
+      // max-width: 16.666667% !important;
+      flex-grow: 1;
+      border: 1px solid #fff !important;
+      border-bottom: 1px solid $bg-dark !important;
+
+      flex-shrink: 1;
+      width: 100% !important;
+      &:focus {
+        border-bottom: 1px solid $primary-dark !important;
+      }
+    }
+  }
+  .step2-footer {
+    background-color: $bg-light;
+    padding: 1.2rem;
+    border-radius: 16px;
+    .link-text {
+      margin: 0;
+    }
+  }
+}
+.step3 {
+  .step3-header {
+    background-color: $bg-light;
+    padding: 2rem 5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    @include media-breakpoint-down(md) {
+      padding: 2rem 2rem;
+    }
+    @include media-breakpoint-down(sm) {
+      padding: 2rem 1rem;
+    }
+    .img-bg {
+      position: relative;
+      height: auto;
+      width: 130px;
+      img {
+        position: absolute;
+        top: -85px;
+        right: 0px;
+      }
+    }
+  }
+}
+.cashout-amount {
+  text-align: center;
+  font-size: 2.5rem;
+}
+.step4 {
+  ul {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding: 0;
+    li {
+      padding: 0.5rem 0;
+    }
+  }
+}

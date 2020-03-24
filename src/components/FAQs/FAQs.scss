@@ -1,0 +1,75 @@
+@import "../../assets/scss/mdb.scss";
+
+.FAQs {
+  .FAQs-header {
+    background-color: $bg-light;
+    background-image: url(../../assets/img/FAQs_img.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 300px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 5rem;
+    @include media-breakpoint-down(sm){
+      background-position: 60%;
+    }
+  }
+  .FAQs-body {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    .nav-pills .nav-link {
+      color: $bg-dark;
+      border-left: 4px solid transparent;
+      border-radius: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 1rem;
+      h3 {
+        margin-bottom: 0;
+      }
+    }
+    .nav-pills .nav-link.active,
+    .nav-pills .show > .nav-link {
+      background-color: transparent;
+      color: $primary-dark;
+      border-left: 4px solid $primary-color;
+      border-radius: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 1rem;
+    }
+  }
+  #accordion {
+    .accordion-card {
+      border: none;
+      margin-bottom: 3rem;
+      .card-body {
+        padding: 1.25rem 0;
+      }
+      h4 {
+        background: url(../../assets/img/svg/Chevron-Up-md.svg) no-repeat
+          calc(100% - 10px) center;
+        cursor: pointer;
+        background-position: 100% 80%;
+        &.collapsed {
+          background-image: url(../../assets/img/svg/Chevron-Down-md.svg);
+        }
+      }
+      .item-num {
+        font-family: $font-family-bold;
+        margin-bottom: 0;
+        color: $bg-dark;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 95%;
+          height: 1px;
+          background-color: $bg-dark;
+          right: 0;
+          top: 12px;
+        }
+      }
+    }
+  }
+}

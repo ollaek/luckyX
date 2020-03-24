@@ -1,0 +1,27 @@
+
+.OfferImagesSlider{
+
+.carousel-indicators {
+  position: absolute;
+  bottom: -80px;
+}
+.carousel-indicators li {
+  box-sizing: content-box;
+  flex: 0 1 auto;
+  width: auto;
+  height: auto;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent:0;
+  cursor: pointer;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-top: 10px solid #0000;
+  border-bottom: 10px solid #0000;
+  opacity:0.5;
+  transition: opacity .6s ease;
+}
+.carousel-indicators .active{
+  opacity:1;
+}
+}

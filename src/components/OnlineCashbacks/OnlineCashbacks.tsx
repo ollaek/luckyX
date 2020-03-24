@@ -3,33 +3,32 @@ import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import CashbacksStores from "./CashbackStores";
 import FilterationByCategory from "./FilterationByCategory/FilterationByCategory";
-
 import Footer from "../shared/Footer/Footer";
-
-import "./OnlineCashbacks.scss";
 import { useOnlineCashbacksState } from "./Hook";
 import Loader from "../shared/Loader/Loader";
-import { TopStoresModel } from "../../types";
 
-const OnlineCashbacks = props => {
+import "./OnlineCashbacks.scss";
+
+const OnlineCashbacks = (props:any) => {
   const {
     isLoading,
     catrgories,
     getCategories,
     stores,
+    totalCount,
     getStores,
-    getStoresByCategoryid
+    getStoresByCategoryId,
+    getMoreStoresByCategoryId,
+    getMoreStores
   } = useOnlineCashbacksState();
+
   const [filteredId, setFilteredId] = useState(props.match.params.id);
-  const [items, setItems] = useState(new Array<TopStoresModel>());
-  const [shouldReset, setShouldReset] = useState(false);
   const [page, setPage] = useState(0);
-  const [totalCount, setTotalCount] = useState(0);
   useEffect(
     () => {
       getCategories();
       if (filteredId) {
-        getStoresByCategoryid({
+        getStoresByCategoryId({
           categoryId: filteredId,
           pageSize: 8,
           pageIndex: page
@@ -52,24 +51,14 @@ const OnlineCashbacks = props => {
   );
 
   useEffect(
-    () => {
-      if (shouldReset) {
-        setItems(new Array<TopStoresModel>());
-        setShouldReset(false);
-      }
-      if (stores && stores.AffiliateMerchantsList.length > 0) {
-        setItems([...items, ...stores.AffiliateMerchantsList]);
-        setTotalCount(stores.TotalCount);
-      }
-    },
+    () => {},
     // eslint-disable-next-line
     [stores]
   );
 
   const LoadMore = () => {
-    debugger;
     if (filteredId) {
-      getStoresByCategoryid({
+      getMoreStoresByCategoryId({
         categoryId: filteredId,
         pageSize: 8,
         pageIndex: page
@@ -78,7 +67,7 @@ const OnlineCashbacks = props => {
       return;
     }
 
-    getStores({
+    getMoreStores({
       LanguageId: 0,
       Featured: false,
       FeaturedMerchantsNumber: 0,
@@ -102,7 +91,7 @@ const OnlineCashbacks = props => {
                   categories={catrgories}
                   selectedCategoryId={filteredId}
                   setCategoryId={(id: any) => setFilteredId(id)}
-                  setShouldReset={(val :any) => setShouldReset(val)}
+                  setPage={(pageNumber: any) => setPage(pageNumber)}
                 />
               )}
             </div>
@@ -111,7 +100,6 @@ const OnlineCashbacks = props => {
                 <CashbacksStores
                   stores={stores}
                   isLoading={isLoading}
-                  items={items}
                   totalCount={totalCount}
                   LoadMore={() => LoadMore}
                 />

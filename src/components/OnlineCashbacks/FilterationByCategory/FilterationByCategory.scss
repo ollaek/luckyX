@@ -26,12 +26,13 @@ display: none;
   padding: 0 0.5rem;
 }
 .custom-control-input {
-  left: -2px;
+  // left: -2px;
+  left: 4px;
 }
 .custom-control-label::before,
 .custom-control-label::after {
   top: 0rem;
-  left: -1.9rem;
+  // left: -1.9rem;
 }
 .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
   background-color: $primary-dark;

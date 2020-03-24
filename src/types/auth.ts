@@ -5,6 +5,7 @@ export type UserModel = {
   Phone: string;
   AccessToken: string;
   RefreshToken: string;
+  IsMerged: boolean;
 };
 
 export type SocialUserModel = {

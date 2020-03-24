@@ -1,0 +1,1494 @@
+export const Store = {
+    appModule: {
+      isLoading: false,
+      topStores: {
+        TotalCount: 13,
+        AffiliateMerchantsList: [
+          {
+            MerchantId: 1322,
+            AffiliateMerchantId: '2',
+            MerchantNameDb: [
+              'Al Mokhtabar'
+            ],
+            MerchantWebsiteUrl: 'https://www.google.com/',
+            CashbackValue: 15,
+            CashbackIndicatorId: 2,
+            LastEditDate: '2019-02-28T12:27:24.36+02:00',
+            MerchantLogoDb: [
+              'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1251.jpg'
+            ],
+            AffiliateCategoryMerchants: [
+              {
+                AffiliateCategoryId: 3,
+                AffiliateCategoryName: [
+                  'Fashion'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 15,
+                CashbackIndicatorId: 2
+              }
+            ]
+          },
+          {
+            MerchantId: 1250,
+            AffiliateMerchantId: '1',
+            MerchantNameDb: [
+              'American Furniture'
+            ],
+            MerchantWebsiteUrl: 'https://www.google.com/',
+            CashbackValue: 100,
+            CashbackIndicatorId: 1,
+            LastEditDate: '2019-02-26T12:27:14.223+02:00',
+            MerchantLogoDb: [
+              'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1250.jpg'
+            ],
+            AffiliateCategoryMerchants: [
+              {
+                AffiliateCategoryId: 1,
+                AffiliateCategoryName: [
+                  'Health & Beauty'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 50,
+                CashbackIndicatorId: 1
+              },
+              {
+                AffiliateCategoryId: 2,
+                AffiliateCategoryName: [
+                  'Electronics'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 100,
+                CashbackIndicatorId: 1
+              },
+              {
+                AffiliateCategoryId: 3,
+                AffiliateCategoryName: [
+                  'Fashion'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 20,
+                CashbackIndicatorId: 1
+              }
+            ]
+          },
+          {
+            MerchantId: 1320,
+            AffiliateMerchantId: '1',
+            MerchantNameDb: [
+              'American Furniture'
+            ],
+            MerchantWebsiteUrl: 'https://www.google.com/',
+            CashbackValue: 55,
+            CashbackIndicatorId: 2,
+            LastEditDate: '2019-02-26T12:27:14.223+02:00',
+            MerchantLogoDb: [
+              'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1251.jpg'
+            ],
+            AffiliateCategoryMerchants: [
+              {
+                AffiliateCategoryId: 1,
+                AffiliateCategoryName: [
+                  'Health & Beauty'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 55,
+                CashbackIndicatorId: 2
+              }
+            ]
+          },
+          {
+            MerchantId: 1321,
+            AffiliateMerchantId: '1',
+            MerchantNameDb: [
+              'Autovoroom'
+            ],
+            MerchantWebsiteUrl: 'https://www.google.com/',
+            CashbackValue: 20,
+            CashbackIndicatorId: 1,
+            LastEditDate: '2019-02-27T12:27:19.71+02:00',
+            MerchantLogoDb: [
+              'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1251.jpg'
+            ],
+            AffiliateCategoryMerchants: [
+              {
+                AffiliateCategoryId: 5,
+                AffiliateCategoryName: [
+                  'Food & Beverages'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 20,
+                CashbackIndicatorId: 1
+              }
+            ]
+          },
+          {
+            MerchantId: 1251,
+            AffiliateMerchantId: '1',
+            MerchantNameDb: [
+              'Autovroom'
+            ],
+            MerchantWebsiteUrl: 'https://www.google.com/',
+            CashbackValue: 10,
+            CashbackIndicatorId: 2,
+            LastEditDate: '2019-02-27T12:27:19.71+02:00',
+            MerchantLogoDb: [
+              'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1251.jpg'
+            ],
+            AffiliateCategoryMerchants: [
+              {
+                AffiliateCategoryId: 4,
+                AffiliateCategoryName: [
+                  'Hotels & Travel'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 10,
+                CashbackIndicatorId: 2
+              }
+            ]
+          },
+          {
+            MerchantId: 1253,
+            AffiliateMerchantId: '3',
+            MerchantNameDb: [
+              'Burdogz'
+            ],
+            MerchantWebsiteUrl: 'https://www.google.com/',
+            CashbackValue: 40,
+            CashbackIndicatorId: 2,
+            LastEditDate: '2019-03-26T12:27:41.5+02:00',
+            MerchantLogoDb: [
+              'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1253.jpg'
+            ],
+            AffiliateCategoryMerchants: [
+              {
+                AffiliateCategoryId: 1,
+                AffiliateCategoryName: [
+                  'Health & Beauty'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 10,
+                CashbackIndicatorId: 2
+              },
+              {
+                AffiliateCategoryId: 4,
+                AffiliateCategoryName: [
+                  'Hotels & Travel'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 40,
+                CashbackIndicatorId: 2
+              }
+            ]
+          },
+          {
+            MerchantId: 1254,
+            AffiliateMerchantId: '3',
+            MerchantNameDb: [
+              'Dale Carnegie'
+            ],
+            MerchantWebsiteUrl: 'https://www.google.com/',
+            CashbackValue: 50,
+            CashbackIndicatorId: 1,
+            LastEditDate: '2019-03-27T12:27:46.257+02:00',
+            MerchantLogoDb: [
+              'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1254.jpg'
+            ],
+            AffiliateCategoryMerchants: [
+              {
+                AffiliateCategoryId: 2,
+                AffiliateCategoryName: [
+                  'Electronics'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 50,
+                CashbackIndicatorId: 1
+              },
+              {
+                AffiliateCategoryId: 3,
+                AffiliateCategoryName: [
+                  'Fashion'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 20,
+                CashbackIndicatorId: 1
+              }
+            ]
+          },
+          {
+            MerchantId: 1324,
+            AffiliateMerchantId: '3',
+            MerchantNameDb: [
+              'Dale Carnegie'
+            ],
+            MerchantWebsiteUrl: 'https://www.google.com/',
+            CashbackValue: 25,
+            CashbackIndicatorId: 1,
+            LastEditDate: '2019-03-27T12:27:46.257+02:00',
+            MerchantLogoDb: [
+              'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1251.jpg'
+            ],
+            AffiliateCategoryMerchants: [
+              {
+                AffiliateCategoryId: 4,
+                AffiliateCategoryName: [
+                  'Hotels & Travel'
+                ],
+                CategoryLogo: null,
+                CashbackValue: 25,
+                CashbackIndicatorId: 1
+              }
+            ]
+          }
+        ]
+      },
+      topCategories: []
+    },
+    authModule: {
+      User: {},
+      isFetching: false,
+      Error: ''
+    },
+    onlineCashbacksModule: {
+      isLoading: false,
+      stores: [],
+      totalCount: 0,
+      catrgories: [
+        {
+          AffiliateCategoryId: 38,
+          AffiliateCategoryName: 'Electronics'
+        },
+        {
+          AffiliateCategoryId: 45,
+          AffiliateCategoryName: 'Electronics'
+        },
+        {
+          AffiliateCategoryId: 48,
+          AffiliateCategoryName: 'Entertainment'
+        },
+        {
+          AffiliateCategoryId: 41,
+          AffiliateCategoryName: 'Entertainment'
+        },
+        {
+          AffiliateCategoryId: 40,
+          AffiliateCategoryName: 'Fashion'
+        },
+        {
+          AffiliateCategoryId: 49,
+          AffiliateCategoryName: 'Fashion'
+        },
+        {
+          AffiliateCategoryId: 52,
+          AffiliateCategoryName: 'Fashion'
+        },
+        {
+          AffiliateCategoryId: 55,
+          AffiliateCategoryName: 'Fashion'
+        },
+        {
+          AffiliateCategoryId: 56,
+          AffiliateCategoryName: 'Fashion'
+        },
+        {
+          AffiliateCategoryId: 46,
+          AffiliateCategoryName: 'Fashion'
+        },
+        {
+          AffiliateCategoryId: 59,
+          AffiliateCategoryName: 'Fashion'
+        },
+        {
+          AffiliateCategoryId: 47,
+          AffiliateCategoryName: 'Food & Beverages'
+        },
+        {
+          AffiliateCategoryId: 42,
+          AffiliateCategoryName: 'Food & Beverages'
+        },
+        {
+          AffiliateCategoryId: 58,
+          AffiliateCategoryName: 'Food & Beverages'
+        },
+        {
+          AffiliateCategoryId: 43,
+          AffiliateCategoryName: 'Health & Beauty'
+        },
+        {
+          AffiliateCategoryId: 37,
+          AffiliateCategoryName: 'Health & Beauty'
+        },
+        {
+          AffiliateCategoryId: 57,
+          AffiliateCategoryName: 'Health & Beauty'
+        },
+        {
+          AffiliateCategoryId: 61,
+          AffiliateCategoryName: 'Hotels & Travel'
+        },
+        {
+          AffiliateCategoryId: 39,
+          AffiliateCategoryName: 'Hotels & Travel'
+        },
+        {
+          AffiliateCategoryId: 44,
+          AffiliateCategoryName: 'Hotels & Travel'
+        }
+      ]
+    },
+    inStoreOffersModule: {
+      isLoading: false,
+      Offers: [
+        {
+          OfferId: 60,
+          OfferTitle: [
+            '10% Off On Your Total Invoice'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 10,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: 0,
+          IsTop: null,
+          SortingNumber: 2,
+          NumberOfFavorites: 201,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'Cook Door',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1061.png'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/60.jpg'
+          ]
+        },
+        {
+          OfferId: 260,
+          OfferTitle: [
+            'FREE Fitness sessions'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 100,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: 0,
+          IsTop: null,
+          SortingNumber: 13,
+          NumberOfFavorites: 25,
+          CategoryId: 8,
+          CategoryName: [
+            'Sports & Fitness'
+          ],
+          MerchantName: 'Noon',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1247.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/260.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/260-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/260-3.jpg'
+          ]
+        },
+        {
+          OfferId: 262,
+          OfferTitle: [
+            '10% Off the total invoice'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 10,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 14,
+          NumberOfFavorites: 12,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'Lucca Steakhouse',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1222.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/262.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/262-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/262-3.jpg'
+          ]
+        },
+        {
+          OfferId: 215,
+          OfferTitle: [
+            '45% Off On total Invoice'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 45,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 83,
+          NumberOfFavorites: 12,
+          CategoryId: 12,
+          CategoryName: [
+            'Services'
+          ],
+          MerchantName: 'FedEx Express',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1259.png'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/215.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/215-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/215-3.jpg'
+          ]
+        },
+        {
+          OfferId: 243,
+          OfferTitle: [
+            '15% Discount on the purchases more than EGP 3,000'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 15,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 106,
+          NumberOfFavorites: 22,
+          CategoryId: 1,
+          CategoryName: [
+            'Health & Beauty'
+          ],
+          MerchantName: 'Fortune',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1137.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/243.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/243-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/243-3.jpg'
+          ]
+        },
+        {
+          OfferId: 117,
+          OfferTitle: [
+            '15% On Total Invoice'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 100,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 122,
+          NumberOfFavorites: 14,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'The Molten',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1112.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/117.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/117.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/117-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/117-3.jpg'
+          ]
+        },
+        {
+          OfferId: 188,
+          OfferTitle: [
+            'Get one Manousha for FREE!'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 100,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: 0,
+          IsTop: null,
+          SortingNumber: 123,
+          NumberOfFavorites: 12,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'Al Dayaa',
+          MerchantLogoDb: [],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/188.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/188-2.jpg'
+          ]
+        },
+        {
+          OfferId: 204,
+          OfferTitle: [
+            'Leverage a 15% discount on your total invoice!'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 15,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 124,
+          NumberOfFavorites: 14,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'Smash Burger',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1207.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/204.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/204-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/204-3.jpg'
+          ]
+        },
+        {
+          OfferId: 234,
+          OfferTitle: [
+            '25% on breakfast menu'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 25,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 125,
+          NumberOfFavorites: 13,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'The Molten',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1112.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/234.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/234.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/234-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/234-3.jpg'
+          ]
+        },
+        {
+          OfferId: 251,
+          OfferTitle: [
+            '50% discount on new born jaundice'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 50,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 126,
+          NumberOfFavorites: 6,
+          CategoryId: 1,
+          CategoryName: [
+            'Health & Beauty'
+          ],
+          MerchantName: 'Tabibi 24/7',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1118.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/251.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/251.jpg'
+          ]
+        },
+        {
+          OfferId: 173,
+          OfferTitle: [
+            'Get a FREE healthy burger!'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 100,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: 0,
+          IsTop: null,
+          SortingNumber: 127,
+          NumberOfFavorites: 31,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'Sea Salt Bakery',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1202.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/173-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/173-3.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/173.jpg'
+          ]
+        },
+        {
+          OfferId: 179,
+          OfferTitle: [
+            'buy one get one on pastery section'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 100,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: 0,
+          IsTop: null,
+          SortingNumber: 128,
+          NumberOfFavorites: 27,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'Arz Lebanon',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1180.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/179.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/179-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/179-3.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/179-4.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/179-5.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/179-6.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/179-7.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/179-8.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/179-9.jpg'
+          ]
+        },
+        {
+          OfferId: 185,
+          OfferTitle: [
+            'Get your mom diamonds on her day!'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 20,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 129,
+          NumberOfFavorites: 19,
+          CategoryId: 9,
+          CategoryName: [
+            'Gifts & Accessories'
+          ],
+          MerchantName: 'Cherif El Sirgany',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1186.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/185.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/185.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/185-2.jpg'
+          ]
+        },
+        {
+          OfferId: 200,
+          OfferTitle: [
+            'Get 20 minutes of FREE healing massage!'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 100,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: 0,
+          IsTop: null,
+          SortingNumber: 130,
+          NumberOfFavorites: 42,
+          CategoryId: 1,
+          CategoryName: [
+            'Health & Beauty'
+          ],
+          MerchantName: 'Manuela Spa',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1204.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/200-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/200-3.jpg'
+          ]
+        },
+        {
+          OfferId: 254,
+          OfferTitle: [
+            '15% Off the total invoice'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 15,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 131,
+          NumberOfFavorites: 6,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'Casa La Pasta',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1235.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/254.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/254-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/254-3.jpg'
+          ]
+        },
+        {
+          OfferId: 255,
+          OfferTitle: [
+            '10% Off the total invoice'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 10,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 132,
+          NumberOfFavorites: 3,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'Favilla Lounge',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1237.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/255.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/255-2.jpg'
+          ]
+        },
+        {
+          OfferId: 256,
+          OfferTitle: [
+            '20% Off the total invoice'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 20,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 133,
+          NumberOfFavorites: 21,
+          CategoryId: 6,
+          CategoryName: [
+            'Food & Beverages'
+          ],
+          MerchantName: 'The Backyard',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1238.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/256.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/256.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/256-2.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/256-3.jpg'
+          ]
+        },
+        {
+          OfferId: 257,
+          OfferTitle: [
+            '15% Off the total invoice'
+          ],
+          ExpireDate: '2021-01-01T00:00:00+02:00',
+          OriginalPrice: null,
+          OfferPrice: null,
+          OfferPercentage: 15,
+          OfferDiscountTypeName: [
+            'Discount'
+          ],
+          Value: null,
+          IsTop: null,
+          SortingNumber: 134,
+          NumberOfFavorites: 15,
+          CategoryId: 7,
+          CategoryName: [
+            'Entertainment'
+          ],
+          MerchantName: 'Lucid 51',
+          MerchantLogoDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/Logo/1220.jpg'
+          ],
+          OfferImgDb: [
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/main/257.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/257.jpg',
+            'https://couponzimages74.dsquares.com/Lucky_Staging/images/inner/257-2.jpg'
+          ]
+        }
+      ],
+      TotalCount: 186,
+      Areas: [
+        {
+          Id: 1,
+          Name: 'Cairo',
+          Regions: [
+            {
+              Id: 1,
+              Name: 'Heliopolis'
+            },
+            {
+              Id: 2,
+              Name: 'Nasr City'
+            },
+            {
+              Id: 3,
+              Name: 'New Cairo'
+            },
+            {
+              Id: 4,
+              Name: 'El Obour'
+            },
+            {
+              Id: 5,
+              Name: 'El Shorouk'
+            },
+            {
+              Id: 6,
+              Name: '10th of Ramadan'
+            },
+            {
+              Id: 7,
+              Name: 'Ard El Golf'
+            },
+            {
+              Id: 8,
+              Name: 'Maadi'
+            },
+            {
+              Id: 9,
+              Name: 'Sheraton'
+            },
+            {
+              Id: 10,
+              Name: 'mokattam'
+            },
+            {
+              Id: 11,
+              Name: 'El Nozha El Gadida'
+            },
+            {
+              Id: 12,
+              Name: 'Garden City'
+            },
+            {
+              Id: 13,
+              Name: 'Sayeda Zeinab'
+            },
+            {
+              Id: 14,
+              Name: 'Shoubra'
+            },
+            {
+              Id: 15,
+              Name: 'Shoubra El Kheimah'
+            },
+            {
+              Id: 16,
+              Name: 'Ramsis'
+            },
+            {
+              Id: 17,
+              Name: 'Abbasia'
+            },
+            {
+              Id: 18,
+              Name: 'Zaytoun'
+            },
+            {
+              Id: 19,
+              Name: 'Matarya'
+            },
+            {
+              Id: 20,
+              Name: 'Hadayek El Qoba'
+            },
+            {
+              Id: 21,
+              Name: 'Misr El Kadima'
+            },
+            {
+              Id: 22,
+              Name: 'Gesr El Suez'
+            },
+            {
+              Id: 23,
+              Name: 'Helwan'
+            },
+            {
+              Id: 24,
+              Name: 'Al Hussein'
+            }
+          ]
+        },
+        {
+          Id: 2,
+          Name: 'Giza',
+          Regions: [
+            {
+              Id: 37,
+              Name: 'Saba Basha'
+            },
+            {
+              Id: 38,
+              Name: 'San Stefano'
+            },
+            {
+              Id: 39,
+              Name: 'Smouha'
+            },
+            {
+              Id: 40,
+              Name: 'El Shatby'
+            },
+            {
+              Id: 41,
+              Name: 'Sidi Bishr'
+            },
+            {
+              Id: 42,
+              Name: 'Sidi Gaber'
+            },
+            {
+              Id: 43,
+              Name: 'Sporting'
+            },
+            {
+              Id: 44,
+              Name: 'Stanli'
+            },
+            {
+              Id: 45,
+              Name: 'Toson'
+            },
+            {
+              Id: 46,
+              Name: 'Wadi El Qamar'
+            },
+            {
+              Id: 47,
+              Name: 'Zizinia'
+            },
+            {
+              Id: 48,
+              Name: 'Al Mamurah'
+            },
+            {
+              Id: 49,
+              Name: 'Montaza'
+            },
+            {
+              Id: 50,
+              Name: 'Miami'
+            },
+            {
+              Id: 51,
+              Name: 'City Center'
+            },
+            {
+              Id: 52,
+              Name: 'El Raml'
+            },
+            {
+              Id: 53,
+              Name: 'Hay El Ganaien'
+            },
+            {
+              Id: 54,
+              Name: 'Arbaeen'
+            },
+            {
+              Id: 55,
+              Name: 'Ataka'
+            },
+            {
+              Id: 56,
+              Name: 'Agamy'
+            },
+            {
+              Id: 57,
+              Name: 'Asafra'
+            },
+            {
+              Id: 58,
+              Name: 'Mandara'
+            },
+            {
+              Id: 59,
+              Name: 'Max'
+            },
+            {
+              Id: 60,
+              Name: 'Mansheya'
+            },
+            {
+              Id: 61,
+              Name: 'Bahary'
+            },
+            {
+              Id: 62,
+              Name: 'North Coast'
+            }
+          ]
+        },
+        {
+          Id: 3,
+          Name: 'Alexandria',
+          Regions: [
+            {
+              Id: 25,
+              Name: 'Downtown'
+            },
+            {
+              Id: 26,
+              Name: 'Zamalik'
+            },
+            {
+              Id: 27,
+              Name: 'Mohandesin'
+            },
+            {
+              Id: 28,
+              Name: '6 October'
+            },
+            {
+              Id: 29,
+              Name: 'Sheikh Zayed'
+            },
+            {
+              Id: 30,
+              Name: 'El Dokki'
+            },
+            {
+              Id: 31,
+              Name: 'Agouza'
+            },
+            {
+              Id: 32,
+              Name: 'Haram'
+            },
+            {
+              Id: 33,
+              Name: 'Hadayek Al Ahram'
+            },
+            {
+              Id: 34,
+              Name: 'El Manial'
+            },
+            {
+              Id: 35,
+              Name: 'Giza'
+            },
+            {
+              Id: 36,
+              Name: 'Faisal'
+            }
+          ]
+        },
+        {
+          Id: 4,
+          Name: 'Suez',
+          Regions: [
+            {
+              Id: 63,
+              Name: 'Suez'
+            }
+          ]
+        },
+        {
+          Id: 5,
+          Name: 'Ismailia',
+          Regions: [
+            {
+              Id: 64,
+              Name: 'Ismailia'
+            }
+          ]
+        },
+        {
+          Id: 6,
+          Name: 'Port-Said',
+          Regions: [
+            {
+              Id: 65,
+              Name: 'Port-Said'
+            }
+          ]
+        },
+        {
+          Id: 7,
+          Name: 'Delta',
+          Regions: [
+            {
+              Id: 66,
+              Name: 'Zagazig'
+            },
+            {
+              Id: 67,
+              Name: 'Tanta'
+            },
+            {
+              Id: 68,
+              Name: 'Mansoura'
+            },
+            {
+              Id: 69,
+              Name: 'Damanhour'
+            },
+            {
+              Id: 70,
+              Name: 'Shebin Elkoom'
+            },
+            {
+              Id: 71,
+              Name: 'Banha'
+            },
+            {
+              Id: 72,
+              Name: 'Kafr al-Sheikh'
+            },
+            {
+              Id: 73,
+              Name: 'Damaietta'
+            },
+            {
+              Id: 74,
+              Name: 'Berket El Saba'
+            },
+            {
+              Id: 75,
+              Name: 'Belbeis'
+            },
+            {
+              Id: 76,
+              Name: 'Abo Kbir'
+            },
+            {
+              Id: 77,
+              Name: 'Deyarb'
+            },
+            {
+              Id: 78,
+              Name: 'Fakous'
+            },
+            {
+              Id: 79,
+              Name: 'Quesna'
+            },
+            {
+              Id: 80,
+              Name: 'Desouk'
+            },
+            {
+              Id: 81,
+              Name: 'Dekrenes'
+            },
+            {
+              Id: 82,
+              Name: 'Etai El-Baroud'
+            },
+            {
+              Id: 83,
+              Name: 'Kom Hamada'
+            },
+            {
+              Id: 84,
+              Name: 'Shebein El-Kanater'
+            },
+            {
+              Id: 85,
+              Name: 'Kafr Shukr'
+            },
+            {
+              Id: 86,
+              Name: 'Qaliub'
+            },
+            {
+              Id: 87,
+              Name: 'Tokh'
+            },
+            {
+              Id: 88,
+              Name: 'Abu Zaabal'
+            },
+            {
+              Id: 89,
+              Name: 'Smnoud'
+            },
+            {
+              Id: 90,
+              Name: 'Kafr El-Zayat'
+            },
+            {
+              Id: 91,
+              Name: 'El-Sadat'
+            },
+            {
+              Id: 92,
+              Name: 'El-Bagour'
+            },
+            {
+              Id: 93,
+              Name: 'Al Shohdaa'
+            },
+            {
+              Id: 94,
+              Name: 'Ashmoon'
+            },
+            {
+              Id: 95,
+              Name: 'Manzala'
+            },
+            {
+              Id: 96,
+              Name: 'Meet Ghamr'
+            },
+            {
+              Id: 97,
+              Name: 'Sherben'
+            },
+            {
+              Id: 98,
+              Name: 'El-Senbelaween'
+            },
+            {
+              Id: 99,
+              Name: 'Bilqas'
+            },
+            {
+              Id: 100,
+              Name: 'Kantara'
+            },
+            {
+              Id: 101,
+              Name: 'Kafr El Dawar'
+            },
+            {
+              Id: 102,
+              Name: 'Kanater Khairia'
+            },
+            {
+              Id: 103,
+              Name: 'Abo Hamaad'
+            },
+            {
+              Id: 104,
+              Name: 'Mahala'
+            },
+            {
+              Id: 105,
+              Name: 'Ras elbar'
+            },
+            {
+              Id: 106,
+              Name: 'Diarb Negm'
+            },
+            {
+              Id: 107,
+              Name: 'Minya El-Amh'
+            },
+            {
+              Id: 108,
+              Name: 'Menouf'
+            },
+            {
+              Id: 109,
+              Name: 'Behira'
+            }
+          ]
+        },
+        {
+          Id: 8,
+          Name: 'Upper Egypt',
+          Regions: [
+            {
+              Id: 110,
+              Name: 'Fayoum'
+            },
+            {
+              Id: 111,
+              Name: 'Sohag'
+            },
+            {
+              Id: 112,
+              Name: 'Aswan'
+            },
+            {
+              Id: 113,
+              Name: 'Luxor'
+            },
+            {
+              Id: 114,
+              Name: 'Qena'
+            },
+            {
+              Id: 115,
+              Name: 'Al Minya'
+            },
+            {
+              Id: 116,
+              Name: 'Assiut'
+            },
+            {
+              Id: 117,
+              Name: 'Bani Suef'
+            },
+            {
+              Id: 118,
+              Name: 'Bani Mazar'
+            },
+            {
+              Id: 119,
+              Name: 'Kom Ombo'
+            },
+            {
+              Id: 120,
+              Name: 'Maghagha'
+            },
+            {
+              Id: 121,
+              Name: 'Naga Hamady'
+            },
+            {
+              Id: 122,
+              Name: 'New Valley'
+            }
+          ]
+        },
+        {
+          Id: 10,
+          Name: 'Red Sea',
+          Regions: [
+            {
+              Id: 123,
+              Name: 'Ain Elsokhna'
+            },
+            {
+              Id: 124,
+              Name: 'Sharm El Sheikh'
+            },
+            {
+              Id: 125,
+              Name: 'Hurghada'
+            },
+            {
+              Id: 126,
+              Name: 'Taba'
+            },
+            {
+              Id: 127,
+              Name: 'Safaga'
+            },
+            {
+              Id: 128,
+              Name: 'Gouna'
+            },
+            {
+              Id: 129,
+              Name: 'Dahab'
+            },
+            {
+              Id: 130,
+              Name: 'Sahl Hasheesh'
+            },
+            {
+              Id: 131,
+              Name: 'Soma Bay'
+            },
+            {
+              Id: 132,
+              Name: 'El Quseir'
+            },
+            {
+              Id: 133,
+              Name: 'Sinai'
+            }
+          ]
+        },
+        {
+          Id: 11,
+          Name: 'Matruh',
+          Regions: [
+            {
+              Id: 134,
+              Name: 'Marsa Matrouh'
+            }
+          ]
+        },
+        {
+          Id: 12,
+          Name: 'Beheira',
+          Regions: [
+            {
+              Id: 135,
+              Name: 'Beheira'
+            }
+          ]
+        }
+      ]
+    }
+  };

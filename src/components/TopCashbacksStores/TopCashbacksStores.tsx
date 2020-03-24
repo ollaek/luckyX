@@ -22,7 +22,7 @@ const TopCashbacksStores = ({ stores }: TopCashbackStoresProp) => {
           })}
         </div>
         <div className="seeAllStors-text">
-          <Link to="/" className="hvr-icon-forward">
+          <Link to="/OnlineCashbacks" className="hvr-icon-forward">
             SEE ALL THE STORES
             <img
               className="hvr-icon"

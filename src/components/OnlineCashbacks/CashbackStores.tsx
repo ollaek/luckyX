@@ -4,11 +4,11 @@ import React from "react";
 
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
-import { InfiniteScroll } from "react-simple-infinite-scroll";
+import { InfiniteScroll } from "react-simple-infinite-scroll-patched";
 
 const CashbacksStores = (props: any) => {
   const userID = localStorage.getItem("Id");
-
+  
   const CashBackIndecator = (id: number) => {
     if (id === 1) {
       return "%";
@@ -41,11 +41,11 @@ const CashbacksStores = (props: any) => {
               throttle={100}
               threshold={300}
               isLoading={props.isLoading}
-              hasMore={(props.items.length < props.totalCount && props.totalCount !== 0) ? true : false}
+              hasMore={(props.stores.length < props.totalCount) ? true : false}
               onLoadMore={props.LoadMore()}
             >
               <div className="row">
-                {props.items.map(store => {
+                {props.stores.map(store => {
                   return (
                     <div
                       className="col-6 col-lg-4 cashback-card"

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useToasts } from 'react-toast-notifications'
+import { useToasts } from 'react-toast-notifications';
 
 import { TGlobalState } from "../../..";
 import { extrnalSignInAsync, signUpAsync, VerifyEmailAsync, SignInAsync, ForgotPasswordAsync } from "../../../actions";
@@ -14,7 +14,7 @@ const useUserState = () => {
   return {
     ...state,
     externalSignIn: (user: SocialUserModel) =>
-      extrnalSignInAsync(dispatch, user).then(()=>{addToast('Logged In Successfully', { appearance: 'success' ,autoDismiss: true  })}),
+      extrnalSignInAsync(dispatch, user).then(()=>{addToast('Logged In Successfully', { appearance: 'success' ,autoDismiss: false  })}),
     signUp: (user: UserSignUpModel) => signUpAsync(dispatch, user),
     verifyEmail: (id: any) => VerifyEmailAsync(dispatch, id),
     signIn: (user: UserSignInModel) => SignInAsync(dispatch, user).then(()=>{addToast('Logged In Successfully', { appearance: 'success',autoDismiss: true  })}),

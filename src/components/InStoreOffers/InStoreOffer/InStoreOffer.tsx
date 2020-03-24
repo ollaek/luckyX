@@ -1,39 +1,46 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import "../InStoreOffer/InStoreOffer.scss";
+import { InStoreOfferModel } from "../../../types";
 
-const InStoreOffer = () => {
-    return (
-        <>
-        
-     <div className="InstoreOffer">
-     <LinkContainer to={`/InStoreOfferDetails/12`} >
-            <Card className="InstoreOffer-card">
-              <Card.Header>
-                <img src={require("../../../assets/img/cook-door-logo.png")} alt=""/>
+import "./InStoreOffer.scss";
+type OfferProp = {
+  Offer: InStoreOfferModel;
+};
+const InStoreOffer = ({ Offer }: OfferProp) => {
+  const convertDate = date => {
+    const convertedDate = date.split("T")[0];
+    return convertedDate;
+  };
+  return (
+    <>
+      <div className="InstoreOffer">
+        <LinkContainer to={`/InStoreOfferDetails/${Offer.OfferId}`}>
+          <Card className="InstoreOffer-card">
+            <Card.Header>
+              <img src={Offer.MerchantLogoDb[0]} alt={Offer.MerchantName} />
+              <div>
+                <Card.Title>{Offer.MerchantName}</Card.Title>
+                <p className="card-text">{Offer.CategoryName}</p>
+              </div>
+            </Card.Header>
+            {/* <Card.Img src={Offer.OfferImgDb[0]} alt="" /> */}
+            <Card.Body>
+              <div className="discount-row">
+                <div className="discount"> {Offer.OfferDiscountTypeName}</div>
                 <div>
-                  <Card.Title>Cook Door</Card.Title>
-                  <p className="card-text">Food & Beverage</p>
+                  <i className="far fa-star mr-2"></i>{Offer.NumberOfFavorites} Favourites
                 </div>
-              </Card.Header>
-              <Card.Img src={require("../../../assets/img/offer-cookdoor.jpg")} alt=""/>
-              <Card.Body>
-                <div className="dicount-row">
-                  <button type="button" className="btn btn-outline-primary btn-rounded">Discount</button>
-                  <div>
-                    <i className="far fa-star mr-2"></i>200 Favourites
-    </div>
-                </div>
-                <Card.Title>10% on your total invoice</Card.Title>
-                <Card.Text>Exp. december 31, 2019</Card.Text>
-              </Card.Body>
-            </Card>
-            </LinkContainer>
-          </div>         
-         
-        </>
-      );
+              </div>
+              
+              <Card.Title>{Offer.OfferTitle}</Card.Title>
+              <Card.Text>Exp. {convertDate(Offer.ExpireDate)}</Card.Text>
+            </Card.Body>
+          </Card>
+        </LinkContainer>
+      </div>
+    </>
+  );
 };
 
 export default InStoreOffer;

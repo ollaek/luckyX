@@ -13,8 +13,6 @@ import GoogleButton from "../shared/SocialLogin/GoogleButton";
 import "../SignIn/SignInModal.scss";
 
 const SignInModal = ({show , onShowChange, history}) => {
-  console.log(onShowChange);
-  console.log(show);
   const { signIn } = useUserState();
   const signinValidationSchema = Yup.object().shape({
     password: Yup.string()

@@ -15,7 +15,6 @@ const authReducer = (
 ): TUserState => {
 
   if (isType(action, extrnalSignInAction.started)) {
-    console.log("started");
     return {
       ...state,
       isFetching: true,
@@ -30,6 +29,7 @@ const authReducer = (
     localStorage.setItem("Id", responseData.Id);
     localStorage.setItem("Email", responseData.Email);
     localStorage.setItem("Name", responseData.Name);
+    localStorage.setItem("IsMerged", responseData.IsMerged.toString());
     return {
       ...state,
       User: responseData,
@@ -116,6 +116,7 @@ const authReducer = (
     localStorage.setItem("Token", responseData.AccessToken);
     localStorage.setItem("Name", responseData.Name);
     localStorage.setItem("Email", responseData.Email);
+    localStorage.setItem("IsMerged", responseData.IsMerged.toString());
     return {
       ...state,
       User: responseData,

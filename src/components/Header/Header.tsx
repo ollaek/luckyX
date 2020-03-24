@@ -9,6 +9,8 @@ const Header = () => {
   return (
     <header className="header ">
       {/* <div className="container"> */}
+            {/* <div className="container"> */}
+
       <NavBar />
       {/* </div> */}
       <div className="container">

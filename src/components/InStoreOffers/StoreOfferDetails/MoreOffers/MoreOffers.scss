@@ -1,0 +1,41 @@
+.more-offers {
+  .carousel-item-next,
+  .carousel-item-prev,
+  .carousel-item.active {
+    display: flex;
+  }
+  .carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    list-style: none;
+  }
+  .carousel-control-next,
+  .carousel-control-prev {
+    width: auto;
+    opacity: 1;
+    transition: opacity 0.15s ease;
+  }
+  .carousel-control-next-icon,
+  .carousel-control-prev-icon {
+    width: 48px;
+    height: 48px;
+    // background-color: red;
+  }
+  .carousel-control-next-icon {
+    background-image: url(../../../../assets/img/svg/next-icon.svg);
+  }
+  .carousel-control-prev-icon {
+    background-image: url(../../../../assets/img/svg/pre-icon.svg);
+  }
+  .carousel-inner {
+    padding: 0 4rem;
+  }
+}
