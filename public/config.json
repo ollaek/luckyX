@@ -1,0 +1,11 @@
+{
+  "FeaturedMerchantsNumber": 8,
+  "LanguageId": 1,
+  "AffeliateBaseUrl": "https://go.urtrackinglink.com/aff_c",
+  "AffeliateID" : 12005,
+  "AffeliateName" : "luckyAffiliatePortal",
+  "SIGNUP_reward" : 50,
+  "CASHOUT_totalMonthlyCashoutAmount" : 500,
+  "CASHOUT_amanCashoutProcessNumberDays" : 6,
+  "WALLET_minimumBalanceToCashOut" : 5.00
+}

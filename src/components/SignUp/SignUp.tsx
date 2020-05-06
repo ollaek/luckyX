@@ -1,20 +1,75 @@
-import React from "react";
-import { Formik, ErrorMessage } from "formik";
+import React, { useEffect, useState } from "react";
+import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 
 import FaceBookButton from "../shared/SocialLogin/FaceBookButton";
 import NavBar from "../shared/NavBar/NavBar";
 import Footer from "../shared/Footer/Footer";
-import { useUserState } from "../shared/SocialLogin/Hook";
+import Loader from "../shared/Loader/Loader";
+import SignUpConfirmationModal from "./SignUpConfirmationModal";
+import SignUpOTPModal from "./SignUpOTPModal";
 
-import { Form } from "react-bootstrap";
+import { useUserState } from "../shared/SocialLogin/Hook";
+import { useConfigState } from "../shared/configHook";
+
+import { Form, Spinner } from "react-bootstrap";
 
 import GoogleButton from "../shared/SocialLogin/GoogleButton";
 import "././SignUp.scss";
 
 const SignUp = ({ history }) => {
-  const { signUp } = useUserState();
+  const {
+    signUp,
+    signUpError,
+    signInError,
+    success,
+    isFetching,
+    errorCode
+  } = useUserState();
+  const { configs, getConfig, isLoading } = useConfigState();
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [showOTP, setShowOTP] = useState(false);
+  const [email, setEmail] = useState("");
+  var localStorageValues = localStorage.getItem("registerationValues");
+  const FormInitialValues = localStorageValues
+    ? JSON.parse(localStorageValues)
+    : {
+        name: "",
+        email: "",
+        password: "",
+        passwordConfirm: ""
+      };
+
+  useEffect(
+    () => {
+      getConfig();
+      // if (localStorage.getItem("signupDone")) {
+      //   const obj = JSON.parse(localStorageValues);
+      //   if (obj) history.push(`/MailVerification/${obj.email}`);
+      // }
+    },
+    // eslint-disable-next-line
+    []
+  );
+
+  useEffect(
+    () => {
+      debugger;
+      if (errorCode === "061") {
+        setShowConfirm(true);
+        return;
+      }
+      if (success === "Y") {
+        const obj = JSON.parse(localStorageValues);
+        localStorage.setItem("signupDone", "true");
+        if (obj) history.push(`/MailVerification/${obj.email}`);
+      }
+    },
+    // eslint-disable-next-line
+    [success]
+  );
+
   const signupValidationSchema = Yup.object().shape({
     name: Yup.string()
       .max(40, "Please enter no more than 40 characters")
@@ -35,7 +90,7 @@ const SignUp = ({ history }) => {
 
   return (
     <>
-      <NavBar />
+      <NavBar history={history} />
       <section className="signUp-section sec-padding">
         <div className="container">
           <div className="row">
@@ -43,19 +98,21 @@ const SignUp = ({ history }) => {
               <div className="signUp-img">
                 <div className="img-container">
                   <img
-                    src={require("../../assets/img/signUp_img.png")}
+                    src={require("../../assets/img/signUp_img.svg")}
                     className="img-fluid"
                     alt=""
                   />
                 </div>
-                <h3>Register and get EGP 50,00 Bonus!</h3>
+                <h3>
+                  Register and get EGP {configs && configs.SIGNUP_reward} Bonus!
+                </h3>
               </div>
             </div>
             <div className="col-md-4 offset-md-1">
               <h2 className="title">Register with</h2>
               <div className="flex-center">
-                <GoogleButton history={history} onShowChange={null}/>
-                <FaceBookButton history={history} onShowChange={null}/>
+                <GoogleButton history={history} setShow={null} />
+                <FaceBookButton history={history} setShow={null} />
               </div>
               <div className="or">
                 <div className="or-divider"></div>
@@ -63,12 +120,7 @@ const SignUp = ({ history }) => {
                 <div className="or-divider"></div>
               </div>
               <Formik
-                initialValues={{
-                  name: "",
-                  email: "",
-                  password: "",
-                  passwordConfirm: ""
-                }}
+                initialValues={FormInitialValues}
                 onSubmit={values => {
                   let user = {
                     FullName: values.name,
@@ -76,8 +128,12 @@ const SignUp = ({ history }) => {
                     Password: values.password,
                     ConfirmPassword: values.passwordConfirm
                   };
+                  localStorage.setItem(
+                    "registerationValues",
+                    JSON.stringify(values)
+                  );
+                  setEmail(values.email);
                   signUp(user);
-                  history.push(`/MailVerification/${values.email}`);
                 }}
                 validationSchema={signupValidationSchema}
               >
@@ -86,7 +142,9 @@ const SignUp = ({ history }) => {
                     values,
                     handleChange,
                     handleBlur,
-                    handleSubmit
+                    handleSubmit,
+                    errors,
+                    touched
                   } = props;
                   return (
                     <Form onSubmit={handleSubmit} role="form" noValidate>
@@ -99,12 +157,13 @@ const SignUp = ({ history }) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.name}
+                          isInvalid={
+                            !!errors.name && touched.name ? true : false
+                          }
                         />
-                        <ErrorMessage name="name">
-                          {msg => (
-                            <div className="error error-message">{msg}</div>
-                          )}
-                        </ErrorMessage>
+                        <Form.Control.Feedback type="invalid">
+                          {errors.name}
+                        </Form.Control.Feedback>
                       </Form.Group>
                       <Form.Group controlId="formEmail">
                         <Form.Label>E-mail</Form.Label>
@@ -115,12 +174,13 @@ const SignUp = ({ history }) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.email}
+                          isInvalid={
+                            !!errors.email && touched.email ? true : false
+                          }
                         />
-                        <ErrorMessage name="email">
-                          {msg => (
-                            <div className="error error-message">{msg}</div>
-                          )}
-                        </ErrorMessage>
+                        <Form.Control.Feedback type="invalid">
+                          {errors.email}
+                        </Form.Control.Feedback>
                       </Form.Group>
                       <Form.Group controlId="formPassword">
                         <Form.Label>Password</Form.Label>
@@ -131,12 +191,13 @@ const SignUp = ({ history }) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.password}
+                          isInvalid={
+                            !!errors.password && touched.password ? true : false
+                          }
                         />
-                        <ErrorMessage name="password">
-                          {msg => (
-                            <div className="error error-message">{msg}</div>
-                          )}
-                        </ErrorMessage>
+                        <Form.Control.Feedback type="invalid">
+                          {errors.password}
+                        </Form.Control.Feedback>
                       </Form.Group>
                       <Form.Group controlId="formRepeatPassword">
                         <Form.Label>Repeat Password</Form.Label>
@@ -147,12 +208,15 @@ const SignUp = ({ history }) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.passwordConfirm}
+                          isInvalid={
+                            !!errors.passwordConfirm && touched.passwordConfirm
+                              ? true
+                              : false
+                          }
                         />
-                        <ErrorMessage name="passwordConfirm">
-                          {msg => (
-                            <div className="error error-message">{msg}</div>
-                          )}
-                        </ErrorMessage>
+                        <Form.Control.Feedback type="invalid">
+                          {errors.passwordConfirm}
+                        </Form.Control.Feedback>
                       </Form.Group>
                       <div className="py-3">
                         <button
@@ -165,11 +229,27 @@ const SignUp = ({ history }) => {
                           className="btn btn-block btn-primary"
                           type="submit"
                         >
-                          Register
+                          Register{" "}
+                          {isFetching && (
+                            <Spinner
+                              as="span"
+                              animation="border"
+                              size="sm"
+                              variant="light"
+                              role="status"
+                              aria-hidden="true"
+                            />
+                          )}
                         </button>
-                        {/* <Link  to="/MailVerification">
-                      Register
-                      </Link> */}
+                        <div className="error error-message text-center">
+                          {" "}
+                          {signUpError || ( !showConfirm || !showOTP )}
+                        </div>
+                        <div className="error error-message text-center">
+                          {" "}
+                          {signInError}
+                        </div>
+                        
                       </div>
                     </Form>
                   );
@@ -178,7 +258,7 @@ const SignUp = ({ history }) => {
               <div className="form-footer">
                 <p className="link-text">
                   Do you have an account?{" "}
-                  <Link to="/SignIn" className="link-red">
+                  <Link to="/SignIn" className="link-blue">
                     {" "}
                     Log In
                   </Link>
@@ -192,7 +272,15 @@ const SignUp = ({ history }) => {
           </div>
         </div>
       </section>
+      <SignUpConfirmationModal
+        show={showConfirm}
+        email={email}
+        setShow={val => setShowConfirm(val)}
+        setShowOTP={val => setShowOTP(val)}
+      />
+      <SignUpOTPModal show={showOTP} setShow={val => setShowOTP(val)} email={email} history={history}/>
       <Footer />
+      {isLoading && !configs && <Loader />}
     </>
   );
 };

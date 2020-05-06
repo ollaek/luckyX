@@ -3,10 +3,10 @@ import Footer from "../shared/Footer/Footer";
 import NavBar from "../shared/NavBar/NavBar";
 
 import "./PrivacyPolicy.scss";
-const PrivacyPolicy = () => {
+const PrivacyPolicy = ({history}) => {
   return (
     <>
-      <NavBar />
+      <NavBar history={history}/>
       <div className="privacyPolicy">
         <div className="privacyPolicy-header">
           <div className="container">

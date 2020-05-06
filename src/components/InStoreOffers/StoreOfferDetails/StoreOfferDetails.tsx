@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import { Card } from "react-bootstrap";
 // import { LinkContainer } from "react-router-bootstrap";
 
 import OfferTabs from "./OfferTabs/OfferTabs";
 import OfferImagesSlider from "./OfferImagesSlider/OfferImagesSlider";
 import MoreOffers from "./MoreOffers/MoreOffers";
+import Banner from "./OfferBanner/OfferBanner";
 
 import { useInStoreOffersState } from "../Hook";
 
@@ -12,6 +13,7 @@ import "./StoreOfferDetails.scss";
 
 const StoreOfferDetails = (props: any) => {
   const { Offer, getOfferById } = useInStoreOffersState();
+  const [show, setShow] = useState(false);
   useEffect(
     () => {
       getOfferById(props.offerId);
@@ -43,12 +45,12 @@ const StoreOfferDetails = (props: any) => {
                           alt=""
                         />
                         <div>
-                          <h4 className="h4-text">{Offer.MerchantName}</h4>
+                          <h4 className="h4-text mb-0">{Offer.MerchantName}</h4>
                           <p className="">{Offer.CategoryName}</p>
                         </div>
                       </div>
                       <div>
-                        <button className="btn btn-primary ">Get Offer</button>
+                        <button className="btn btn-primary" onClick={() => setShow(true)}>Get Offer</button>
                       </div>
                     </div>
                     <div className="offer-details_body">
@@ -81,13 +83,14 @@ const StoreOfferDetails = (props: any) => {
             </div>
             <div className="col-12 col-lg-12">
               <div className="sub-title-div">
-                <h2 className="sub-title">More offers from CookDoor</h2>
+                <h2 className="sub-title ">More offers from CookDoor</h2>
               </div>
-              <MoreOffers MerchantId={Offer.MerchantId}/>
+              <MoreOffers MerchantId={Offer.MerchantId} />
             </div>
           </div>
         </div>
       )}
+      <Banner show={show} setShow={setShow}/>
     </>
   );
 };

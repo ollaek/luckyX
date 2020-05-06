@@ -5,8 +5,8 @@ import { Toast } from "react-bootstrap";
 const SigninSuccessToaster = ({showToaster}:any) => {
     const [ show, setShow ] = useState(showToaster);
     return(
-        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-          <Toast.Body>Logged In Successfully</Toast.Body>
+        <Toast className="toasterCustom" onClose={() => setShow(false)} show={show} animation={true} delay={3000} autohide>
+          <Toast.Body>Logged In Successfully!</Toast.Body>
         </Toast>
     );
 };

@@ -1,18 +1,59 @@
 @import "../../assets/scss/mdb.scss";
 
 .header {
-    background-color: $primary-color;
- 
-  .carousel{
+  background-color: $primary-color;
+  .hero_section {
+    @include media-breakpoint-down(md) {
+      padding: 0 !important;
     }
-  .carousel-control-prev , .carousel-control-next{
-    @include media-breakpoint-down(sm) {
+  }
+  .carousel {
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    @include media-breakpoint-down(md) {
       display: none;
     }
   }
   // .hero_section
-  .carousel-item{
-    background-image: url(../../assets/img/Girl-hero-section-image.png);
+  .carousel-item {
+    &.slide1 {
+      background-image: url(../../assets/img/slide1_img.png);
+
+      // background-image: url(../../assets/img/Girl-hero-section-image.png);
+    }
+    &.slide2 {
+      background-image: url(../../assets/img/slide2_img.png);
+      background-position: 50% 60%;
+      @include media-breakpoint-down(md) {
+        background-position: 60% 60%;
+      }
+    }
+    &.slide3 {
+      background-image: url(../../assets/img/slide3_img.png);
+      background-position: 40% 60%;
+      padding-right: 5rem;
+      .flex-end {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
+        @include media-breakpoint-down(md) {
+          // max-height: 370px;
+          margin-left: auto;
+          // max-width: 220px;
+        }
+        @include media-breakpoint-down(sm) {
+          max-height: 370px;
+          margin-left: auto;
+          max-width: 220px;
+        }
+      }
+    }
+    // display: flex;
+    // justify-content: center;
+    // align-items: flex-start;
+    // flex-direction: column;
+
     background-size: contain;
     background-repeat: no-repeat;
     // padding: 7rem 4rem;
@@ -21,55 +62,64 @@
     // background-position: 135px 120px;
     // background-position: 52% 60%;
     background-position: 22% 60%;
-
+    height: 550px;
+    max-height: 550px;
     // background-repeat: no-repeat;
     padding-top: 7rem;
     padding-bottom: 7rem;
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       // padding: 4rem 2rem 2rem 2rem;
       // background-image: none;
-       background-size: cover;
+      //  background-size: cover;
       background-position: 50% 20%;
       // padding-left: 2rem !important;
       //   padding-right: 2rem !important;
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
-        padding-top: 4rem;
-        padding-bottom: 4rem;
+      padding-left: 3rem !important;
+      padding-right: 3rem !important;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+
+      background-size: 135% 100%;
+      // height: 420px;
+      // max-height: 420px;
+      min-height: 340px;
+      // max-height: 340px;
+      max-height: 370px;
     }
     @include media-breakpoint-down(md) {
       background-size: cover;
       background-position: 52% 20%;
       // padding-left: 4rem !important;
       //   padding-right: 4rem !important;
-        padding-top: 4rem;
-        padding-bottom: 4rem;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
     }
     // min-height: 500px;
   }
   .carousel-indicators {
-    @include media-breakpoint-down(sm) {
-    bottom: -40px;
-  }}
-  .carousel-indicators li{
-    @include media-breakpoint-down(sm) {
-    text-indent: initial;
-    color:$text-gray;
-    width: auto;
+    @include media-breakpoint-down(md) {
+      bottom: -40px;
     }
   }
-  .carousel-indicators li:before{
-    @include media-breakpoint-down(sm) {
-    font-family: "Font Awesome 5 Free";
-    content: "\f111";
-    display: inline-block;
+  .carousel-indicators li {
+    @include media-breakpoint-down(md) {
+      text-indent: initial;
+      color: $text-gray;
+      width: auto;
     }
   }
-  .carousel-indicators li.active:before{
-    @include media-breakpoint-down(sm) {
-    font-family: "Font Awesome 5 Free";
-    content: "\f192";
-    display: inline-block;
+  .carousel-indicators li:before {
+    @include media-breakpoint-down(md) {
+      font-family: "Font Awesome 5 Free";
+      content: "\f111";
+      display: inline-block;
+    }
+  }
+  .carousel-indicators li.active:before {
+    @include media-breakpoint-down(md) {
+      font-family: "Font Awesome 5 Free";
+      content: "\f192";
+      display: inline-block;
     }
   }
   .heading-text {
@@ -79,43 +129,60 @@
     max-width: 560px;
     // font-size: 5rem;
     font-size: 4.5rem;
+    line-height: 4.5rem;
     margin-bottom: 2rem;
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       // font-size: 4rem;
       // width: 50%;
-      font-size: 3rem;
-      max-width: 230px;
+      font-size: 2.5rem;
+      line-height: 3rem;
+      // max-width: 230px;
+      // max-width: 370px;
+      min-width: 220px;
+      max-width: 280px;
     }
+  }
+  .sub-title-light {
     @include media-breakpoint-down(md) {
-      // width: 60%;
+      font-size: 1.3rem;
     }
   }
-  .carousel-item{
-      padding-left: 10rem;
-      padding-right: 10rem;
+  .carousel-item {
+    padding-left: 10rem;
+    padding-right: 10rem;
   }
-  
-.carousel-control-next-icon{
+
+  .carousel-control-next-icon {
     background-image: url(../../assets/img/svg/Chevron-Right.svg);
-}
-.carousel-control-prev-icon{
+  }
+  .carousel-control-prev-icon {
     background-image: url(../../assets/img/svg/Chevron-Left.svg);
-}
-.carousel-control-next-icon, .carousel-control-prev-icon {
+  }
+  .carousel-control-next-icon,
+  .carousel-control-prev-icon {
     // display: inline-block;
     width: 48px;
     height: 48px;
     // background: no-repeat 50%/100% 100%;
-}
-.carousel-control-next, .carousel-control-prev {
+  }
+  .carousel-control-next,
+  .carousel-control-prev {
     width: auto;
-    opacity:1;
-    transition: opacity .15s ease;
-}
-.btn.btn-primary-white{
-  background-color: white;
-}
-.btn.btn-primary-white:hover , .btn.btn-primary-white:focus{
-  background-color:$primary-hover;
-}
+    opacity: 1;
+    transition: opacity 0.15s ease;
+  }
+  .btn.btn-primary-white {
+    background-color: white;
+  }
+  .btn.btn-primary-white:hover,
+  .btn.btn-primary-white:focus {
+    background-color: $primary-hover;
+  }
+  .carousel-item-next,
+  .carousel-item-prev,
+  .carousel-item.active {
+    display: flex;
+    align-items: center;
+    // align-items: flex-end;
+  }
 }

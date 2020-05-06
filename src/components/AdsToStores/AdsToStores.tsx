@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./AdsToStores.scss";
 const AdsToStores = () => {
     return (
@@ -15,12 +17,12 @@ const AdsToStores = () => {
                         at stores you love
                         </h2>
                         <div className="seeAllStors-text">
-                            <a href="#!" className="hvr-icon-forward justify-content-start">
+                            <Link to="/OnlineCashbacks" className="hvr-icon-forward justify-content-start">
                                 SEE ALL THE STORES
-                                <img className="hvr-icon" src={require("../../assets/img/svg/Right-arrow.svg")}
+                                <img className="hvr-icon" src={require("../../assets/img/svg/Right-arrow-blue.svg")}
                                     alt="Right-arrow"
                                 />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

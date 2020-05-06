@@ -7,12 +7,12 @@ const InStoreDetails = (props:any) => {
   const offerId = props.match.params.id;
   return (
     <div>
-      <Header />
+      <Header history={props.history}/>
       <div className="sec-padding">
         <section className="container">
           <div className="row">
             <div className="col-12 col-lg-12">
-              <h3 className="page-title">In-store offers</h3>
+              <h3 className="page-title px-3">In-store offers</h3>
             </div>
           </div>
           <div className="row">

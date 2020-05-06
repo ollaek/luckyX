@@ -25,7 +25,7 @@ const CashbacksCategory = ({ category }: CashbackCategoryProp) => {
           </div>
           <div className="card-right">
             <Card.Title>{category.AffiliateCategoryName}</Card.Title>
-            <Card.Text>
+            <Card.Text as={"span"}>
               <p className="text-gray">Get up to</p>
               <p className="cashback-text">
                 {" "}
@@ -34,7 +34,7 @@ const CashbacksCategory = ({ category }: CashbackCategoryProp) => {
               </p>
             </Card.Text>
             <LinkContainer
-              to={`/OnlineCashbacks/${category.AffiliateCategoryId}`}
+              to={`/OnlineCashbacks?id=${category.AffiliateCategoryId}`}
             >
               <button className="btn btn-primary ">Shop Now</button>
             </LinkContainer>

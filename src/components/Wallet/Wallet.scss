@@ -1,0 +1,66 @@
+@import "../../assets/scss/custom-variables";
+p{
+    margin-bottom: 0;
+}
+.wallet-heading{
+    background-color:$bg-light;
+    padding: 2rem 0;
+    .wallet-cash_ballance{
+        border-radius: 8px;
+        background-color:$btn-light-color;
+        padding:2rem;
+        max-width: 588px;
+        margin: auto;
+        // margin: 0 1rem;
+    }
+
+}
+.wallet-row{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    h2{
+        margin-bottom: 0;
+    }
+    img{
+        margin-right: 1rem;
+    }
+    button > img{
+        margin-right: 0.5rem;
+    }
+}
+//=Wallet Body////////////////////////////////////////////////////////////////////////////
+.no_transactions{
+    text-align: center;
+    img , h3, button{
+        margin-bottom: 2rem;
+    }
+}
+.transactions{
+    // margin-bottom: 2rem;
+.transactions-header{
+    padding: 1rem 0;
+    border-bottom: 1px solid $bg-dark;
+    margin-bottom: 1.5rem;
+  
+}
+.transactions-body{
+    padding-bottom: 2rem;
+}
+.transaction-row{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 1.5rem;
+}
+.flex-div{
+    display: flex;
+    align-items: center;
+}
+.img-div{
+    text-align: center;
+    margin-right: 1rem;
+    width: 80px;
+    max-width: 80px;
+}
+}

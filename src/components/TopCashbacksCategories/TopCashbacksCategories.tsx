@@ -22,7 +22,7 @@ const TopCashbacksCategories = ({ categories }: TopCashbackCategoriesProp) => {
         <div className="row">
           <div className="col-12 col-lg-10 offset-lg-1">
             <div className="row">
-              {categories.map(category => {
+              {categories && categories.map(category => {
                 return <Category category={category} key={category.AffiliateCategoryId} />;
               })}
             </div>
@@ -32,7 +32,7 @@ const TopCashbacksCategories = ({ categories }: TopCashbackCategoriesProp) => {
 
           <Link to="/OnlineCashbacks" className="hvr-icon-forward">
             SEE ALL THE STORES
-                                <img className="hvr-icon" src={require("../../assets/img/svg/Right-arrow.svg")}
+                                <img className="hvr-icon" src={require("../../assets/img/svg/Right-arrow-blue.svg")}
               alt="Right-arrow"
             />
           </Link>

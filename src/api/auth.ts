@@ -15,12 +15,7 @@ const authApi = {
       }),
   SignUp: (user: UserSignUpModel) =>
     authBase
-      .post("account/affiliateregister", {
-        Email: user.Email,
-        FullName: user.FullName,
-        Password: user.Password,
-        ConfirmPassword: user.ConfirmPassword
-      })
+      .post("account/affiliateregister", user)
       .then(res => {
         return res.data;
       }),

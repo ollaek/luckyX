@@ -129,7 +129,7 @@ const onlineCashbacksReducer = (state: TOnlineCashbacksState = initialState, act
     if (isType(action, getMoreStoresAction.started)) {
         return {
             ...state,
-            isLoading: true
+            isLoading: false
         }
     }
 

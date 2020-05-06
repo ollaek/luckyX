@@ -5,4 +5,7 @@ export type TAccountState = {
     isLoading: boolean;
     errorMSG: String;
     otpWaitingTime: number;
+    isMobileExistInLucky: boolean;
+    isMobileMerged: boolean;
+    success: string;
   };

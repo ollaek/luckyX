@@ -4,3 +4,7 @@ export * from './onlineCashbacks';
 export * from './inStoreOffers';
 export * from './citiesAndCategories';
 export * from './acount';
+export * from './cashout';
+export * from './wallet';
+export * from './config';
+export * from './contactUs';

@@ -12,7 +12,8 @@ export type TopStoresRequestModel = {
     Featured: boolean,
     FeaturedMerchantsNumber?: number,
     pageSize:number,
-    pageIndex:number
+    pageIndex:number,
+    SearchKey?: string
 };
 
 export type TopCategoriesModel = {

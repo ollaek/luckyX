@@ -27,7 +27,7 @@ const CashbacksStores = props => {
   return (
     <>
       <div>
-        <Header />
+        <Header history={props.history}/>
         <div className="sec-padding">
           <section className="container">
             {storeDetails && <CashbacksStoreDetailsData store={storeDetails} />}

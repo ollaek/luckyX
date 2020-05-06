@@ -1,5 +1,5 @@
 // import React from "react";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 
 //import Header from "../Header/Header";
 import Footer from "../shared/Footer/Footer";
@@ -15,9 +15,7 @@ import {
   STEP4
 } from "./Steps";
 
-//import CashoutSuccessAman from "./CashoutSuccess/CashoutSuccessAman";
-//import CashoutSuccessBankTransfer from "./CashoutSuccess/CashoutSuccessBankTransfer";
-import { useAccountState } from "./Hook";
+import { useAccountState } from "./accountHook";
 import "./Cashout.scss";
 import Stepper, {
   Step,
@@ -25,13 +23,10 @@ import Stepper, {
   StepperController
 } from "react-material-stepper";
 import Loader from "../shared/Loader/Loader";
-import Modal from "./CashoutErrorModal/CashoutErrorModal";
 
 const Cashout = ({history}) => {
   const stepperControllerRef = useRef<StepperController>();
-  const { isLoading, verifyOTP, resendOTP, errorMSG } = useAccountState();
-  const [mobile, setMobile] = useState("");
-  debugger;
+  const { isLoading, verifyOTP, resendOTP } = useAccountState();
 
   const onComplete = (stepId: string) => {
     setTimeout(() => {
@@ -48,14 +43,14 @@ const Cashout = ({history}) => {
   };
 
   const initial = {
-    step1: num => setMobile(num),
-    step2: { mobile },
+    step1: true,
+    step2: true,
     step3: true,
-    step4: true,
+    step4: true
   };
   return (
     <div>
-      <NavBar />
+      <NavBar history={history}/>
 
       <div className="sec-padding">
         <div className="container">
@@ -86,7 +81,6 @@ const Cashout = ({history}) => {
                                   verifyOTP={(number, otp, callback) =>
                                     verifyOTP(number, otp, callback)
                                   }
-                                  errorMSG={errorMSG}
                                 />
                               </Step>
                             )
@@ -95,7 +89,11 @@ const Cashout = ({history}) => {
                         <StepperContext.Consumer>
                           {stepperContext =>
                             stepperContext.getData(STEP2, initial).step3 && (
-                              <Step stepId={STEP3} title="Step Three">
+                              <Step
+                                stepId={STEP3}
+                                title="Step Three"
+                                data={initial}
+                              >
                                 <Step3 />
                               </Step>
                             )
@@ -104,7 +102,11 @@ const Cashout = ({history}) => {
                         <StepperContext.Consumer>
                           {stepperContext =>
                             stepperContext.getData(STEP3, initial).step4 && (
-                              <Step stepId={STEP4} title="Step four">
+                              <Step
+                                stepId={STEP4}
+                                title="Step four"
+                                data={initial}
+                              >
                                 <Step4 />
                               </Step>
                             )
@@ -112,10 +114,7 @@ const Cashout = ({history}) => {
                         </StepperContext.Consumer>
                       </Stepper>
                     </div>
-                    <div className="cashout-success">
-                      {/* <CashoutSuccessAman /> */}
-                      {/* <CashoutSuccessBankTransfer /> */}
-                    </div>
+                    <div className="cashout-success"></div>
                   </div>
                 </div>
               </div>

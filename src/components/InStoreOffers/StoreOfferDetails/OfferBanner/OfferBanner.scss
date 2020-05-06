@@ -1,0 +1,75 @@
+@import "../../../../assets/scss/mdb.scss";
+p{
+  margin-bottom: 0;
+}
+.cashout-error-modal {
+  .modal-dialog {
+    .modal-content {
+      border-radius: 8px;
+      padding: 1rem;
+      background-color:$btn-light-color;
+      .modal-header {
+        border-bottom: 0;
+        display: flex;
+        justify-content: flex-end;
+        .close {
+          font-size: 2rem;
+          background-image: url(../../../../assets/img/svg/Close-sm.svg);
+          background-repeat: no-repeat;
+          width: 13.5px;
+          height: 13.5px;
+          padding: 0;
+          margin: 0;
+          span {
+            display: none;
+          }
+        }
+      }
+      .modal-body {
+        padding: 1rem 3rem;
+        @include media-breakpoint-down(sm){
+          padding: 1rem;
+        }
+        h4 {
+          margin-bottom: 1rem;
+        }
+      }
+      .QRcode-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      .buttons-row{
+text-align: center;
+      }
+    }
+  }
+}
+.btn.footer-btn{
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+    padding: 0.7rem 2rem;
+  align-items: center;
+  color: #929297 !important;
+  text-transform: capitalize;
+  white-space: nowrap;
+  margin: 0;
+  p{
+   font-size: 1.125rem ;
+  }
+  img{
+    margin-right: .8rem!important;
+  }
+  @include media-breakpoint-down(md){
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+  }
+}
+.apple-icon{
+  background-color: var(--colors-grays-dark);
+  margin-right: 0.5rem;
+  font-size: 3rem;
+  color: $text-gray;
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 import { StoreDetailsModel } from '../../types';
 import { Link } from 'react-router-dom';
@@ -12,8 +11,6 @@ type StoreProps = {
 const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
   const userID = localStorage.getItem("Id");
 
-  localStorage.setItem("StoreLogo", store.MerchantLogoDb[0]);
-
   const CashBackIndecator = (id: number) => {
     if (id === 1) {
       return "%";
@@ -21,6 +18,9 @@ const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
       return "EGP";
     }
   };
+
+  localStorage.setItem("StoreLogo", store.MerchantLogoDb[0]);
+  localStorage.setItem("StoreCashback", `${store.CashbackValue}${CashBackIndecator(store.CashbackIndicatorId)}`)
 
   return (
     <div className="row">
@@ -31,7 +31,7 @@ const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
               <h3 className="page-title">Online Cashbacks stores</h3>
             </div>
           </div>
-          <div className="row">
+          {/* <div className="row">
             <div className="col-md-12">
               <Breadcrumb>
                 <Breadcrumb.Item href="#">Online Stores</Breadcrumb.Item>
@@ -39,7 +39,7 @@ const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
   <Breadcrumb.Item active>{store.MerchantNameDb[0]}</Breadcrumb.Item>
               </Breadcrumb>
             </div>
-          </div>
+          </div> */}
           <div className="row">
             <div className="col-md-12">
               <div className="cashbackDetails-card">
@@ -55,7 +55,7 @@ const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
                   </div>
                 </div>
                 <div className="card-text card-basis">
-                  <p className="text-gray">Before 3.00%</p>
+                  {/* <p className="text-gray">Before 3.00%</p> */}
                   <p className="cashback-text">
                     Up to {store.CashbackValue}
                     {CashBackIndecator(store.CashbackIndicatorId)}{" "}
@@ -80,7 +80,7 @@ const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
           <div className="row">
             <div className="col-md-12">
               <h4 className="filteration-text">Cashbacks by category</h4>
-              <table className="table table-striped table-sm">
+              <table className="table table-striped">
                 <tbody>
                   {store.AffiliateCategoryMerchants.map(categoty => {
                     return (
@@ -101,7 +101,7 @@ const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
           <div className="row">
             <div className="col-md-12">
               <h4 className="filteration-text">Cashback terms</h4>
-              <div>{store.TermsandConditions}</div>
+              <p className="text-muted">{store.TermsandConditions}</p>
             </div>
           </div>
           <hr></hr>
@@ -110,7 +110,7 @@ const CashbacksStoreDetailsData = ({ store }: StoreProps) => {
               <h4 className="filteration-text">
                 About {store.MerchantNameDb[0]}
               </h4>
-              <p>{store.AboutTheMerchant}</p>
+              <p className="text-muted">{store.AboutTheMerchant}</p>
             </div>
           </div>
         </div>

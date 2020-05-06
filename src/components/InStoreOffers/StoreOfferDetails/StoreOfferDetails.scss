@@ -1,4 +1,4 @@
-@import "../../../assets/scss/custom-variables";
+@import "../../../assets/scss/mdb.scss";
 .offer-details_header{
     border-bottom: 1px solid $bg-dark;
     display: flex;
@@ -15,6 +15,11 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
+    @include media-breakpoint-down(lg) { 
+      min-height: 60px;
+      margin-bottom: 0;
+    }
 }
 .discount{
     border: 1.1px solid $primary-color;

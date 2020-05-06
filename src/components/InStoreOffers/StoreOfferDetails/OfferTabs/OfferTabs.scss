@@ -17,9 +17,9 @@
   }
   .nav-tabs .nav-item.show .nav-link,
   .nav-tabs .nav-link.active {
-    color: $msg-error-color;
+    color: $blue-color;
     background-color: #fff;
-    border-bottom: 1.5px solid $msg-error-color;
+    border-bottom: 1.5px solid $blue-color;
     font-family: $font-family-bold;
   }
   .tab-content > .tab-pane {

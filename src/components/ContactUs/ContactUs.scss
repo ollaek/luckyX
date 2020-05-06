@@ -28,4 +28,19 @@
       flex-direction: column;
     }
   }
+  .custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: $primary-dark;
+    background-color: $primary-dark;
+  }
+  .custom-control-label {
+    padding-left: 0.3rem;
+  }
+  
+  .custom-control-input:focus~.custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem #91919566;
+}
+.was-validated textarea.form-control:invalid, textarea.form-control.is-invalid{
+  border: 1px solid $msg-error-color;
+}
 }

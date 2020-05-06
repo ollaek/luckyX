@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -9,15 +9,26 @@ import { Form, Col } from "react-bootstrap";
 
 import "../ForgotPassword/ForgotPassword.scss";
 const ForgotPassword = ({history}) => {
-  const { forgotPassword } = useUserState();
+  const { forgotPassword, success, ForgetPasswordError } = useUserState();
   const forgotPasswordValidationSchema = Yup.object().shape({
     email: Yup.string()
       .email("Please enter a valid email")
       .required("Please enter an email")
   });
+
+   useEffect(
+     () => {
+       if (success === "Y") {
+         var mail = localStorage.getItem("resetPasswordMail");
+         if (mail) history.push(`/ResetPasswordVerification/${mail}`);
+       }
+     },
+     // eslint-disable-next-line
+     [success]
+   );
   return (
     <>
-      <NavBar />
+      <NavBar history={history} />
 
       <div className="container">
         <div className="row">
@@ -33,8 +44,8 @@ const ForgotPassword = ({history}) => {
                     email: ""
                   }}
                   onSubmit={values => {
+                    localStorage.setItem("resetPasswordMail", values.email);
                     forgotPassword(values.email);
-                    history.push(`/ResetPasswordVerification/${values.email}`);
                   }}
                   validationSchema={forgotPasswordValidationSchema}
                 >
@@ -43,7 +54,9 @@ const ForgotPassword = ({history}) => {
                       values,
                       handleChange,
                       handleBlur,
-                      handleSubmit
+                      handleSubmit,
+                      touched,
+                      errors,
                     } = props;
                     return (
                       <Form role="form" onSubmit={handleSubmit} noValidate>
@@ -56,6 +69,7 @@ const ForgotPassword = ({history}) => {
                               onChange={handleChange}
                               onBlur={handleBlur}
                               value={values.email}
+                              isInvalid={!!errors.email && touched.email}
                             />
                             <ErrorMessage name="email">
                               {msg => (
@@ -70,6 +84,7 @@ const ForgotPassword = ({history}) => {
                               >
                                 Email me
                               </button>
+                              <div className="error error-message text-center">{ForgetPasswordError}</div>
                           </Col>
                         </Form.Group>
                       </Form>

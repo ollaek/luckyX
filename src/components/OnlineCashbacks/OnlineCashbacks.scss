@@ -1,7 +1,10 @@
 @import "../../assets/scss/mdb.scss";
 
 .cashbackStores {
-  padding: 3rem 0;
+  padding:0 0 2rem 0;
+  .page-title{
+    margin-bottom: 1rem;
+  }
   @include media-breakpoint-down(sm) {
     padding: 1rem 0;
     .page-title{
@@ -16,13 +19,13 @@
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: $bg-light;
 }
-table.table-sm th,
-table.table-sm td {
+table.table th,
+table.table td {
   border: 0;
   padding: 0.6rem 1rem;
 }
-table.table-sm th:last-child,
-table.table-sm td:last-child {
+table.table th:last-child,
+table.table td:last-child {
   color: $msg-error-color;
   text-align: right;
 }
@@ -83,7 +86,11 @@ table.table-sm td:last-child {
   // margin: auto;
   display: flex;
   align-items: center;
+  
+  justify-content: flex-start;
+  @include media-breakpoint-down(md){
   justify-content: center;
+  }
 }
 
 .loading-animate {

@@ -9,7 +9,8 @@ const appApi = {
             Featured: req.Featured,
             FeaturedMerchantsNumber: req.FeaturedMerchantsNumber,
             pageSize: req.pageSize,
-            pageIndex: req.pageIndex
+            pageIndex: req.pageIndex,
+            SearchKey: req.SearchKey
         }).then((res)=>{ return res.data })
     ),
     getCategories: () => (

@@ -18,7 +18,8 @@ export type UserSignUpModel = {
   Email: string,
   FullName: string,
   Password: string,
-  ConfirmPassword: string
+  ConfirmPassword: string,
+  ConfirmationOtp?: string
 }
 
 export type UserSignInModel = {
@@ -29,5 +30,9 @@ export type UserSignInModel = {
 export type TUserState = {
   User: UserModel;
   isFetching: boolean;
-  Error: string;
+  signInError: string;
+  signUpError: string;
+  ForgetPasswordError: string;
+  success: string;
+  errorCode: string;
 };

@@ -1,22 +1,4 @@
 
 @import "../../assets/scss/mdb.scss";
 
-.page-title{
-    @include media-breakpoint-down(sm) {
-  display: none;
-  }
-  }
-  .discount-row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-.discount{
-    border: 1.1px solid $primary-color;
-    border-radius: 16px;
-    max-width: 100px;
-    line-height: 100%;
-    text-align: center;
-    padding: 0.5rem 1rem;
-}
+

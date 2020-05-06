@@ -6,10 +6,18 @@ import FilterationByCategory from "./FilterationByCategory/FilterationByCategory
 import Footer from "../shared/Footer/Footer";
 import { useOnlineCashbacksState } from "./Hook";
 import Loader from "../shared/Loader/Loader";
+import { useLocation } from "react-router-dom";
 
 import "./OnlineCashbacks.scss";
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 const OnlineCashbacks = (props:any) => {
+
+  let query = useQuery();
+
   const {
     isLoading,
     catrgories,
@@ -22,32 +30,36 @@ const OnlineCashbacks = (props:any) => {
     getMoreStores
   } = useOnlineCashbacksState();
 
-  const [filteredId, setFilteredId] = useState(props.match.params.id);
+  const [filteredId, setFilteredId] = useState( (query.get("id")) ? +query.get("id") : null);
+  const searchTerm = query.get("searchTerm");
   const [page, setPage] = useState(0);
   useEffect(
     () => {
+      
       getCategories();
       if (filteredId) {
         getStoresByCategoryId({
           categoryId: filteredId,
           pageSize: 8,
-          pageIndex: page
+          pageIndex: 0,
+          SearchKey: searchTerm ? searchTerm : null
         });
         setPage(page + 1);
         return;
       }
 
       getStores({
-        LanguageId: 0,
+        LanguageId: 1,
         Featured: false,
         FeaturedMerchantsNumber: 0,
         pageSize: 8,
-        pageIndex: page
+        pageIndex: 0,
+        SearchKey: searchTerm ? searchTerm : null
       });
       setPage(page + 1);
     },
     // eslint-disable-next-line
-    [filteredId]
+    [filteredId, searchTerm]
   );
 
   useEffect(
@@ -56,23 +68,32 @@ const OnlineCashbacks = (props:any) => {
     [stores]
   );
 
+  useEffect(
+    () => {
+    },
+    // eslint-disable-next-line
+    [searchTerm]
+  );
+
   const LoadMore = () => {
     if (filteredId) {
       getMoreStoresByCategoryId({
         categoryId: filteredId,
         pageSize: 8,
-        pageIndex: page
+        pageIndex: page,
+        SearchKey: searchTerm ? searchTerm : null
       });
       setPage(page + 1);
       return;
     }
 
     getMoreStores({
-      LanguageId: 0,
+      LanguageId: 1,
       Featured: false,
       FeaturedMerchantsNumber: 0,
       pageSize: 8,
-      pageIndex: page
+      pageIndex: page,
+      SearchKey: searchTerm ? searchTerm : null
     });
 
     setPage(page + 1);
@@ -80,12 +101,12 @@ const OnlineCashbacks = (props:any) => {
 
   return (
     <div>
-      <Header />
+      <Header history={props.history}/>
 
       <div className="sec-padding">
         <section className="container">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-12 col-md-4 col-lg-3">
               {catrgories && (
                 <FilterationByCategory
                   categories={catrgories}
@@ -95,7 +116,7 @@ const OnlineCashbacks = (props:any) => {
                 />
               )}
             </div>
-            <div className="col-md-9">
+            <div className="col-12 col-md-8 col-lg-9 ">
               {stores && (
                 <CashbacksStores
                   stores={stores}
@@ -110,7 +131,7 @@ const OnlineCashbacks = (props:any) => {
       </div>
 
       <Footer />
-      {isLoading && <Loader />}
+      {isLoading && page < 1 && <Loader />}
     </div>
   );
 };

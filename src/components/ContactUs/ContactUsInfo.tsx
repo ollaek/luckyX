@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 import "./ContactUs.scss";
 
@@ -71,18 +71,19 @@ const ContactUs = () => {
                     <Form.Control as="textarea" placeholder="Text your message here..." rows="6" />
                   </Form.Group>
                   <div className="robot-row ">
-            <Form.Check
-              className=""
-              custom
-              label="I'm not a robot"
-              type="checkbox"
-              name="robot"   
-              id="formHorizontalRobot"
-            />
+                  <Form.Check
+                    className=""
+                    custom
+                    label="I'm not a robot"
+                    type="radio"
+                    name="robot"
+                    id="formHorizontalRobot"
+                   
+                  />
 
-            <Button type="submit" className="col-12 col-md-3">
+            <button type="submit" className="btn btn-primary col-12 col-md-3">
               Send
-            </Button>
+            </button>
           </div>
        
                 </Form>

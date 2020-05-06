@@ -24,7 +24,9 @@ const InStoreOffer = ({ Offer }: OfferProp) => {
                 <p className="card-text">{Offer.CategoryName}</p>
               </div>
             </Card.Header>
-            {/* <Card.Img src={Offer.OfferImgDb[0]} alt="" /> */}
+
+             <Card.Img src={Offer.OfferImgDb[0]} alt="" />
+
             <Card.Body>
               <div className="discount-row">
                 <div className="discount"> {Offer.OfferDiscountTypeName}</div>

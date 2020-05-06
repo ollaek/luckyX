@@ -1,9 +1,15 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Tabs, Tab, Form } from "react-bootstrap";
+import React,{ useEffect } from "react";
 import "./CashoutSuccess.scss";
 
-const CashoutSuccess = () => {
+import { useConfigState } from "../../shared/configHook";
+
+const CashoutSuccessLucky = () => {
+  const { configs, getConfig } = useConfigState();
+  useEffect(() => {
+    getConfig();
+  },
+  // eslint-disable-next-line
+  []);
   return (
     <>
       <section className="cashout-success">
@@ -20,7 +26,7 @@ const CashoutSuccess = () => {
         <div className="cashout-success-text">
           <p>
             Request is under processing and this could take up to <br></br>X
-            (configurable) working days
+            {configs && configs.CASHOUT_amanCashoutProcessNumberDays} working days
           </p>
           <p>Don’t forget to check your email for updates</p>
         </div>
@@ -33,4 +39,4 @@ const CashoutSuccess = () => {
     </>
   );
 };
-export default CashoutSuccess;
+export default CashoutSuccessLucky;

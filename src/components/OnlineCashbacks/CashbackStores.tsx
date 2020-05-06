@@ -2,7 +2,6 @@ import "../CashbacksStore/CashbacksStore.scss";
 
 import React from "react";
 
-import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
 import { InfiniteScroll } from "react-simple-infinite-scroll-patched";
 
@@ -25,7 +24,7 @@ const CashbacksStores = (props: any) => {
             <h3 className="page-title">Online Cashbacks stores</h3>
           </div>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-md-12">
             <Breadcrumb>
               <Breadcrumb.Item href="#">Online stores</Breadcrumb.Item>
@@ -34,8 +33,8 @@ const CashbacksStores = (props: any) => {
               </Breadcrumb.Item>
             </Breadcrumb>
           </div>
-        </div>
-        {props.stores && (
+        </div> */}
+        {props.stores.length > 0 ? (
           <>
             <InfiniteScroll
               throttle={100}
@@ -59,14 +58,14 @@ const CashbacksStores = (props: any) => {
                           />
                         </div>
                       </Link>
-                      <p className="card-text">
+                      <div className="card-text">
                         <p className="text-gray">Get up to</p>
                         <p className="cashback-text">
                           {store.CashbackValue}
                           {CashBackIndecator(store.CashbackIndicatorId)}{" "}
                           Cashback
                         </p>
-                      </p>
+                      </div>
                       {userID ? (
                         <Link
                           to={`/RedirectionBanner/${store.AffiliateMerchantId}`}
@@ -93,9 +92,18 @@ const CashbacksStores = (props: any) => {
                 })}
               </div>
             </InfiniteScroll>
-            {props.isLoading && <div>Loading ...</div>}
+            { props.isLoading && <div className="text-red text-center">Loading ...</div> }
+
           </>
-        )}
+        ):
+      <div className="empty-results">
+         <img  src={require("../../assets/img/empty-search.png")}
+                  alt="Search empty results"/>
+          <p className="h3-text">Sorry, we couldn’t find any offer</p>
+        </div>
+    
+
+      }
 
         {/* <div className="col-6 col-lg-4 cashback-card">
             <Link to="/CashbackStoreDetails">

@@ -41,7 +41,7 @@ const FilterationByCategory = ({
                     label={category.AffiliateCategoryName}
                     type="radio"
                     name="globe"
-                    key={category.AffiliateCategoryId}
+                    key={"key"+category.AffiliateCategoryId}
                     id={category.AffiliateCategoryId.toString()}
                     onChange={() =>
                       setSelectedCategory(category.AffiliateCategoryId)

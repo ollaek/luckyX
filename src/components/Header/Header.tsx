@@ -2,69 +2,82 @@ import React from "react";
 
 import NavBar from "../shared/NavBar/NavBar";
 import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
 import "./Header.scss";
 
-const Header = () => {
-  
+const Header = ({history}) => {
   return (
     <header className="header ">
-      {/* <div className="container"> */}
-            {/* <div className="container"> */}
-
-      <NavBar />
-      {/* </div> */}
+      <NavBar history={history}/>
       <div className="container">
         <div className="row">
-        {/* p-0 p-lg */}
           <div className="col-12 hero_section ">
-            <Carousel >
-              <Carousel.Item className="" >
-                {/* <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=First slide&bg=373940"
-      alt="First slide"
-    />
-    // <Carousel.Caption>
-    //   <h3>First slide label</h3>
-    //   <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    // </Carousel.Caption> */}
-                <p className="sub-title-light">WITH LUCKY APP</p>
-                <h1 className="heading-text">
-                  Buy food, fashion and electronics for less!
-            </h1>
-                <div className="row">
-                  <div className="col-lg-4 offset-lg-0 col-md-7 offset-md-0 col-10 offset-1">
-                    <button type="button" className="btn btn-primary-white btn-lg btn-block ">
-                      Check In-store Offers
-            </button>
+            <Carousel>
+              <Carousel.Item className="slide1">
+                <div className="flex-end">
+                  <p className="sub-title-light">WITH LUCKY APP</p>
+                  <h1 className="heading-text">
+                    Buy food, fashion and electronics for less!
+                  </h1>
+                  <div className="row">
+                    <div className="col-lg-6 col-12">
+                      <Link to="/OnlineCashbacks">
+                        <button
+                          type="button"
+                          className="btn btn-primary-white btn-lg btn-block "
+                        >
+                          Check online cashbacks
+                        </button>
+                      </Link>
+                    </div>
                   </div>
-
                 </div>
               </Carousel.Item>
-              <Carousel.Item className="">
-                <p className="sub-title-light">WITH LUCKY APP</p>
-                <h1 className="heading-text">
-                Buy food, fashion and electronics for less!
-            </h1>
-                <div className="row">
-                  <div className="col-lg-4 offset-lg-0 col-md-7 offset-md-0 col-10 offset-1">
-                    <button type="button" className="btn btn-white btn-lg btn-block ">
-                      Check In-store Offers
-            </button>
-                  </div>
 
+              <Carousel.Item className="slide2">
+                <div className="flex-end">
+                  <p className="sub-title-light">WITH LUCKY APP</p>
+                  <h1 className="heading-text">
+                    Earn cashback on your online purchases
+                  </h1>
+                  <div className="row">
+                    <div className="col-lg-6 col-12">
+                      <Link to="/OnlineCashbacks">
+                        <button
+                          type="button"
+                          className="btn btn-primary-white btn-lg btn-block "
+                        >
+                          Check online cashbacks
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </Carousel.Item>
-              <Carousel.Item className="">
-                <p className="sub-title-light">WITH LUCKY APP</p>
-                <h1 className="heading-text">
-                Buy food, fashion and electronics for less!
-            </h1>
-                <div className="row">
-                  <div className="col-lg-4 offset-lg-0 col-md-7 offset-md-0 col-10 offset-1">
-                    <button type="button" className="btn btn-primary-white btn-lg btn-block ">
-                      Check In-store Offers
-            </button>
+
+              <Carousel.Item className="slide3">
+                <div className="flex-end">
+                  <div>
+                    <p className="sub-title-light">WITH LUCKY APP</p>
+                    <h1 className="heading-text">
+                      Get free money wherever you buy!
+                    </h1>
+                    <p className="sub-title-light mb-2rem">
+                      Online and in-store offers in more than<br></br>{" "}
+                      <strong>3,000 stores</strong>.
+                    </p>
+                    <div className="row">
+                      <div className="col-lg-6 col-12">
+                        <Link to="/InStoreOffers">
+                          <button
+                            type="button"
+                            className="btn btn-primary-white btn-lg btn-block "
+                          >
+                           Check In-Store offers
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Carousel.Item>

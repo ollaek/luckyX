@@ -17,7 +17,7 @@ const TopCashbacksStores = ({ stores }: TopCashbackStoresProp) => {
           <h2 className="sub-title">Top cashbacks stores</h2>
         </div>
         <div className="row">
-          {stores.map(store => {
+          {stores && stores.map(store => {
             return <Store store={store} key={store.MerchantId} />;
           })}
         </div>
@@ -26,7 +26,7 @@ const TopCashbacksStores = ({ stores }: TopCashbackStoresProp) => {
             SEE ALL THE STORES
             <img
               className="hvr-icon"
-              src={require("../../assets/img/svg/Right-arrow.svg")}
+              src={require("../../assets/img/svg/Right-arrow-blue.svg")}
               alt="Right-arrow"
             />
           </Link>

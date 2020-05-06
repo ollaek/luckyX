@@ -1,3 +1,5 @@
+@import "../../../../assets/scss/mdb.scss";
+
 .more-offers {
   .carousel-item-next,
   .carousel-item-prev,
@@ -16,6 +18,28 @@
     margin-right: 15%;
     margin-left: 15%;
     list-style: none;
+    @include media-breakpoint-down(sm) {
+      bottom: -15px;
+    li {
+      text-indent: initial;
+      color: #929297;
+      width: auto;
+      height: 3px;
+      img{
+        display: none;
+      }
+    }
+    li:before {
+      font-family: "Font Awesome 5 Free";
+      content: "\f111";
+      display: inline-block;
+    }
+ li.active:before {
+      font-family: "Font Awesome 5 Free";
+      content: "\f192";
+      display: inline-block;
+  }
+  }
   }
   .carousel-control-next,
   .carousel-control-prev {
@@ -37,5 +61,10 @@
   }
   .carousel-inner {
     padding: 0 4rem;
+    @include media-breakpoint-down(md) {
+    width: 70%;
+    padding: 0 ;
+    margin: auto;
+    }
   }
 }

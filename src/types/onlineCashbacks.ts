@@ -31,7 +31,9 @@ export type CategoriesModel = {
 export type StoresByCategoryIdRequestModel = {
     categoryId:number,
     pageSize: number,
-    pageIndex: number
+    pageIndex: number,
+    SearchKey?: String
+
 };
 
 export type TOnlineCashbacksState = {

@@ -15,14 +15,14 @@ const StoreOffers = (props:any) => {
               <div className="row">
                 {props.Offers.map(offer => {
                   return (
-                    <div className="col-12 col-lg-4 " key={offer.OfferId}>
+                    <div className="col-12 col-md-6 col-lg-4 " key={offer.OfferId}>
                       <InStoreOffer Offer={offer} />
                     </div>
                   );
                 })}
               </div>
             </InfiniteScroll>
-            { props.isLoading && <div className="text-red">Loading ...</div> }
+            { props.isLoading && <div className="text-red text-center">Loading ...</div> }
         </>
       );
 

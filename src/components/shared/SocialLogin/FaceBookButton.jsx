@@ -1,10 +1,22 @@
-import React from "react";
+import React,{ useEffect } from "react";
 
 import { useUserState } from "./Hook";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
-const FaceBookButton = ({history, onShowChange}) => {
-  const { externalSignIn } = useUserState();
+
+const FaceBookButton = ({ history, setShow }) => {
+  const { externalSignIn, success } = useUserState();
+  
+  useEffect(
+    () => {
+      if (success === "Y") {
+        if(!setShow) history.push("/Home");
+      }
+    },
+    // eslint-disable-next-line
+    [success]
+  );
+
   let user;
   const responseFacebook = async response => {
     if (response) {
@@ -14,9 +26,6 @@ const FaceBookButton = ({history, onShowChange}) => {
         SocialId: response.id
       };
       externalSignIn(user);
-      
-      if (onShowChange) onShowChange(false);
-      history.push("/");
     }
   };
 

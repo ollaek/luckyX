@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import "./CashoutErrorModal.scss";
 
@@ -18,22 +18,31 @@ const MobileModal = (props: any) => {
         >
           <Modal.Header closeButton></Modal.Header>
           <Modal.Body>
-          <div>
-            <h4 className="h4-text">
-              You entered a wrong code multiple times, please try again in 12
-              hours 
-            </h4>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            className="col-md-6 col-12"
-            variant="primary"
-            onClick={handleClose}
-          >
-            OK
-          </Button>
-        </Modal.Footer>
+            <div>
+              <h4 className="h4-text">
+                A Lucky account is already registered with this number.
+              </h4>
+              <h4 className="h4-text text-normal">
+                Please confirm that this is the Lucky account you want to use
+              </h4>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              className="col-md-6 col-12"
+              variant="primary"
+              onClick={props.mergeAccounts}
+            >
+              Confirm
+            </Button>
+            <Button
+              className="col-md-6 col-12"
+              variant="link"
+              onClick={handleClose}
+            >
+              Cancel
+            </Button>
+          </Modal.Footer>
         </Modal>
       </div>
     </>

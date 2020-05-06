@@ -1,6 +1,7 @@
 import actionCreatorFactory from 'typescript-fsa';
 
 import { authApi } from '../api/auth';
+import { accountApi } from "../api/account";
 import { asyncAction } from '../helpers';
 import actionIds from './action-ids';
 import { SocialUserModel, UserSignUpModel, UserSignInModel } from '../types'
@@ -16,6 +17,8 @@ const VerifyEmailAction = actionCreator.async<any,string[],any>(actionIds.AUTH_V
 const SignInAction = actionCreator.async<UserSignInModel,string[],any>(actionIds.AUTH_SIGNIN);
 
 const ForgotPasswordAction = actionCreator.async<string, string[], any>(actionIds.AUTH_FORGOT_PASSWORD);
+
+const ResendOTPByEmailAction = actionCreator.async<any, string[], any>(actionIds.AUTH_RESEND_OTP_BY_EMAIL);
 
 const extrnalSignInAsync = asyncAction(
     extrnalSignInAction,
@@ -41,6 +44,12 @@ const ForgotPasswordAsync = asyncAction(
     ForgotPasswordAction,
     authApi.forgotPassword
 );
+
+const ResendOTPByEmailAsync = asyncAction(
+    ResendOTPByEmailAction,
+    accountApi.resendOTPByEmail
+);
+
 export {
     extrnalSignInAction,
     extrnalSignInAsync,
@@ -51,5 +60,7 @@ export {
     SignInAction,
     SignInAsync,
     ForgotPasswordAction,
-    ForgotPasswordAsync
+    ForgotPasswordAsync,
+    ResendOTPByEmailAction,
+    ResendOTPByEmailAsync
 };

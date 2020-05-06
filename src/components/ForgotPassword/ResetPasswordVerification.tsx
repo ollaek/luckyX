@@ -10,7 +10,7 @@ const MailVerification = props => {
 
   return (
     <>
-      <NavBar />
+      <NavBar history={props.history}/>
       <section className="mailVerification">
         <div className="container">
           <div className="row">

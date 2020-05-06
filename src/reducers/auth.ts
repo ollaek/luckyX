@@ -1,24 +1,37 @@
 import { AnyAction, isType } from "typescript-fsa";
 
-import { extrnalSignInAction, SignUpAction, VerifyEmailAction, SignInAction, ForgotPasswordAction } from "../actions";
+import {
+  extrnalSignInAction,
+  SignUpAction,
+  VerifyEmailAction,
+  SignInAction,
+  ForgotPasswordAction
+} from "../actions";
 import { TUserState, UserModel, ResponseModel } from "../types";
 
 const initialState: TUserState = {
   User: {} as UserModel,
   isFetching: false,
-  Error: ""
+  signInError: "",
+  signUpError: "",
+  ForgetPasswordError: "",
+  success: "",
+  errorCode: null
 };
 
 const authReducer = (
   state: TUserState = initialState,
   action: AnyAction
 ): TUserState => {
-
   if (isType(action, extrnalSignInAction.started)) {
     return {
       ...state,
       isFetching: true,
-      Error: ""
+      signInError: "",
+      signUpError: "",
+      ForgetPasswordError: "",
+      success: "",
+      errorCode: null
     };
   }
 
@@ -29,21 +42,35 @@ const authReducer = (
     localStorage.setItem("Id", responseData.Id);
     localStorage.setItem("Email", responseData.Email);
     localStorage.setItem("Name", responseData.Name);
+    localStorage.setItem("Phone", responseData.Phone);
     localStorage.setItem("IsMerged", responseData.IsMerged.toString());
     return {
       ...state,
       User: responseData,
       isFetching: false,
-      Error: ""
+      signInError: "",
+      signUpError: "",
+      ForgetPasswordError: "",
+      success: "Y",
+      errorCode: null
     };
   }
 
   if (isType(action, extrnalSignInAction.failed)) {
-    
+    let errorMsg;
+    if (action.payload.error.response) {
+      errorMsg = action.payload.error.response.data.Errors[0];
+    } else {
+      window.location.assign(`${process.env.PUBLIC_URL}/ErrorNoConnection`);
+    }
     return {
       ...state,
       isFetching: false,
-      Error: "Somethimg wrong Happened !!!"
+      signInError: errorMsg,
+      success: "N",
+      signUpError: "",
+      ForgetPasswordError: "",
+      errorCode: null
     };
   }
 
@@ -51,7 +78,11 @@ const authReducer = (
     return {
       ...state,
       isFetching: true,
-      Error: ""
+      signInError: "",
+      signUpError: "",
+      ForgetPasswordError: "",
+      success: "",
+      errorCode: null
     };
   }
 
@@ -63,16 +94,31 @@ const authReducer = (
       ...state,
       User: responseData,
       isFetching: false,
-      Error: ""
+      signInError: "",
+      signUpError: "",
+      ForgetPasswordError: "",
+      success: "Y",
+      errorCode: null
     };
   }
 
   if (isType(action, SignUpAction.failed)) {
-    
+    let errorMsg;
+    let errorCodeResponse;
+    if (action.payload.error.response) {
+      errorMsg = action.payload.error.response.data.Errors[0];
+      errorCodeResponse = action.payload.error.response.data.ErrorCode;
+    } else {
+      window.location.assign(`${process.env.PUBLIC_URL}/ErrorNoConnection`);
+    }
     return {
       ...state,
       isFetching: false,
-      Error: "Somethimg wrong Happened !!!"
+      signUpError: errorMsg,
+      signInError: "",
+      ForgetPasswordError: "",
+      success: "N",
+      errorCode: errorCodeResponse
     };
   }
 
@@ -80,7 +126,10 @@ const authReducer = (
     return {
       ...state,
       isFetching: true,
-      Error: ""
+      signInError: "",
+      signUpError: "",
+      ForgetPasswordError: "",
+      errorCode: null
     };
   }
 
@@ -88,16 +137,21 @@ const authReducer = (
     return {
       ...state,
       isFetching: false,
-      Error: ""
+      signInError: "",
+      signUpError: "",
+      ForgetPasswordError: "",
+      errorCode: null
     };
   }
 
   if (isType(action, VerifyEmailAction.failed)) {
-    
     return {
       ...state,
       isFetching: false,
-      Error: "Somethimg wrong Happened !!!"
+      signInError: "",
+      signUpError: "",
+      ForgetPasswordError: "",
+      errorCode: null
     };
   }
 
@@ -105,7 +159,11 @@ const authReducer = (
     return {
       ...state,
       isFetching: true,
-      Error: ""
+      signInError: "",
+      signUpError: "",
+      ForgetPasswordError: "",
+      success: "",
+      errorCode: null
     };
   }
 
@@ -116,21 +174,35 @@ const authReducer = (
     localStorage.setItem("Token", responseData.AccessToken);
     localStorage.setItem("Name", responseData.Name);
     localStorage.setItem("Email", responseData.Email);
+    localStorage.setItem("Phone", responseData.Phone);
     localStorage.setItem("IsMerged", responseData.IsMerged.toString());
     return {
       ...state,
       User: responseData,
       isFetching: false,
-      Error: ""
+      signInError: "",
+      signUpError: "",
+      ForgetPasswordError: "",
+      success: "Y",
+      errorCode: null
     };
   }
 
   if (isType(action, SignInAction.failed)) {
-    
+    let errorMsg;
+    if (action.payload.error.response) {
+      errorMsg = action.payload.error.response.data.Errors[0];
+    } else {
+      window.location.assign(`${process.env.PUBLIC_URL}/ErrorNoConnection`);
+    }
     return {
       ...state,
       isFetching: false,
-      Error: "Somethimg wrong Happened !!!"
+      signInError: errorMsg,
+      signUpError: "",
+      ForgetPasswordError: "",
+      success: "N",
+      errorCode: null
     };
   }
 
@@ -138,7 +210,11 @@ const authReducer = (
     return {
       ...state,
       isFetching: true,
-      Error: ""
+      signUpError: "",
+      ForgetPasswordError: "",
+      signInError: "",
+      success: "",
+      errorCode: null
     };
   }
 
@@ -146,16 +222,29 @@ const authReducer = (
     return {
       ...state,
       isFetching: false,
-      Error: ""
+      signUpError: "",
+      ForgetPasswordError: "",
+      signInError: "",
+      success: "Y",
+      errorCode: null
     };
   }
 
   if (isType(action, ForgotPasswordAction.failed)) {
-    
+    let errorMsg;
+    if (action.payload.error.response) {
+      errorMsg = action.payload.error.response.data.Errors[0];
+    } else {
+      window.location.assign(`${process.env.PUBLIC_URL}/ErrorNoConnection`);
+    }
     return {
       ...state,
       isFetching: false,
-      Error: "Somethimg wrong Happened !!!"
+      ForgetPasswordError: errorMsg,
+      signUpError: "",
+      signInError: "",
+      success: "N",
+      errorCode: null
     };
   }
 

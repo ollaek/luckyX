@@ -1,24 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "../OnlineCashbacks/OnlineCashbacks.scss";
-import { AffeliateID, AffeliateName } from "../../helpers/shared/configs";
+import { useConfigState } from "../shared/configHook";
 
 const RedirectionBanner = props => {
+  const { configs, getConfig } = useConfigState();
+
   const storeId = props.match.params.storeId;
   const storeLogo = localStorage.getItem("StoreLogo");
+  const storeCashback = localStorage.getItem("StoreCashback");
   const userID = localStorage.getItem("Id");
   const [timeLeft, setTimeLeft] = useState(4);
 
-  setInterval(() => {
-    setTimeLeft(timeLeft - 1);
-  }, 1000);
+  useEffect(
+    () => {
+      getConfig();
+    },
+    // eslint-disable-next-line
+    []
+  );
 
-  if (timeLeft === 0) {
-    window.location.assign(
-      `https://go.arabclicks.com/aff_c?offer_id=${storeId}&aff_id=${AffeliateID}&source=${AffeliateName}&aff_sub=${userID}`
-    );
+  if (configs) {
+    if (timeLeft > 0) {
+      setInterval(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+    }
+
+    if (timeLeft === 0) {
+      window.location.assign(
+        `${configs.AffeliateBaseUrl}?offer_id=${storeId}&aff_id=${configs.AffeliateID}&source=${configs.AffeliateName}&aff_sub=${userID}`
+      );
+    }
   }
-
   return (
     <>
       <div className="sec-padding">
@@ -26,7 +40,7 @@ const RedirectionBanner = props => {
           <div className="row">
             <div className="col-lg-5 col-md-7 m-auto">
               <div className="redirection-card">
-                <div className="cardImg m-auto">
+                <div className="cardImg m-auto justify-content-center">
                   <img src={storeLogo} alt="goDaddy" />
                 </div>
                 <div className="my-4">
@@ -37,7 +51,7 @@ const RedirectionBanner = props => {
                   />
                 </div>
                 <h4 className="text-gray mb-3">You are seconds away from</h4>
-                <h3 className="cashback-text mb-3">3.00% Cashback</h3>
+                <h3 className="cashback-text mb-3">{storeCashback} Cashback</h3>
                 <h4 className="text-gray text-bold mb-3">
                   Shopping cart must be empty
                 </h4>
@@ -46,9 +60,14 @@ const RedirectionBanner = props => {
                   If not redirected within {timeLeft} seconds,
                   <br></br>
                   {/* eslint-disable-next-line */}
-                  <a href={`https://go.arabclicks.com/aff_c?offer_id=${storeId}&aff_id=${AffeliateID}&source=${AffeliateName}&aff_sub=${userID}`} className="link-red">
-                    click here to redirect
-                  </a>
+                  {configs && (
+                    <a
+                      href={`${configs.AffeliateBaseUrl}?offer_id=${storeId}&aff_id=${configs.AffeliateID}&source=${configs.AffeliateName}&aff_sub=${userID}`}
+                      className="link-blue"
+                    >
+                      click here to redirect
+                    </a>
+                  )}
                 </p>
               </div>
             </div>

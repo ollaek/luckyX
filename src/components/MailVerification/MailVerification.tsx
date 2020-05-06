@@ -1,15 +1,15 @@
 import React from "react";
 import Footer from "../shared/Footer/Footer";
-import { LinkContainer } from "react-router-bootstrap";
 import NavBar from "../shared/NavBar/NavBar";
 
 import "../MailVerification/MailVerification.scss";
+import { Link } from "react-router-dom";
 
 const MailVerification = props => {
   const email = props.match.params.email;
   return (
     <>
-      <NavBar />
+      <NavBar history={props.history}/>
       <section className="mailVerification">
         <div className="container">
           <div className="row">
@@ -31,11 +31,11 @@ const MailVerification = props => {
                 </p>
                 <p>Check your spam folder too :)</p>
               </div>
-              <LinkContainer to="/MailVerified">
-                <button className="btn btn-block btn-primary" type="button">
+              {/* <LinkContainer to="/SignUp"> */}
+                <Link to="/SignUp" className="btn btn-block btn-primary" type="button">
                   Edit registration details
-                </button>
-              </LinkContainer>
+                </Link>
+              {/* </LinkContainer> */}
             </div>
           </div>
         </div>

@@ -60,7 +60,7 @@ p {
   height: 100%;
   position: absolute;
   background: #000;
-  opacity: 0.5
+  opacity: 0.5;
 }
 
 .bg-light {
@@ -87,19 +87,59 @@ p {
 .text-bold {
   font-family: $font-family-bold !important;
 }
-.alert {
-  color: white;
-  font-family: $font-family-base;
-  padding: 1rem 1.25rem;
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 0;
-  text-align: center;
+.mb-2rem {
+  margin-bottom: 2rem !important;
 }
-.alert-success {
-  background-color: $success-color;
-  border-color: $success-color;
+//TOASTER========================================================================================
+.react-toast-notifications__container {
+  box-sizing: border-box;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1000;
+  right: 0px;
+  padding: 0 !important;
+  width: 100% !important;
+  position: absolute !important;
+  top: 82px !important;
+  @include media-breakpoint-down(md) {
+    top: 72px;
+  }
+  .css-wo4ljk-ToastElement {
+    transition: none !important;
+    transform: none !important;
+  }
+  .css-h0gpo1-ToastElement {
+    transition: none !important;
+  }
+  .toasterCustom {
+    background-color: $success-color !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    display: flex !important;
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    transition: none !important;
+    transform: none !important;
+    .react-toast-notifications__toast__icon-wrapper {
+      display: none !important;
+    }
+    .react-toast-notifications__toast__content {
+      color: white !important;
+      font-family: $font-family-base !important;
+      padding: 1rem 1.25rem !important;
+      text-align: center !important;
+      min-height: 48px !important;
+    }
+    .react-toast-notifications__toast__dismiss-button {
+      padding: 0.8rem !important;
+    }
+  }
 }
+//End==TOASTER========================================================================================
+
 :focus {
   outline: transparent auto 0;
   outline-color: transparent;
@@ -109,67 +149,95 @@ p {
 .text-red {
   color: $msg-error-color !important;
 }
-.text-gray , .text-muted {
+.text-blue {
+  color: $blue-color !important;
+}
+.text-green {
+  color: $success-color !important;
+}
+.text-gray,
+.text-muted {
   color: $text-gray !important;
 }
 .pl-4rem {
   padding-left: 4rem !important;
 }
-hr{
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border-top: 1px solid $bg-dark;
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid $bg-dark;
 }
-a.link-red{
-  color: $msg-error-color;
-font-family: $font-family-bold;
+a.link-red,
+button.link-red,
+.link-red {
+  color: $msg-error-color !important;
+  font-family: $font-family-bold;
 }
-a.link-red:hover{
-text-decoration: underline;
+a.link-red:hover,
+.link-red:hover,
+button.link-red:hover {
+  text-decoration: underline;
+  color: $msg-error-color !important;
 }
-a.link-grey{
+a.link-blue,
+.link-blue,
+button.link-blue {
+  color: $blue-color !important;
+  font-family: $font-family-bold;
+}
+a.link-blue:hover,
+.link-blue:hover,
+button.link-blue:hover {
+  text-decoration: underline;
+  color: #43869a !important;
+}
+a.link-grey,
+.link-grey,
+button.link-grey {
   color: $primary-dark;
-font-family: $font-family-base;
+  font-family: $font-family-base;
 }
-a.link-grey:hover{
+a.link-grey:hover,
+.link-grey:hover,
+button.link-grey:hover {
   text-decoration: underline;
 }
-.link-text{
+.link-text {
   // font-size: 1.3rem;
   color: #191820;
   text-align: center;
   margin-bottom: 0.5rem;
 }
-.h1-text{
-  font-family:$font-family-bold;
-  font-size:3rem;
+.h1-text {
+  font-family: $font-family-bold;
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
-.h2-text{
-  font-family:$font-family-bold;
-  font-size:2.5rem;
+.h2-text {
+  font-family: $font-family-bold;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
 }
-.h3-text{
-  font-family:$font-family-bold;
-  font-size:2rem;
+.h3-text {
+  font-family: $font-family-bold;
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
-.h4-text{
-  font-family:$font-family-bold;
-  font-size:1.5rem;
+.h4-text {
+  font-family: $font-family-bold;
+  font-size: 1.5rem;
   // margin-bottom: 0;
   margin-bottom: 1rem;
 }
-.circle-center-img{
+.circle-center-img {
   text-align: center;
   margin-bottom: 2rem;
 }
-.mb-2rem{
+.mb-2rem {
   margin-bottom: 2rem !important;
 }
 //BUTTONS============================================
-.btn{
+.btn {
   border-radius: 24px;
   color: $primary-dark !important;
 }
@@ -177,13 +245,20 @@ a.link-grey:hover{
   background-color: $primary-color;
   color: $primary-dark;
 }
-.btn-outline-primary{
+.btn-outline-primary {
+  // color: $primary-dark !important;
+  // border: 1.1px solid $primary-color!important;
+
+  background-color: $primary-pressed !important;
+  box-shadow: none;
   color: $primary-dark !important;
-  border: 1.1px solid $primary-color!important;
+  border-color: $primary-pressed !important;
 }
-.btn-primary:hover  , .btn-outline-primary:hover{
+.btn-primary:hover,
+.btn-outline-primary:hover {
   color: $primary-dark !important;
-  background-color:$primary-hover !important;
+  background-color: $primary-hover !important;
+  border-color: $primary-hover !important;
 }
 .btn-primary:not([disabled]):not(.disabled):active,
 .btn-primary:not([disabled]):not(.disabled).active,
@@ -204,19 +279,21 @@ a.link-grey:hover{
   background-color: $primary-pressed !important;
   box-shadow: none;
   color: $primary-dark !important;
-  border-color:  $primary-pressed !important;
-
+  border-color: $primary-pressed !important;
 }
 .btn-outline-primary:not([disabled]):not(.disabled):active:focus,
 .btn-outline-primary:not([disabled]):not(.disabled).active:focus,
 .show > .btn-outline-primary.dropdown-toggle:focus {
   box-shadow: none;
   color: $primary-dark !important;
-  border-color:  $primary-pressed !important;
+  border-color: $primary-pressed !important;
 }
-.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary:active:focus, .btn-outline-primary.active{
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary:active:focus,
+.btn-outline-primary.active {
   color: $primary-dark !important;
-
 }
 .btn.btn-block {
   margin: 0;
@@ -239,7 +316,6 @@ a.link-grey:hover{
   background: $bg-dark !important;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08) !important;
   color: $text-gray;
-  
 }
 
 img {
@@ -248,7 +324,7 @@ img {
 .btn-rounded {
   border-radius: 10em;
 }
-.btn-fb{
+.btn-fb {
   background: $btn-light-color;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
@@ -258,8 +334,8 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-.footer-btn{
+}
+.footer-btn {
   border-radius: 8px;
 }
 //CashbackStores======================================
@@ -283,12 +359,12 @@ img {
 }
 .sub-title {
   font-size: 2.3rem;
-  // text-align: center;
   font-family: $font-family-bold;
   position: relative;
   padding: 1rem 0;
   margin-bottom: 4rem;
   display: inline-block;
+  text-align: left;
 }
 .sub-title::after {
   content: "";
@@ -302,7 +378,7 @@ img {
   bottom: 0;
   left: 0;
 }
-.page-title{
+.page-title {
   font-family: $font-family-base;
   font-size: 2rem;
   color: $primary-dark;
@@ -314,9 +390,11 @@ img {
   @include media-breakpoint-down(sm) {
     text-align: center;
   }
+  .card-text {
+    margin-bottom: 1.5rem;}
 }
 .cashback-card-img {
-  width:auto ;
+  width: auto;
   max-height: 100px;
   height: 100px;
   overflow: hidden;
@@ -330,16 +408,16 @@ img {
   align-items: center;
   background-color: $bg-light;
   margin-bottom: 1.5rem;
-  img {
-    // width: 196px;
+  // img {
+  //   // width: 196px;
 
-    // width: auto;
-    // height: 100%;
+  //   // width: auto;
+  //   // height: 100%;
 
-    //Another soulution
-    // width: 100%;
-    // height: auto;
-  }
+  //   //Another soulution
+  //   // width: 100%;
+  //   // height: auto;
+  // }
 }
 
 .seeAllStors-text {
@@ -379,7 +457,8 @@ img {
   // margin-bottom: 1.5rem;
   margin-bottom: 0;
 }
-.card .card-body .card-text ,.card .card-text  {
+.card .card-body .card-text,
+.card .card-text {
   // margin-bottom: 1.5rem;
   color: $text-gray;
 }
@@ -398,37 +477,38 @@ img {
   background-repeat: no-repeat;
 }
 ///////////////////////////VALIDATION=======================
-.form-control.is-invalid, .was-validated .form-control:invalid {
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
   border: 0;
-  border-bottom:1px solid $msg-error-color;
-  padding-right: calc(1.5em + .75rem);
-  background-image:none;
+  border-bottom: 1px solid $msg-error-color;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: none;
   background-repeat: no-repeat;
-  background-position: right calc(.375em + .1875rem) center;
-  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
-.form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
+.form-control.is-invalid:focus,
+.was-validated .form-control:invalid:focus {
   border-color: $msg-error-color;
   box-shadow: none;
 }
-.form-control.is-valid, .was-validated .form-control:valid{
+.form-control.is-valid,
+.was-validated .form-control:valid {
   border: 0;
-  border-bottom:1px solid $success-color;
-  padding-right: calc(1.5em + .75rem);
-  background-image:none;
+  border-bottom: 1px solid $success-color;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: none;
   background-repeat: no-repeat;
-  background-position: right calc(.375em + .1875rem) center;
-  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
-.form-control.is-valid:focus, .was-validated .form-control:valid:focus {
+.form-control.is-valid:focus,
+.was-validated .form-control:valid:focus {
   border-color: $success-color;
   box-shadow: none;
 }
 //INPUTS and BUTTONS=====================================
-.form-control {
-  // padding: 0.7rem 0.75rem;
-  // height: auto !important;
-}
+
 .form-control {
   display: block;
   width: 100%;
@@ -443,18 +523,15 @@ img {
   border: 1px solid #0000;
   border-bottom: 1px solid $bg-dark;
   border-radius: 0;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.form-control {
-  // padding: 0.7rem 0;
-}
-.form-label{
+
+.form-label {
   // font-size: 1.2rem;
   font-family: $font-family-bold;
   // margin-bottom: 0;
-
 }
-.form-control:focus{
+.form-control:focus {
   color: #495057;
   background-color: #fff;
   border-color: #0000;
@@ -462,34 +539,45 @@ img {
   outline: 0;
   box-shadow: none;
 }
-.btn.disabled, .btn:disabled{
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #e9ecef4f;
+  opacity: 1;
+}
+.btn.disabled,
+.btn:disabled {
   background-color: $bg-dark !important;
   color: $primary-dark;
 }
-.error.error-message{
+input.is-invalid {
+  border-bottom: 1px solid red;
+}
+.error.error-message,
+.invalid-feedback {
   color: $msg-error-color;
-  // font-size:0.8rem;
+  text-align: left;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 90%;
 }
-.form-control:invalid{
-  // border-bottom: 1px solid red;
-}
+
 textarea.form-control {
   height: auto;
   border: 1px solid $bg-dark;
   border-radius: 24px;
   padding: 1rem;
 }
-textarea.form-control:focus{
+textarea.form-control:focus {
   border: 1px solid $bg-dark;
   outline: 0;
   box-shadow: none;
 }
-.custom-checkbox{
+.custom-checkbox {
   padding-left: 2.1rem;
   .custom-control-input {
     left: 6px;
     top: 3px;
-}
+  }
   .custom-control-label {
     line-height: 1.7rem;
   }
@@ -498,7 +586,7 @@ textarea.form-control:focus{
 //BREADCRUMBS=================================================================
 .breadcrumb {
   background-color: #0000;
-  padding: .75rem 0;
+  padding: 0.75rem 0;
 }
 .breadcrumb-item > a {
   color: $primary-dark;
@@ -536,12 +624,25 @@ textarea.form-control:focus{
   }
   .nav-tabs .nav-item.show .nav-link,
   .nav-tabs .nav-link.active {
-    color: $msg-error-color;
+    color: $blue-color;
     background-color: #fff;
-    border-bottom: 1.5px solid $msg-error-color;
+    border-bottom: 1.5px solid $blue-color;
     font-family: $font-family-bold;
   }
   .tab-content > .tab-pane {
     padding: 1rem 0;
+  }
+}
+///////////////////////////////////
+.empty-results {
+  text-align: center;
+  // padding: 3rem;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  img {
+    margin-bottom: 2rem;
   }
 }

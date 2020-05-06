@@ -37,7 +37,7 @@ const Footer = () => {
             <div className="col-md-5 col-12 mb-5 mb-md-0">
               <ul className="footer-links">
                 <li>
-                  <Link className="hvr-icon-forward" to="../../ContactUs/ContactUs">
+                  <Link className="hvr-icon-forward" to="../../AboutUs">
                     <img
                       className="hvr-icon"
                       src={require("../../../assets/img/svg/footer-arrow.svg")}
@@ -73,13 +73,13 @@ const Footer = () => {
             <div className="col-lg-7 col-12 mb-5 mb-md-0">
               <div className="footer-text">
                 Find us:{" "}
-                <a href="!#" className="mx-1" tooltip="Instagram">
+                <a href="https://www.instagram.com/lucky_application/" target="_blank" rel="noopener noreferrer" className="mx-1" tooltip="Instagram">
                   <img
                     src={require("../../../assets/img/svg/Instagram.svg")}
                     alt="Instagram"
                   />
                 </a>
-                <a href="!#" className="mx-1" tooltip="Facebook">
+                <a href="https://www.facebook.com/lucky.app.eg" target="_blank" rel="noopener noreferrer" className="mx-1" tooltip="Facebook">
                   <img
                     src={require("../../../assets/img/svg/Facebook.svg")}
                     alt="Facebook"
@@ -92,7 +92,8 @@ const Footer = () => {
               <div className=" row ">
                 {/* col-12 col-md-4 */}
                 <div className="col-12 col-lg">
-                  <button className="btn btn-white footer-btn">
+                  <a href="https://apps.apple.com/eg/app/lucky-discounts-offers/id1441634825">
+                  <button className="btn btn-white footer-btn" >
                     <img
                       src={require("../../../assets/img/svg/apple.svg")}
                       alt="Apple Store"
@@ -102,9 +103,11 @@ const Footer = () => {
                       <p>Apple Store</p>
                     </div>
                   </button>
+                  </a>
                 </div>
                 {/* col-12 col-md-4 */}
                 <div className="col-12 col-lg">
+                  <a href="https://play.google.com/store/apps/details?id=com.dsquares.lucky"> 
                   <button className="btn btn-white footer-btn">
                     <img
                       src={require("../../../assets/img/svg/android.svg")}
@@ -115,6 +118,7 @@ const Footer = () => {
                       <p>Google Play</p>
                     </div>
                   </button>
+                  </a>
                 </div>
               </div>
             </div>
