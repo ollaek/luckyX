@@ -10,8 +10,8 @@ const SignUpConfirmationModal = (props: any) => {
   useEffect(
     () => {
       if (success === "Y") {
-         handleClose();
-         props.setShowOTP(true);
+        handleClose();
+        props.setShowOTP(true);
       }
     },
     // eslint-disable-next-line
@@ -39,8 +39,7 @@ const SignUpConfirmationModal = (props: any) => {
                 Please note that your password in lucky app will be override
                 with this password
               </h4>
-              <div  className="error error-message text-center">  {errorMSG}</div>
-
+              <div className="error error-message text-center">{errorMSG}</div>
             </div>
           </Modal.Body>
           <Modal.Footer>

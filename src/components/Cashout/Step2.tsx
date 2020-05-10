@@ -11,10 +11,11 @@ import {
 import { STEP1 } from "./Step1";
 import Modal from "./CashoutErrorModal/OTPModal";
 import { STEP3 } from "./Step3";
+import { useToasts } from "react-toast-notifications";
 
 export const STEP2 = "step-two";
 
-const Step2 = ({ resendOTP, verifyOTP }) => {
+const Step2 = ({ resendOTP, verifyOTP, errorMSG, success }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
@@ -28,6 +29,7 @@ const Step2 = ({ resendOTP, verifyOTP }) => {
    if(localStorage.getItem("IsMerged") === "true"){
      goAt(STEP3);
    }
+   const { addToast } = useToasts();
 
    
    useEffect(
@@ -35,6 +37,7 @@ const Step2 = ({ resendOTP, verifyOTP }) => {
       if (data.step2.newTime > 0){
         setWaitingTime(data.step2.newTime);
       }
+      
     },
     // eslint-disable-next-line
     [data.step2.newTime]
@@ -44,24 +47,40 @@ const Step2 = ({ resendOTP, verifyOTP }) => {
       setTimeout(() => {
         if (waitingTime > 0) setWaitingTime(waitingTime - 1);
       }, 1000);
+      setError(errorMSG);
     },
     // eslint-disable-next-line
     [waitingTime]
   );
+  useEffect(
+    () => {
+      if (success === "Y") {
 
-  const callbackResolve = () => {
-    resolve(data);
-  };
+        resolve(data);
+        localStorage.setItem("IsJustMerged", "true");
+        localStorage.setItem("IsMerged", "true");
+
+        addToast("Phone number verified successfully. You can now cash out.", {
+          appearance: "success",
+          autoDismiss: true,
+          className: "toasterCustom"
+        });
+      }
+    },
+    // eslint-disable-next-line
+    [success]
+  );
+
+  // const callbackResolve = () => {
+  //   resolve(data);
+  // };
 
   const onSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     
     if (otp.length === 6) {
-      verifyOTP(data.step2.mobile, otp, callbackResolve).then((res: any) => {
-        if(res.payload.error.response){
-          setError(res.payload.error.response.data.Errors[0].toString());
-        }
-      });
+      debugger;
+      verifyOTP(data.step2.mobile, otp);
     } else {
       setError("Please enter valid code");
     }

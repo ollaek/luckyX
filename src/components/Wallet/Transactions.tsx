@@ -106,7 +106,6 @@ const Transactions = props => {
       );
     }
   };
-console.log(props.transactions);
   return (
     <>
       <div className="transactions">

@@ -30,6 +30,7 @@ const accountReducer = (
   if (isType(action, checkMobileAction.started)) {
     return {
       ...state,
+      errorMSG:"",
       isLoading: true
     };
   }
@@ -39,6 +40,7 @@ const accountReducer = (
 
     return {
       ...state,
+      errorMSG:"",
       isMobileExistInLucky: response.Data ? true : false,
       isLoading: false
     };
@@ -55,6 +57,7 @@ const accountReducer = (
   if (isType(action, sendOTPAction.started)) {
     return {
       ...state,
+      errorMSG:"",
       isLoading: true
     };
   }
@@ -65,6 +68,7 @@ const accountReducer = (
       if (response.callback) response.callback();
       return {
         ...state,
+        errorMSG:"",
         MobileNumber: true,
         isLoading: false
       };
@@ -81,6 +85,7 @@ const accountReducer = (
     // Do error handling work if needed
     return {
       ...state,
+      errorMSG:"",
       isLoading: false
     };
   }
@@ -88,6 +93,7 @@ const accountReducer = (
   if (isType(action, resendOTPAction.started)) {
     return {
       ...state,
+      errorMSG:"",
       isLoading: true
     };
   }
@@ -97,6 +103,7 @@ const accountReducer = (
     if (response.Status === 200) {
       return {
         ...state,
+        errorMSG:"",
         MobileNumber: true,
         isLoading: false
       };
@@ -113,42 +120,52 @@ const accountReducer = (
     // Do error handling work if needed
     return {
       ...state,
+      errorMSG:"",
       isLoading: false
     };
   }
 
   if (isType(action, verifyOTPAction.started)) {
+    debugger;
     return {
       ...state,
-      isLoading: true
+      errorMSG:"",
+      isLoading: true,
+      success:""
     };
   }
 
   if (isType(action, verifyOTPAction.done)) {
+    debugger;
     const response = (action.payload.result as unknown) as ResponseModel;
     if (response.callback) response.callback();
-    localStorage.setItem("IsMerged", "true");
 
     return {
       ...state,
       OTP: true,
       Merged: true,
-      isLoading: false
+      errorMSG: "",
+      isLoading: false,
+      success:"Y"
     };
   }
 
   if (isType(action, verifyOTPAction.failed)) {
+    const error = action.payload.error.response.data.Errors[0];
+
     // Do error handling work if needed
     return {
       ...state,
-      errorMSG: "Please enter valid code",
-      isLoading: false
+      errorMSG: error,
+      isLoading: false,
+      success:"N"
     };
   }
 
   if (isType(action, updateProfileAction.started)) {
     return {
       ...state,
+      errorMSG:"",
       isLoading: true
     };
   }
@@ -164,6 +181,7 @@ const accountReducer = (
     localStorage.setItem("IsMerged", responseData.IsMerged.toString());
     return {
       ...state,
+      errorMSG:"",
       isLoading: false
     };
   }
@@ -179,6 +197,7 @@ const accountReducer = (
   if (isType(action, changePasswordAction.started)) {
     return {
       ...state,
+      errorMSG:"",
       isLoading: true
     };
   }
@@ -186,6 +205,7 @@ const accountReducer = (
   if (isType(action, changePasswordAction.done)) {
     return {
       ...state,
+      errorMSG:"",
       isLoading: false
     };
   }
@@ -198,7 +218,7 @@ const accountReducer = (
     };
   }
 
-if (isType(action, ResendOTPByEmailAction.started)) {
+  if (isType(action, ResendOTPByEmailAction.started)) {
     return {
       ...state,
       isLoading: true,
@@ -210,27 +230,25 @@ if (isType(action, ResendOTPByEmailAction.started)) {
 
   if (isType(action, ResendOTPByEmailAction.done)) {
     const response = (action.payload.result as unknown) as ResponseModel;
-      return {
-        ...state,
-        otpWaitingTime: +response.Data,
-        isLoading: false,
-        errorMSG: "",
-        success: "Y"
-      };
-  
-    
+    return {
+      ...state,
+      otpWaitingTime: +response.Data,
+      isLoading: false,
+      errorMSG: "",
+      success: "Y"
+    };
   }
 
   if (isType(action, ResendOTPByEmailAction.failed)) {
     let errorMsg;
     if (action.payload.error.response.data.Errors) {
       errorMsg = action.payload.error.response.data.Errors[0];
-    } 
-            return {
+    }
+    return {
       ...state,
       errorMSG: errorMsg,
       isLoading: false,
-      success : "N"
+      success: "N"
     };
   }
   return state;

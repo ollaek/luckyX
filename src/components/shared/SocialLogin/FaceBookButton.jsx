@@ -4,7 +4,7 @@ import { useUserState } from "./Hook";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
 
-const FaceBookButton = ({ history, setShow }) => {
+const FaceBookButton = ({ history, setShow, setEmail }) => {
   const { externalSignIn, success } = useUserState();
   
   useEffect(
@@ -25,6 +25,7 @@ const FaceBookButton = ({ history, setShow }) => {
         Email: response.email,
         SocialId: response.id
       };
+      localStorage.setItem("socialLoginData", JSON.stringify(user));
       externalSignIn(user);
     }
   };

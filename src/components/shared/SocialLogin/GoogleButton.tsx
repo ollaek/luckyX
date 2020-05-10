@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useUserState } from "./Hook";
 import GoogleLogin from "react-google-login";
 
-const GoogleButton = (history: any, setShow: any) => {
+const GoogleButton = (history: any, setShow: any, setEmail: any) => {
   const { externalSignIn, success } = useUserState();
 
   useEffect(
@@ -23,6 +23,8 @@ const GoogleButton = (history: any, setShow: any) => {
         Email: response.profileObj.email,
         SocialId: response.googleId
       };
+      setEmail(user.Email);
+      localStorage.setItem("socialLoginData", JSON.stringify(user));
       externalSignIn(user);
     }
   };

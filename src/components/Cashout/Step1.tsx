@@ -173,6 +173,7 @@ const Step1 = (props: any) => {
         show={show}
         setShow={val => setShow(val)}
         mergeAccounts={() => mergeAccounts()}
+        error={error}
       />
     </StepperContent>
   );

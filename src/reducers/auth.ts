@@ -58,8 +58,11 @@ const authReducer = (
 
   if (isType(action, extrnalSignInAction.failed)) {
     let errorMsg;
+    let errorCodeResponse;
     if (action.payload.error.response) {
       errorMsg = action.payload.error.response.data.Errors[0];
+      errorCodeResponse = action.payload.error.response.data.ErrorCode;
+
     } else {
       window.location.assign(`${process.env.PUBLIC_URL}/ErrorNoConnection`);
     }
@@ -70,7 +73,7 @@ const authReducer = (
       success: "N",
       signUpError: "",
       ForgetPasswordError: "",
-      errorCode: null
+      errorCode: errorCodeResponse
     };
   }
 
@@ -97,7 +100,7 @@ const authReducer = (
       signInError: "",
       signUpError: "",
       ForgetPasswordError: "",
-      success: "Y",
+      success: "YA",
       errorCode: null
     };
   }

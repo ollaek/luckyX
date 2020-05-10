@@ -10,13 +10,17 @@ import { useConfigState } from "../shared/configHook";
 
 import { Form, Spinner } from "react-bootstrap";
 import { useToasts } from "react-toast-notifications";
-
+import SignUpConfirmationModal from "../SignUp/SignUpConfirmationModal";
+import SignUpOTPModal from "../SignUp/SignUpOTPModal";
 import GoogleButton from "../shared/SocialLogin/GoogleButton";
 import "../SignIn/SignInModal.scss";
 
 const SignInModal = ({ show, setShow, history }) => {
-  const { signIn, isFetching, signInError, success } = useUserState();
+  const { signIn, isFetching, signInError, success,errorCode } = useUserState();
   const { configs, getConfig } = useConfigState();
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [showOTP, setShowOTP] = useState(false);
+  const [mail, setMail] = useState(null);
 
   const { addToast } = useToasts();
   const [sub, setsub] = useState(false);
@@ -29,6 +33,10 @@ const SignInModal = ({ show, setShow, history }) => {
   );
   useEffect(
     () => {
+      if (errorCode === "061") {
+        setShowConfirm(true);
+        return;
+      }
       setsub(true);
       if (success === "Y" && sub) {
         addToast("Logged In Successfully!", {
@@ -80,10 +88,12 @@ const SignInModal = ({ show, setShow, history }) => {
                   <GoogleButton
                     history={history}
                     setShow={val => setShow(val)}
+                    setEmail={email => setMail(email)}
                   />
                   <FaceBookButton
                     history={history}
                     setShow={val => setShow(val)}
+                    setEmail={email => setMail(email)}
                   />
                 </div>
                 <div className="or">
@@ -199,6 +209,13 @@ const SignInModal = ({ show, setShow, history }) => {
           </div>
         </section>
       </Modal.Body>
+      <SignUpConfirmationModal
+        show={showConfirm}
+        email={mail}
+        setShow={val => setShowConfirm(val)}
+        setShowOTP={val => setShowOTP(val)}
+      />
+      <SignUpOTPModal show={showOTP} setShow={val => setShowOTP(val)} email={mail} history={history}/>
     </Modal>
   );
 };

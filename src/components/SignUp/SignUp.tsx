@@ -55,12 +55,11 @@ const SignUp = ({ history }) => {
 
   useEffect(
     () => {
-      debugger;
       if (errorCode === "061") {
         setShowConfirm(true);
         return;
       }
-      if (success === "Y") {
+      if (success === "YA") {
         const obj = JSON.parse(localStorageValues);
         localStorage.setItem("signupDone", "true");
         if (obj) history.push(`/MailVerification/${obj.email}`);
@@ -111,8 +110,8 @@ const SignUp = ({ history }) => {
             <div className="col-md-4 offset-md-1">
               <h2 className="title">Register with</h2>
               <div className="flex-center">
-                <GoogleButton history={history} setShow={null} />
-                <FaceBookButton history={history} setShow={null} />
+                <GoogleButton history={history} setShow={null} setEmail={mail => setEmail(mail)}/>
+                <FaceBookButton history={history} setShow={null} setEmail={mail => setEmail(mail)}/>
               </div>
               <div className="or">
                 <div className="or-divider"></div>

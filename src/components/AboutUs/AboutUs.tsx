@@ -125,8 +125,8 @@ const AboutUs = ({ history }) => {
             <div className="container">
               <div className="row">
                 <div className="col-md-6 ">
-                  <h2 className="h2-text animated fadeIn delay-3s">How does it work?</h2>
-                  <div className="animated fadeIn delay-3s">
+                  <h2 className="h2-text animated fadeIn delay-2s">How does it work?</h2>
+                  <div className="animated fadeIn delay-2s">
 
                  
                   <p>
@@ -134,7 +134,7 @@ const AboutUs = ({ history }) => {
                     you make. Sign up now as the first step.
                   </p>
                   <p>
-                    Shop til you drop, It's very easy to earn money from your
+                    Shop till you drop, It's very easy to earn money from your
                     everyday purchases and the more you shop online, the more
                     you will save and earn in the form of cashback. Once logged
                     in, click into the search box and enter the retailer you

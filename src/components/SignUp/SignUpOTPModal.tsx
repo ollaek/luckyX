@@ -9,7 +9,7 @@ import { useUserState } from "../shared/SocialLogin/Hook";
 
 const SignUpOTPModal = (props: any) => {
   const { errorMSG, resendOTPByEmail, otpWaitingTime } = useAccountState();
-  const { signUp } = useUserState();
+  const { signUp, externalSignIn } = useUserState();
   const [otp, setOtp] = useState("");
   const [goNext, setGoNext] = useState(false);
   const [error, setError] = useState("");
@@ -18,6 +18,8 @@ const SignUpOTPModal = (props: any) => {
   var localStorageValues = JSON.parse(
     localStorage.getItem("registerationValues")
   );
+
+  var socialLoginData = JSON.parse(localStorage.getItem("socialLoginData"));
 
   useEffect(
     () => {
@@ -41,31 +43,38 @@ const SignUpOTPModal = (props: any) => {
 
   const onSubmit = () => {
     if (otp.length === 6) {
-      let user = {
-        FullName: localStorageValues.name,
-        Email: localStorageValues.email,
-        Password: localStorageValues.password,
-        ConfirmPassword: localStorageValues.passwordConfirm,
-        ConfirmationOtp: otp
-      };
-
-      signUp(user).then((res: any) => {
-        if (res.payload.result){
-          localStorage.setItem("signupDone", "true");
-          props.history.push(`/MailVerification/${user.Email}`)
-        }
-        if(res.payload.error){
-        if (res.payload.error.response) {
-          setError(res.payload.error.response.data.Errors[0].toString());
-        }}
-      });
+      if (props.isExternal) {
+        const socialUser = socialLoginData;
+        externalSignIn(socialUser);
+        return;
+      }
+      if (localStorage.getItem("registerationValues")) {
+        let user = {
+          FullName: localStorageValues.name,
+          Email: localStorageValues.email,
+          Password: localStorageValues.password,
+          ConfirmPassword: localStorageValues.passwordConfirm,
+          ConfirmationOtp: otp
+        };
+        signUp(user).then((res: any) => {
+          if (res.payload.result) {
+            localStorage.setItem("signupDone", "true");
+            props.history.push(`/MailVerification/${user.Email}`);
+          }
+          if (res.payload.error) {
+            if (res.payload.error.response) {
+              setError(res.payload.error.response.data.Errors[0].toString());
+            }
+          }
+        });
+      }
     } else {
       setError("Please enter valid code");
     }
   };
   return (
     <>
-      <div >
+      <div>
         <Modal
           className="cashout-error-modal"
           animation={true}
@@ -94,10 +103,13 @@ const SignUpOTPModal = (props: any) => {
                       setOtp(value);
                     }}
                   />
-                 
                 </form>
-                <div className="error error-message text-center mb-3">{error}</div>
-                  <div className="error error-message text-center mb-3">{errorMSG}</div>
+                <div className="error error-message text-center mb-3">
+                  {error}
+                </div>
+                <div className="error error-message text-center mb-3">
+                  {errorMSG}
+                </div>
               </div>
               <div className="step2-footer">
                 <p className="link-text">
@@ -107,8 +119,7 @@ const SignUpOTPModal = (props: any) => {
                     disabled={waitingTime > 0 ? true : false}
                     onClick={() => resendOTPByEmail(props.email)}
                   >
-                    Resend Code {" "}
-                    {waitingTime > 0 && waitingTime}
+                    Resend Code {waitingTime > 0 && waitingTime}
                   </button>
                 </p>
               </div>
@@ -119,7 +130,7 @@ const SignUpOTPModal = (props: any) => {
               className="col-md-6 col-12"
               variant="primary"
               disabled={!goNext}
-              onClick={onSubmit} 
+              onClick={onSubmit}
             >
               Continue
             </Button>

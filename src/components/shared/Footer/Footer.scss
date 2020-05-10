@@ -1,6 +1,10 @@
 @import "../../../assets/scss/mdb.scss";
 
 .footer {
+ position: absolute;
+ bottom: 0;
+ width: 100%;
+//  height: 385.9px;
   p{
     margin-bottom: 0;
   }
@@ -82,9 +86,9 @@
 .icon-font-size{
   font-size: 1.5rem;
 }
-.footer{
-  position: relative;
-}
+// .footer{
+//   position: relative;
+// }
 .scroll-img{
   width: 40px;
   position: absolute;

@@ -117,7 +117,7 @@ const InStoreOffers = ({history}) => {
               <div className="empty-results">
          <img  src={require("../../assets/img/empty-search.png")}
                   alt="Search empty results"/>
-          <p className="h3-text">Sorry, we couldn’t find any offer</p>
+          <p className="h3-text">Sorry, we couldn't find the offer you are looking for</p>
         </div>}
               </div>
             </div>

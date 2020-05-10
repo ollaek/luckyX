@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
@@ -15,10 +15,15 @@ import { useConfigState } from "../shared/configHook";
 import { Form, Spinner } from "react-bootstrap";
 import { useToasts } from "react-toast-notifications";
 import "../SignUp/SignUp.scss";
+import SignUpConfirmationModal from "../SignUp/SignUpConfirmationModal";
+import SignUpOTPModal from "../SignUp/SignUpOTPModal";
 
 const SignIn = ({ history }) => {
-  const { signIn, isFetching, signInError, success } = useUserState();
+  const { signIn, isFetching, signInError, success, errorCode } = useUserState();
   const { configs, getConfig, isLoading } = useConfigState();
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [showOTP, setShowOTP] = useState(false);
+  const [mail, setMail] = useState(null);
 
   const { addToast } = useToasts();
 
@@ -37,6 +42,10 @@ const SignIn = ({ history }) => {
   );
   useEffect(
     () => {
+      if (errorCode === "061") {
+        setShowConfirm(true);
+        return;
+      }
       const val = success;
       if (val === "Y") {
         addToast("Logged In Successfully!", {
@@ -73,8 +82,8 @@ const SignIn = ({ history }) => {
             <div className="col-md-4 offset-md-1">
               <h2 className="title">Log In with</h2>
               <div className="flex-center">
-                <GoogleButton history={history} setShow={null} />
-                <FaceBookButton history={history} setShow={null} />
+                <GoogleButton history={history} setShow={null} setEmail={email => setMail(email)}/>
+                <FaceBookButton history={history} setShow={null} setEmail={email => setMail(email)}/>
               </div>
               <div className="or">
                 <div className="or-divider"></div>
@@ -192,6 +201,14 @@ const SignIn = ({ history }) => {
           </div>
         </div>
       </section>
+      <SignUpConfirmationModal
+        show={showConfirm}
+        email={mail}
+        setShow={val => setShowConfirm(val)}
+        setShowOTP={val => setShowOTP(val)}
+      />
+        
+      <SignUpOTPModal show={showOTP} setShow={val => setShowOTP(val)} email={mail} history={history} />
       <Footer />
       { isLoading && !configs && <Loader /> }
     </>

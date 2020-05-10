@@ -75,11 +75,11 @@ const Profile = ({ history }) => {
                     return (
                       <Form noValidate role="form" onSubmit={handleSubmit}>
                         <Form.Group controlId="validationCustom01">
-                          <Form.Label>My Name</Form.Label>
+                          <Form.Label>My name</Form.Label>
                           <Form.Control
                             required
                             type="text"
-                            placeholder="My Name"
+                            placeholder="My name"
                             name="name"
                             autoComplete="test"
                             onChange={handleChange}

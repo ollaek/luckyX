@@ -65,7 +65,7 @@ const Routing = () => (
         <UnProtectedRoute path="/MailVerified/:id" component={MailVerified} />
         <Route path="/ForgotPassword" component={ForgotPassword} />
         <ProtectedRoute path="/Wallet" component={Wallet}/>
-        <Route path="/Cashout" component={Cashout} />
+        <ProtectedRoute path="/Cashout" component={Cashout} />
         <ProtectedRoute path="/Profile" component={Profile} />
         <Route path="/EditPassword" component={EditPassword} />
         <Route path="/ContactUs" component={ContactUs} />

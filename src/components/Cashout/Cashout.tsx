@@ -26,7 +26,7 @@ import Loader from "../shared/Loader/Loader";
 
 const Cashout = ({history}) => {
   const stepperControllerRef = useRef<StepperController>();
-  const { isLoading, verifyOTP, resendOTP } = useAccountState();
+  const { isLoading, verifyOTP, resendOTP, errorMSG, success } = useAccountState();
 
   const onComplete = (stepId: string) => {
     setTimeout(() => {
@@ -78,9 +78,11 @@ const Cashout = ({history}) => {
                               >
                                 <Step2
                                   resendOTP={number => resendOTP(number)}
-                                  verifyOTP={(number, otp, callback) =>
-                                    verifyOTP(number, otp, callback)
+                                  verifyOTP={(number, otp) =>
+                                    verifyOTP(number, otp)
                                   }
+                                  errorMSG={errorMSG}
+                                  success={success}
                                 />
                               </Step>
                             )

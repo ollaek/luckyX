@@ -28,6 +28,7 @@ const MobileModal = (props: any) => {
             </div>
           </Modal.Body>
           <Modal.Footer>
+          <div className="error error-message text-center">{props.error}</div>
             <Button
               className="col-md-6 col-12"
               variant="primary"
