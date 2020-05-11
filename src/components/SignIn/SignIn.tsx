@@ -19,7 +19,13 @@ import SignUpConfirmationModal from "../SignUp/SignUpConfirmationModal";
 import SignUpOTPModal from "../SignUp/SignUpOTPModal";
 
 const SignIn = ({ history }) => {
-  const { signIn, isFetching, signInError, success, errorCode } = useUserState();
+  const {
+    signIn,
+    isFetching,
+    signInError,
+    success,
+    errorCode
+  } = useUserState();
   const { configs, getConfig, isLoading } = useConfigState();
   const [showConfirm, setShowConfirm] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
@@ -82,8 +88,16 @@ const SignIn = ({ history }) => {
             <div className="col-md-4 offset-md-1">
               <h2 className="title">Log In with</h2>
               <div className="flex-center">
-                <GoogleButton history={history} setShow={null} setEmail={email => setMail(email)}/>
-                <FaceBookButton history={history} setShow={null} setEmail={email => setMail(email)}/>
+                <GoogleButton
+                  history={history}
+                  setShow={null}
+                  setEmail={email => setMail(email)}
+                />
+                <FaceBookButton
+                  history={history}
+                  setShow={null}
+                  setEmail={email => setMail(email)}
+                />
               </div>
               <div className="or">
                 <div className="or-divider"></div>
@@ -207,10 +221,15 @@ const SignIn = ({ history }) => {
         setShow={val => setShowConfirm(val)}
         setShowOTP={val => setShowOTP(val)}
       />
-        
-      <SignUpOTPModal show={showOTP} setShow={val => setShowOTP(val)} email={mail} history={history} />
+      <SignUpOTPModal
+        show={showOTP}
+        setShow={val => setShowOTP(val)}
+        email={mail}
+        history={history}
+        isExternal={true}
+      />
       <Footer />
-      { isLoading && !configs && <Loader /> }
+      {isLoading && !configs && <Loader />}
     </>
   );
 };

@@ -25,19 +25,17 @@ const Step2 = ({ resendOTP, verifyOTP, errorMSG, success }) => {
   const data = getData(STEP2);
   const [waitingTime, setWaitingTime] = useState(60);
   localStorage.setItem("IsJustMerged", "false");
-   
-   if(localStorage.getItem("IsMerged") === "true"){
-     goAt(STEP3);
-   }
-   const { addToast } = useToasts();
 
-   
-   useEffect(
+  if (localStorage.getItem("IsMerged") === "true") {
+    goAt(STEP3);
+  }
+  const { addToast } = useToasts();
+
+  useEffect(
     () => {
-      if (data.step2.newTime > 0){
+      if (data.step2.newTime > 0) {
         setWaitingTime(data.step2.newTime);
       }
-      
     },
     // eslint-disable-next-line
     [data.step2.newTime]
@@ -47,15 +45,39 @@ const Step2 = ({ resendOTP, verifyOTP, errorMSG, success }) => {
       setTimeout(() => {
         if (waitingTime > 0) setWaitingTime(waitingTime - 1);
       }, 1000);
-      setError(errorMSG);
     },
     // eslint-disable-next-line
     [waitingTime]
   );
-  useEffect(
-    () => {
-      if (success === "Y") {
+  // useEffect(
+  //   () => {
+  //     if (success === "Y") {
+  //       resolve(data);
+  //       localStorage.setItem("IsJustMerged", "true");
+  //       localStorage.setItem("IsMerged", "true");
 
+  //       addToast("Phone number verified successfully. You can now cash out.", {
+  //         appearance: "success",
+  //         autoDismiss: true,
+  //         className: "toasterCustom"
+  //       });
+  //     }
+  //   },
+  //   // eslint-disable-next-line
+  //   [success]
+  // );
+
+  //  const callbackResolve = () => {
+  //    resolve(data);
+  //  };
+
+  const onSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (otp.length === 6) {
+      verifyOTP(data.step2.mobile, otp).then(res => {
+
+        if (res.payload.result) {
         resolve(data);
         localStorage.setItem("IsJustMerged", "true");
         localStorage.setItem("IsMerged", "true");
@@ -66,21 +88,11 @@ const Step2 = ({ resendOTP, verifyOTP, errorMSG, success }) => {
           className: "toasterCustom"
         });
       }
-    },
-    // eslint-disable-next-line
-    [success]
-  );
 
-  // const callbackResolve = () => {
-  //   resolve(data);
-  // };
-
-  const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    
-    if (otp.length === 6) {
-      debugger;
-      verifyOTP(data.step2.mobile, otp);
+        if (res.payload.error) {
+          setError(res.payload.error.response.data.Errors[0]);
+        }
+      });
     } else {
       setError("Please enter valid code");
     }
@@ -92,10 +104,10 @@ const Step2 = ({ resendOTP, verifyOTP, errorMSG, success }) => {
         const newTime = res.payload.result.Data;
         setWaitingTime(newTime);
       } else {
-        if(res.payload.error.response){
+        if (res.payload.error.response) {
           setError(res.payload.error.response.data.Errors[0].toString());
-        }else{
-          window.location.assign(`${process.env.PUBLIC_URL}/ErrorNoConnection`)
+        } else {
+          window.location.assign(`${process.env.PUBLIC_URL}/ErrorNoConnection`);
         }
       }
     });
@@ -137,54 +149,56 @@ const Step2 = ({ resendOTP, verifyOTP, errorMSG, success }) => {
               Continue
             </StepperAction>
           </div>
-        
         </React.Fragment>
       }
     >
       <>
-      <div className="row">
-   <div className="col-12">
-     <p className="current_step-text">   Cashout <span >- Step 02/03</span></p>
-   </div>
-      </div>
-      <div className="step2">
-        <h4 className="h4-text">
-          By entering the confirmation code sent to mobile number{" "}
-          {data.step2.mobile}, you confirm that this is the number you want to
-          use for your Lucky wallet.
-        </h4>
-        <form>
-          <PinInput
-            length={6}
-            initialValue=""
-            onChange={(value, index) => {
-              if (value.length === 6) {
-                setGoNext(true);
-              } else {
-                setGoNext(false);
-              }
-            }}
-            type="numeric"
-            onComplete={(value, index) => {
-              setOtp(value);
-            }}
-          />
-          <div style={{ color: "#FF585F" }}>{error}</div>
-        </form>
-        <div className="step2-footer">
-          <p className="link-text">
-            Didn’t you receive the code?
-            <button
-              disabled={waitingTime > 0 ? true : false}
-              className="btn-link link-blue"
-              onClick={() => onResend()}
-            >
-              Resend Code{" "}
-              {waitingTime > 0 && waitingTime}
-            </button>
-          </p>
+        <div className="row">
+          <div className="col-12">
+            <p className="current_step-text">
+              {" "}
+              Cashout <span>- Step 02/03</span>
+            </p>
+          </div>
         </div>
-      </div>
+        <div className="step2">
+          <h4 className="h4-text">
+            By entering the confirmation code sent to mobile number{" "}
+            {data.step2.mobile}, you confirm that this is the number you want to
+            use for your Lucky wallet.
+          </h4>
+          <form>
+            <PinInput
+              length={6}
+              initialValue=""
+              onChange={(value, index) => {
+                if (value.length === 6) {
+                  setGoNext(true);
+                } else {
+                  setGoNext(false);
+                }
+              }}
+              type="numeric"
+              onComplete={(value, index) => {
+                setOtp(value);
+              }}
+            />
+            <div style={{ color: "#FF585F" }}>{error}</div>
+            <div style={{ color: "#FF585F" }}>{errorMSG}</div>
+          </form>
+          <div className="step2-footer">
+            <p className="link-text">
+              Didn’t you receive the code?
+              <button
+                disabled={waitingTime > 0 ? true : false}
+                className="btn-link link-blue"
+                onClick={() => onResend()}
+              >
+                Resend Code {waitingTime > 0 && waitingTime}
+              </button>
+            </p>
+          </div>
+        </div>
       </>
       <Modal show={show} setShow={val => setShow(val)} />
     </StepperContent>

@@ -25,6 +25,7 @@ const FaceBookButton = ({ history, setShow, setEmail }) => {
         Email: response.email,
         SocialId: response.id
       };
+      setEmail(user.Email);
       localStorage.setItem("socialLoginData", JSON.stringify(user));
       externalSignIn(user);
     }

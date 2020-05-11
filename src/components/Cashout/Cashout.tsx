@@ -1,5 +1,5 @@
 // import React from "react";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 //import Header from "../Header/Header";
 import Footer from "../shared/Footer/Footer";
@@ -27,6 +27,12 @@ import Loader from "../shared/Loader/Loader";
 const Cashout = ({history}) => {
   const stepperControllerRef = useRef<StepperController>();
   const { isLoading, verifyOTP, resendOTP, errorMSG, success } = useAccountState();
+  useEffect(
+    () => {
+    },
+    // eslint-disable-next-line
+    [success]
+  );
 
   const onComplete = (stepId: string) => {
     setTimeout(() => {

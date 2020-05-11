@@ -136,9 +136,8 @@ const accountReducer = (
   }
 
   if (isType(action, verifyOTPAction.done)) {
-    debugger;
-    const response = (action.payload.result as unknown) as ResponseModel;
-    if (response.callback) response.callback();
+    //const response = (action.payload.result as unknown) as ResponseModel;
+    // if (response.callback) response.callback();
 
     return {
       ...state,
